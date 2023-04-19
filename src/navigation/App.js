@@ -1,6 +1,13 @@
 import { GrHomeRounded } from "react-icons/gr";
 import { FiSearch } from "react-icons/fi";
 import { MdOutlineExplore } from "react-icons/md";
+import { BsCameraVideo } from "react-icons/bs";
+import { BiMessageSquareDots } from "react-icons/bi";
+import { AiOutlineHeart } from "react-icons/ai";
+import { CiSquarePlus } from "react-icons/ci";
+import { CgProfile } from "react-icons/cg";
+import { FiMoreHorizontal } from "react-icons/fi";
+
 
 export default function Navigation() {
     return (
@@ -22,28 +29,28 @@ export default function Navigation() {
                     <p> Explore </p>
                 </div>
                 <div>
-                    <img />
+                    <BsCameraVideo />
                     <p> Reels </p>
                 </div>
                 <div>
-                    <img />
+                    <BiMessageSquareDots />
                     <p> Messages </p>
                 </div>
                 <div>
-                    <img />
+                    <AiOutlineHeart />
                     <p> Notifications </p>
                 </div>
                 <div>
-                    <img />
+                    <CiSquarePlus />
                     <p> Create </p>
                 </div>
                 <div>
-                    <img />
+                    <CgProfile />
                     <p> Profile </p>
                 </div>
             </div>
             <div>
-                <img />
+                <FiMoreHorizontal />
                 <p> More </p>
             </div>
         </div>
