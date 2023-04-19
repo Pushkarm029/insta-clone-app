@@ -21,72 +21,52 @@ import { CgProfile } from 'react-icons/cg';
 
 import './App.css';
 
+const components = {
+  home: Home,
+  search: Search,
+  explore: Explore,
+  reels: Reels,
+  messages: Messages,
+  notifications: Notifications,
+  create: Create,
+  profile: Profile,
+  more: More
+};
 
-export default function Navigation() {
-    const [currentPage, setCurrentPage] = useState('home');
+const icons = {
+  home: GrHomeRounded,
+  search: FiSearch,
+  explore: MdOutlineExplore,
+  reels: BsCameraVideo,
+  messages: BiMessageSquareDots,
+  notifications: AiOutlineHeart,
+  create: CiSquarePlus,
+  profile: CgProfile,
+  more: FiMoreHorizontal
+};
 
-    const handleClick = (page) => {
-      setCurrentPage(page);
-    }
+const Navigation = () => {
+  const [currentPage, setCurrentPage] = useState('home');
 
-    
-    return (
-        <div className="navigation">
-            <p>
-                Instagram
-            </p>
-            <div>
-                <button onClick={() => handleClick('home')} className="navigation-component">
-                    <GrHomeRounded/>   
-                    {/* style={{fontSize: '24px' }}  */}
-                    <p> Home </p>
-                </button>
-                <button onClick={() => handleClick('search')} className="navigation-component">
-                    <FiSearch />
-                    <p> Search </p>
-                </button>
-                <button onClick={() => handleClick('explore')} className="navigation-component">
-                    <MdOutlineExplore />
-                    <p> Explore </p>
-                </button>
-                <button onClick={() => handleClick('reels')} className="navigation-component">
-                    <BsCameraVideo />
-                    <p> Reels </p>
-                </button>
-                <button onClick={() => handleClick('messages')} className="navigation-component">
-                    <BiMessageSquareDots />
-                    <p> Messages </p>
-                </button>
-                <button onClick={() => handleClick('notifications')} className="navigation-component">
-                    <AiOutlineHeart />
-                    <p> Notifications </p>
-                </button>
-                <button onClick={() => handleClick('create')} className="navigation-component">
-                    <CiSquarePlus />
-                    <p> Create </p>
-                </button>
-                <button onClick={() => handleClick('profile')} className="navigation-component">
-                    <CgProfile />
-                    <p> Profile </p>
-                </button>
-            </div>
-            <button onClick={() => handleClick('more')}  className="navigation-component" >
-                <FiMoreHorizontal />
-                <p> More </p>
-            </button>
-        
+  const handleClick = (page) => {
+    setCurrentPage(page);
+  }
 
-            {currentPage === 'home' && <Home />}
-            {currentPage === 'search' && <Search />}
-            {currentPage === 'explore' && <Explore />}
-            {currentPage === 'reels' && <Reels />}
-            {currentPage === 'messages' && <Messages />}
-            {currentPage === 'notifications' && <Notifications />}
-            {currentPage === 'create' && <Create />}
-            {currentPage === 'profile' && <Profile />}
-            {currentPage === 'more' && <More />}
-        </div>
-    );
+  return (
+    <div className="navigation">
+      <p>Instagram</p>
+      <div>
+        {Object.keys(components).map((page) => (
+          <button key={page} onClick={() => handleClick(page)} className="navigation-component">
+            {React.createElement(icons[page])}
+            <p>{page.charAt(0).toUpperCase() + page.slice(1)}</p>
+          </button>
+        ))}
+      </div>
+      {/* Separate More Button from here */}
+      {React.createElement(components[currentPage])}
+    </div>
+  );
 }
 
-
+export default Navigation;
