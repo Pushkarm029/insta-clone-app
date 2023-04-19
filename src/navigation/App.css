@@ -1,8 +1,16 @@
-.navigation-component{
+:root {
+    --icon-size: 24px;
+    --text-color: #262626;
+  }
+  
+  .navigation-component {
     display: flex;
     align-items: center;
-}
-
-.navigation-component svg{
-    font-size: 1.65rem;
-}
+    color: var(--text-color);
+    cursor: pointer;
+  }
+  
+  .navigation-component svg {
+    font-size: var(--icon-size);
+  }
+  

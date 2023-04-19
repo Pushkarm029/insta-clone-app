@@ -1,16 +1,14 @@
 import React from 'react';
-import Account from './account/App';
-import Navigation from './body/App';
-import Body from './navigation/App';
+import Home from './home/App';
+import Navigation from './navigation/App';
 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
+      <Home/>
       <Navigation/>
-      <Body/>
-      <Account/>
     </div>
   );
 }
