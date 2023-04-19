@@ -7,44 +7,45 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { CiSquarePlus } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 import { FiMoreHorizontal } from "react-icons/fi";
+import './App.css';
 
 
 export default function Navigation() {
     return (
-        <div className="Navigation">
+        <div className="navigation">
             <p>
                 Instagram
             </p>
             <div>
-                <div>
-                    <GrHomeRounded/>
+                <div className="navigation-component">
+                    <GrHomeRounded style={{fontSize: '24px' }} />
                     <p> Home </p>
                 </div>
-                <div>
+                <div className="navigation-component">
                     <FiSearch />
                     <p> Search </p>
                 </div>
-                <div>
+                <div className="navigation-component">
                     <MdOutlineExplore />
                     <p> Explore </p>
                 </div>
-                <div>
+                <div className="navigation-component">
                     <BsCameraVideo />
                     <p> Reels </p>
                 </div>
-                <div>
+                <div className="navigation-component">
                     <BiMessageSquareDots />
                     <p> Messages </p>
                 </div>
-                <div>
+                <div className="navigation-component">
                     <AiOutlineHeart />
                     <p> Notifications </p>
                 </div>
-                <div>
+                <div className="navigation-component">
                     <CiSquarePlus />
                     <p> Create </p>
                 </div>
-                <div>
+                <div className="navigation-component">
                     <CgProfile />
                     <p> Profile </p>
                 </div>

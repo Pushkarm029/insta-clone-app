@@ -1,0 +1,8 @@
+.navigation-component{
+    display: flex;
+    align-items: center;
+}
+
+.navigation-component svg{
+    font-size: 1.65rem;
+}

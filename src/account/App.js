@@ -1,4 +1,6 @@
 import Button from '@material-ui/core/Button';
+import './App.css';
+
 
 export default function Account() {
     return (
