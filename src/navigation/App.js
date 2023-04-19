@@ -8,6 +8,7 @@ import Notifications from './../overlay/notifications/App';
 import Create from './../overlay/create/App';
 import Profile from './../profile/App';
 import More from './../overlay/more/App';
+import Button from '@material-ui/core/Button';
 
 
 import { GrHomeRounded } from 'react-icons/gr';
@@ -55,12 +56,12 @@ const Navigation = () => {
   return (
     <div className="navigation">
       <p>Instagram</p>
-      <div>
+      <div className='navigation-middle'>
         {Object.keys(components).map((page) => (
-          <button key={page} onClick={() => handleClick(page)} className="navigation-component">
+          <Button key={page} onClick={() => handleClick(page)} className="navigation-component">
             {React.createElement(icons[page])}
             <p>{page.charAt(0).toUpperCase() + page.slice(1)}</p>
-          </button>
+          </Button>
         ))}
       </div>
       {/* Separate More Button from here */}
