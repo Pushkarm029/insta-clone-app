@@ -15,7 +15,10 @@ export default function Account() {
           <Button variant='text'>switch</Button>
         </div>
         <div className='suggestions'>
-          <h2>Suggestions for you</h2>
+          <div className='navigation-top'>
+            <h2>Suggestions for you</h2>
+            <Button variant='text'>See All</Button>
+          </div>
           <div className='navigation-middle'>
             {accountList.slice(1).map((account) => (
               <div key={account.id}>
@@ -28,10 +31,19 @@ export default function Account() {
           </div>
         </div>
         <div className='accountfooter'>
-
+          <a href='#'>About</a>
+          <a href='#'>Help</a>
+          <a href='#'>Press</a>
+          <a href='#'>API</a>
+          <a href='#'>Jobs</a>
+          <a href='#'>Privacy</a>
+          <a href='#'>Terms</a>
+          <a href='#'>Loactions</a>
+          <a href='#'>Language</a>
+          <a href='#'>Meta Verified</a>
         </div>
         <div className = 'copyrightaccount'>
-
+          <p>© 2023 INSTAGRAM FROM META</p>
         </div>
       </div>
     );
