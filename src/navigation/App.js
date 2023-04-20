@@ -10,7 +10,6 @@ import Profile from './../profile/App';
 import More from './../overlay/more/App';
 import Button from '@material-ui/core/Button';
 
-
 import { GrHomeRounded } from 'react-icons/gr';
 import { FiSearch, FiMoreHorizontal } from 'react-icons/fi';
 import { MdOutlineExplore } from 'react-icons/md';
