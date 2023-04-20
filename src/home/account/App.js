@@ -15,7 +15,17 @@ export default function Account() {
           <Button variant='text'>switch</Button>
         </div>
         <div className='suggestions'>
-
+          <h2>Suggestions for you</h2>
+          <div className='navigation-middle'>
+            {accountList.slice(1).map((account) => (
+              <div key={account.id}>
+                <img src={account.url} alt={account.name} />
+                <p>{account.id}</p>
+                <p>{account.name}</p>
+                <Button variant='text'>Follow</Button>
+              </div>
+            ))}
+          </div>
         </div>
         <div className='accountfooter'>
 
