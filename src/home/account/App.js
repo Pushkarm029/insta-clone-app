@@ -20,7 +20,7 @@ export default function Account() {
             <Button variant='text'>See All</Button>
           </div>
           <div className='navigation-middle'>
-            {accountList.slice(1).map((account) => (
+            {accountList.slice(1,5).map((account) => (
               <div key={account.id}>
                 <img src={account.url} alt={account.name} />
                 <p>{account.id}</p>
