@@ -17,7 +17,7 @@ export default function Navigation() {
       <p>Instagram</p>
       <div className='navigation-middle'>
         <div className='NavigationHome'>
-          <Link to="/">
+          <Link to="/../home/app.js">
             <Button variant='text'>
               <GrHomeRounded/>
               Home
@@ -34,42 +34,62 @@ export default function Navigation() {
         </div>
         <div className='NavigationExplore'>
           <Link to="/">
-            <Button variant='text'>Explore</Button>
+            <Button variant='text'>
+              <MdOutlineExplore/>
+              Explore
+            </Button>
           </Link>
         </div>
         <div className='NavigationReels'>
           <Link to="/">
-            <Button variant='text'>Reels</Button>
+            <Button variant='text'>
+              <BsCameraVideo/>
+              Reels
+            </Button>
           </Link>
         </div>
         <div className='NavigationMessages'>
           <Link to="/">
-            <Button variant='text'>Messages</Button>
+            <Button variant='text'>
+              <BiMessageSquareDots/>
+              Messages
+            </Button>
           </Link>
         </div>
         <div className='NavigationNotifications'>
           <Link to="/">
-            <Button variant='text'>Notifications</Button>
+            <Button variant='text'>
+              <AiOutlineHeart/>
+              Notifications
+            </Button>
           </Link>
         </div>
         <div className='NavigationCreate'>
           <Link to="/">
-            <Button variant='text'>Create</Button>
+            <Button variant='text'>
+              <CiSquarePlus/>
+              Create
+            </Button>
           </Link>
         </div>
         <div className='NavigationProfile'>
           <Link to="/">
-            <Button variant='text'>Profile</Button>
+            <Button variant='text'>
+              <CgProfile/>
+              Profile
+            </Button>
           </Link>
         </div>
-        <div className='NavigationMore'>
-          <Link to="/">
-            <Button variant='text'>More</Button>
-          </Link>
-        </div>
-
       </div>
       {/* Separate More Button from here */}
+      <div className='NavigationMore'>
+          <Link to="/">
+            <Button variant='text'>
+              <FiMoreHorizontal/>
+              More
+            </Button>
+          </Link>
+      </div>
     </div>
   );
 }
