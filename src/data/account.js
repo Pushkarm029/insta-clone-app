@@ -5,7 +5,13 @@ export const accountList = [{
     description: 'Full Stack Web Developer | 18 | Fresher @ BITS Pilani https://github.com/@pushkarm029',
     followers: '452',
     following: '77',
-    posts: '8'
+    posts: [{
+        number: '8',
+        imageurl: '',
+        likes: '10',
+        caption: 'Hello Hello Kon rabb Deep',
+        comment: 'Nice Project'
+    }]
 },
 {/* add postswith caption */},
 
