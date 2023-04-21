@@ -1,15 +1,6 @@
-import React, { useState } from 'react';
-import Home from './../home/App';
-import Search from './../overlay/search/App'
-import Explore from './../explore/App';
-import Reels from './../reels/App';
-import Messages from './../messages/App';
-import Notifications from './../overlay/notifications/App';
-import Create from './../overlay/create/App';
-import Profile from './../profile/App';
-import More from './../overlay/more/App';
+import React from 'react';
+import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
-
 import { GrHomeRounded } from 'react-icons/gr';
 import { FiSearch, FiMoreHorizontal } from 'react-icons/fi';
 import { MdOutlineExplore } from 'react-icons/md';
@@ -18,55 +9,67 @@ import { BiMessageSquareDots } from 'react-icons/bi';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { CiSquarePlus } from 'react-icons/ci';
 import { CgProfile } from 'react-icons/cg';
-
 import './App.css';
 
-const components = {
-  home: Home,
-  search: Search,
-  explore: Explore,
-  reels: Reels,
-  messages: Messages,
-  notifications: Notifications,
-  create: Create,
-  profile: Profile,
-  more: More
-};
-
-const icons = {
-  home: GrHomeRounded,
-  search: FiSearch,
-  explore: MdOutlineExplore,
-  reels: BsCameraVideo,
-  messages: BiMessageSquareDots,
-  notifications: AiOutlineHeart,
-  create: CiSquarePlus,
-  profile: CgProfile,
-  more: FiMoreHorizontal
-};
-
-const Navigation = () => {
-  const [currentPage, setCurrentPage] = useState('home');
-
-  const handleClick = (page) => {
-    setCurrentPage(page);
-  }
-
+export default function Navigation() {
   return (
     <div className="navigation">
       <p>Instagram</p>
       <div className='navigation-middle'>
-        {Object.keys(components).map((page) => (
-          <Button key={page} onClick={() => handleClick(page)} className="navigation-component">
-            {React.createElement(icons[page])}
-            <p>{page.charAt(0).toUpperCase() + page.slice(1)}</p>
-          </Button>
-        ))}
+        <div className='NavigationHome'>
+          <Link to="/">
+            <Button variant='text'>
+              <GrHomeRounded/>
+              Home
+            </Button>
+          </Link>
+        </div>
+        <div className='NavigationSearch'>
+          <Link to="/">
+            <Button variant='text'>
+              <FiSearch/>
+              Search
+            </Button>
+          </Link>
+        </div>
+        <div className='NavigationExplore'>
+          <Link to="/">
+            <Button variant='text'>Explore</Button>
+          </Link>
+        </div>
+        <div className='NavigationReels'>
+          <Link to="/">
+            <Button variant='text'>Reels</Button>
+          </Link>
+        </div>
+        <div className='NavigationMessages'>
+          <Link to="/">
+            <Button variant='text'>Messages</Button>
+          </Link>
+        </div>
+        <div className='NavigationNotifications'>
+          <Link to="/">
+            <Button variant='text'>Notifications</Button>
+          </Link>
+        </div>
+        <div className='NavigationCreate'>
+          <Link to="/">
+            <Button variant='text'>Create</Button>
+          </Link>
+        </div>
+        <div className='NavigationProfile'>
+          <Link to="/">
+            <Button variant='text'>Profile</Button>
+          </Link>
+        </div>
+        <div className='NavigationMore'>
+          <Link to="/">
+            <Button variant='text'>More</Button>
+          </Link>
+        </div>
+
       </div>
       {/* Separate More Button from here */}
-      {React.createElement(components[currentPage])}
     </div>
   );
 }
-
-export default Navigation;
