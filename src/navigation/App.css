@@ -2,19 +2,49 @@
     --icon-size: 24px;
     --text-color: #262626;
   }
-  
-  .navigation-component {
-    align-items: center;
-    color: var(--text-color);
-    cursor: pointer;
-  }
-  
-  .navigation-component svg {
-    font-size: var(--icon-size);
-  }
-  
-  .navigation-middle{
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-  }
+
+.navigation{
+  width: 20%;
+  background-color: black;
+}
+
+.navigation-middle > div {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 0.5vh;
+  margin-bottom: 0.5vh;
+}
+
+.navigation-middle > div:hover{
+  background-color: rgb(26, 26, 26);
+}
+
+p{
+  color: white;
+}
+
+button{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+  outline: inherit;
+}
+
+.navigation-component {
+  align-items: center;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.navigation-component svg {
+  font-size: var(--icon-size);
+}
+
+.navigation-middle{
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}

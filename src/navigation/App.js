@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import Button from '@material-ui/core/Button';
-import { GrHomeRounded } from 'react-icons/gr';
+import { BiHomeSmile } from 'react-icons/bi';
 import { FiSearch, FiMoreHorizontal } from 'react-icons/fi';
 import { MdOutlineExplore } from 'react-icons/md';
 import { BsCameraVideo } from 'react-icons/bs';
 import { BiMessageSquareDots } from 'react-icons/bi';
 import { AiOutlineHeart } from 'react-icons/ai';
-import { CiSquarePlus } from 'react-icons/ci';
+import { FaPlus } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
 import './App.css';
 
@@ -18,76 +17,76 @@ export default function Navigation() {
       <div className='navigation-middle'>
         <div className='NavigationHome'>
           <Link to="/../home/app.js">
-            <Button variant='text'>
-              <GrHomeRounded/>
+            <button className='blockbutton' style={{color: 'white'}}>
+              <BiHomeSmile size={30} color="white" style={{padding :'10px'}}/>
               Home
-            </Button>
+            </button>
           </Link>
         </div>
         <div className='NavigationSearch'>
           <Link to="/">
-            <Button variant='text'>
-              <FiSearch/>
+            <button style={{color: 'white'}}>
+              <FiSearch color="white"/>
               Search
-            </Button>
+            </button>
           </Link>
         </div>
         <div className='NavigationExplore'>
           <Link to="/">
-            <Button variant='text'>
-              <MdOutlineExplore/>
+            <button style={{color: 'white'}}>
+              <MdOutlineExplore color="white"/>
               Explore
-            </Button>
+            </button>
           </Link>
         </div>
         <div className='NavigationReels'>
           <Link to="/">
-            <Button variant='text'>
-              <BsCameraVideo/>
+            <button style={{color: 'white'}}>
+              <BsCameraVideo color="white"/>
               Reels
-            </Button>
+            </button>
           </Link>
         </div>
         <div className='NavigationMessages'>
           <Link to="/">
-            <Button variant='text'>
-              <BiMessageSquareDots/>
+            <button style={{color: 'white'}}>
+              <BiMessageSquareDots color="white"/>
               Messages
-            </Button>
+            </button>
           </Link>
         </div>
         <div className='NavigationNotifications'>
           <Link to="/">
-            <Button variant='text'>
-              <AiOutlineHeart/>
+            <button style={{color: 'white'}}>
+              <AiOutlineHeart color="white"/>
               Notifications
-            </Button>
+            </button>
           </Link>
         </div>
         <div className='NavigationCreate'>
           <Link to="/">
-            <Button variant='text'>
-              <CiSquarePlus/>
+            <button style={{color: 'white'}}>
+              <FaPlus color="white"/>
               Create
-            </Button>
+            </button>
           </Link>
         </div>
         <div className='NavigationProfile'>
           <Link to="/">
-            <Button variant='text'>
-              <CgProfile/>
+            <button style={{color: 'white'}}>
+              <CgProfile color="white"/>
               Profile
-            </Button>
+            </button>
           </Link>
         </div>
       </div>
       {/* Separate More Button from here */}
       <div className='NavigationMore'>
           <Link to="/">
-            <Button variant='text'>
-              <FiMoreHorizontal/>
+            <button style={{color: 'white'}}>
+              <FiMoreHorizontal color="white"/>
               More
-            </Button>
+            </button>
           </Link>
       </div>
     </div>
