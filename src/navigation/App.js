@@ -18,15 +18,15 @@ export default function Navigation() {
         <div className='NavigationHome'>
           <Link to="/../home/app.js">
             <button className='blockbutton' style={{color: 'white'}}>
-              <BiHomeSmile size={30} color="white" style={{padding :'10px'}}/>
+              <BiHomeSmile size={27} color="white" style={{padding :'10px'}}/>
               Home
             </button>
           </Link>
         </div>
         <div className='NavigationSearch'>
           <Link to="/">
-            <button style={{color: 'white'}}>
-              <FiSearch color="white"/>
+            <button className='blockbutton' style={{color: 'white'}}>
+              <FiSearch size={27} color="white" style={{padding :'10px'}}/>
               Search
             </button>
           </Link>
@@ -34,7 +34,7 @@ export default function Navigation() {
         <div className='NavigationExplore'>
           <Link to="/">
             <button style={{color: 'white'}}>
-              <MdOutlineExplore color="white"/>
+              <MdOutlineExplore size={27} color="white" style={{padding :'10px'}}/>
               Explore
             </button>
           </Link>
@@ -42,7 +42,7 @@ export default function Navigation() {
         <div className='NavigationReels'>
           <Link to="/">
             <button style={{color: 'white'}}>
-              <BsCameraVideo color="white"/>
+              <BsCameraVideo size={27} color="white" style={{padding :'10px'}}/>
               Reels
             </button>
           </Link>
@@ -50,7 +50,7 @@ export default function Navigation() {
         <div className='NavigationMessages'>
           <Link to="/">
             <button style={{color: 'white'}}>
-              <BiMessageSquareDots color="white"/>
+              <BiMessageSquareDots size={27} color="white" style={{padding :'10px'}}/>
               Messages
             </button>
           </Link>
@@ -58,7 +58,7 @@ export default function Navigation() {
         <div className='NavigationNotifications'>
           <Link to="/">
             <button style={{color: 'white'}}>
-              <AiOutlineHeart color="white"/>
+              <AiOutlineHeart size={27} color="white" style={{padding :'10px'}}/>
               Notifications
             </button>
           </Link>
@@ -66,7 +66,7 @@ export default function Navigation() {
         <div className='NavigationCreate'>
           <Link to="/">
             <button style={{color: 'white'}}>
-              <FaPlus color="white"/>
+              <FaPlus size={27} color="white" style={{padding :'10px'}}/>
               Create
             </button>
           </Link>
@@ -74,7 +74,7 @@ export default function Navigation() {
         <div className='NavigationProfile'>
           <Link to="/">
             <button style={{color: 'white'}}>
-              <CgProfile color="white"/>
+              <CgProfile size={27} color="white" style={{padding :'10px'}}/>
               Profile
             </button>
           </Link>
@@ -84,7 +84,7 @@ export default function Navigation() {
       <div className='NavigationMore'>
           <Link to="/">
             <button style={{color: 'white'}}>
-              <FiMoreHorizontal color="white"/>
+              <FiMoreHorizontal size={27} color="white" style={{padding :'10px'}}/>
               More
             </button>
           </Link>

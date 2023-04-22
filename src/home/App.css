@@ -2,3 +2,7 @@
     display:flex ;
 }
 
+.greyline{
+    background-color: gray;
+    width: 1px;
+}

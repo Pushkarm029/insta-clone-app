@@ -4,19 +4,28 @@
   }
 
 .navigation{
-  width: 20%;
+  overflow: hidden;
+  position: fixed;
+  width: 20%;  /*for later while using media query we can make this absolute like 200px 
+  and when window size is decreasing we can remove text*/
+  height: 100%;
   background-color: black;
 }
-
+/*add margins on hidden elements*/
 .navigation-middle > div {
   display: block;
   width: 100%;
   cursor: pointer;
-  margin-top: 0.5vh;
-  margin-bottom: 0.5vh;
+  margin-top : 1vh;
+  margin-bottom: 1vh;
+  margin-left: 2vh;
+  margin-right: 2vh;
+  overflow: auto;
 }
 
 .navigation-middle > div:hover{
+  width: 88%;
+  border-radius: 8px;
   background-color: rgb(26, 26, 26);
 }
 
