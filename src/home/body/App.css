@@ -1,3 +1,7 @@
 .postheader{
     display: flex;
 }
+
+.stories{
+    display: flex;
+}
