@@ -3,6 +3,13 @@
     --text-color: #262626;
   }
 
+#instagram{
+  margin-top : 4.5vh;
+  margin-bottom: 4.5vh;
+  margin-left: 4vh;
+  margin-right: 4vh;
+}
+
 .navigation{
   overflow: hidden;
   position: fixed;
@@ -16,14 +23,31 @@
   display: block;
   width: 100%;
   cursor: pointer;
-  margin-top : 1vh;
-  margin-bottom: 1vh;
+  margin-top : 0.52vh;
+  margin-bottom: 0.52vh;
   margin-left: 2vh;
   margin-right: 2vh;
   overflow: auto;
 }
 
 .navigation-middle > div:hover{
+  width: 88%;
+  border-radius: 8px;
+  background-color: rgb(26, 26, 26);
+}
+
+.NavigationMore{
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  margin-top : 12vh;
+  margin-bottom: 1vh;
+  margin-left: 2vh;
+  margin-right: 2vh;
+  overflow: auto;
+}
+
+.NavigationMore:hover{
   width: 88%;
   border-radius: 8px;
   background-color: rgb(26, 26, 26);
