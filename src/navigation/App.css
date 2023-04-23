@@ -6,7 +6,7 @@
 .navigation{
   overflow: hidden;
   position: fixed;
-  width: 20%;  /*for later while using media query we can make this absolute like 200px 
+  width: 16%;  /*for later while using media query we can make this absolute like 200px 
   and when window size is decreasing we can remove text*/
   height: 100%;
   background-color: black;
@@ -33,23 +33,18 @@ p{
   color: white;
 }
 
-button{
+.blockbutton{
+  cursor: pointer;
   background: none;
 	color: inherit;
 	border: none;
 	padding: 0;
 	font: inherit;
-  outline: inherit;
-}
-
-.navigation-component {
+  display: inline-flex;   
+  /*note*/
   align-items: center;
-  color: var(--text-color);
-  cursor: pointer;
-}
-
-.navigation-component svg {
-  font-size: var(--icon-size);
+  text-align: center;
+  outline:none;
 }
 
 .navigation-middle{
