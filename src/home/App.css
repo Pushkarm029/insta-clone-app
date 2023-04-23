@@ -2,7 +2,7 @@
     display:flex ;
 }
 
-.greyline{
-    background-color: gray;
-    width: 1px;
+
+.body{
+    margin-left: 45%;
 }

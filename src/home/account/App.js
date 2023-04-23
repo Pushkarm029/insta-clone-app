@@ -15,11 +15,11 @@ export default function Account() {
           <Button variant='text'>switch</Button>
         </div>
         <div className='suggestions'>
-          <div className='navigation-top'>
+          <div className='account-top'>
             <h2>Suggestions for you</h2>
             <Button variant='text'>See All</Button>
           </div>
-          <div className='navigation-middle'>
+          <div className='account-middle'>
             {accountList.slice(1,5).map((account) => (
               <div key={account.id}>
                 <img src={account.url} alt={account.name} />

@@ -10,7 +10,6 @@ export default function Home() {
         <Router>
           <Navigation/>
         </Router>
-        <div className='greyline'></div>
         <Body/>
         <Account/>
       </div>

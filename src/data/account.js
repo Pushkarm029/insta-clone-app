@@ -1,7 +1,7 @@
 export const accountList = [{
     name: 'Pushkar Mishra',
     id: 'pushkarm029',
-    url: '',
+    url: 'https://images.unsplash.com/photo-1677999573722-1b7f37481ed7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80?width=400&height=400',
     description: 'Full Stack Web Developer | 18 | Fresher @ BITS Pilani https://github.com/@pushkarm029',
     followers: '452',
     following: '77',
@@ -15,7 +15,7 @@ export const accountList = [{
 },{
     name: 'Jane Doe',
     id: 'janedoe1',
-    url: 'https://www.example.com/janedoe1',
+    url: 'https://images.unsplash.com/photo-1681483476977-322d81693e41?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80?width=400&height=400',
     description: 'Student | Artist | Dreamer',
     followers: '2.5K',
     following: '500',
@@ -46,7 +46,7 @@ export const accountList = [{
   {
     name: 'John Smith',
     id: 'johnsmith',
-    url: 'https://www.example.com/johnsmith',
+    url: 'https://images.unsplash.com/photo-1680035116082-c7cd5e96fdb9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80?width=400&height=400',
     description: 'Photographer | Traveler | Foodie',
     followers: '10K',
     following: '1K',
@@ -77,7 +77,7 @@ export const accountList = [{
   {
     name: 'Linda Anderson',
     id: 'lindaanderson',
-    url: 'https://www.example.com/lindaanderson',
+    url: 'https://images.unsplash.com/photo-1677700674613-4ba4a1bb026d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80?width=400&height=400',
     description: 'Teacher | Writer | Mother',
     followers: '1.2K',
     following: '200',
@@ -103,4 +103,34 @@ export const accountList = [{
         caption: 'Happy Mother\'s Day!',
         comment: "G8"
       }]
-  }]
+  },{
+    name: 'Linda Anderson',
+    id: 'lindaanderson',
+    url: 'https://images.unsplash.com/photo-1598273542329-46062c579e2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80?width=400&height=400',
+    description: 'Teacher | Writer | Mother',
+    followers: '1.2K',
+    following: '200',
+    posts: [
+      {
+        number: '3',
+        imageurl: '',
+        likes: '15',
+        caption: 'Just finished my new book!',
+        comment: ''
+      },
+      {
+        number: '2',
+        imageurl: 'https://www.example.com/images/post2.jpg',
+        likes: '27',
+        caption: 'Love teaching!',
+        comment: 'You are an amazing teacher!'
+      },
+      {
+        number: '1',
+        imageurl: '',
+        likes: '10',
+        caption: 'Happy Mother\'s Day!',
+        comment: "G8"
+      }]
+  }
+]
