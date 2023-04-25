@@ -2,5 +2,32 @@
     position: relative;
     background-color: #000000;
     height: 100%;
-    /*change to #000 later**/
+}
+
+p{
+    color: white;
+}
+
+.accountmiddleflex{
+    display: flex;
+}
+
+.accountmiddleflex img{
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
+
+span{
+    color: white;
+}
+
+.myaccount{
+    display: flex;
+}
+
+.myaccount img{
+    height: 59px;
+    width: 59px;
+    border-radius: 50%;
 }

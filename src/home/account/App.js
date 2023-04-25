@@ -8,23 +8,25 @@ export default function Account() {
       <div className='account'>
         <div className='myaccount'>
           <img src = {accountList[0].url}/>
-          <>
+          <div className='myaccountinner'>
             <p>{accountList[0].id}</p>
             <p>{accountList[0].name}</p>
-          </>
-          <Button variant='text'>switch</Button>
+          </div>
+          <span className='accountswitchbutton'>switch</span>
         </div>
         <div className='suggestions'>
           <div className='account-top'>
-            <h2>Suggestions for you</h2>
+            <p>Suggestions for you</p>
             <Button variant='text'>See All</Button>
           </div>
           <div className='account-middle'>
             {accountList.slice(1,5).map((account) => (
-              <div key={account.id}>
+              <div key={account.id} className='accountmiddleflex'>
                 <img src={account.url} alt={account.name} />
-                <p>{account.id}</p>
-                <p>{account.name}</p>
+                <div className='accountmiddletextholder'>
+                  <p>{account.id}</p>
+                  <p>{account.name}</p>
+                </div>
                 <Button variant='text'>Follow</Button>
               </div>
             ))}
@@ -43,7 +45,7 @@ export default function Account() {
           <a href='#'>Meta Verified</a>
         </div>
         <div className = 'copyrightaccount'>
-          <p>© 2023 INSTAGRAM FROM META</p>
+          <p>© 2023 INSTA-CLONE FROM @pushkarm029</p>
         </div>
       </div>
     );

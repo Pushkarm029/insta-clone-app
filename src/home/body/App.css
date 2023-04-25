@@ -6,8 +6,8 @@
 }
 
 .stories img{
-    width: 64px;
-    height: 64px;
+    width: 59px;
+    height: 59px;
     border: double 3px transparent;
     border-radius: 50%;
     background-image: linear-gradient(white, white), radial-gradient(circle at top left, #FF9400,#DC00B4);
