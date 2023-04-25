@@ -6,15 +6,24 @@ import {FiMessageSquare} from "react-icons/fi";
 import {RiShareForwardLine} from "react-icons/ri";
 import {FiBookmark} from "react-icons/fi";
 
+function CheckUsername(text){
+  let length = text.length;
+  if(length>=11){
+    return text.slice(0,8) + "...";
+  }
+  else{
+    return text;
+  }
+}
+
 export default function Body() {
   return (
     <div className="body">
       <div className="stories">
         {accountList.slice(0, 8).map((account) => (
-          <div key={account.id}>
+          <div key={account.id} className="storyinner">
             <img src={account.url} alt={account.name} />
-            <p>{account.id}</p>
-            <p>{account.name}</p>
+            <p>{CheckUsername(account.id)}</p>
           </div>
         ))}
       </div>
