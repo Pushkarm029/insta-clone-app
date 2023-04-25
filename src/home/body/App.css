@@ -1,4 +1,6 @@
-
+.body{
+    background-color: #000000;
+}
 .postheader{
     display: flex;
 }
@@ -6,7 +8,39 @@
 .stories img{
     width: 64px;
     height: 64px;
+    border: double 3px transparent;
     border-radius: 50%;
+    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #FF9400,#DC00B4);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    display: inline-block;
+}
+
+.stories img:hover{
+    
+}
+
+
+.storyinner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stories p{
+    font-size: 10px;
+}
+
+.postheader img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; 
+}
+
+.postimage img{
+    width: 500px;
+    max-height: 600px;
+    border-radius: 1%;
 }
 
 .stories{
