@@ -16,11 +16,6 @@
     display: inline-block;
 }
 
-.stories img:hover{
-    
-}
-
-
 .storyinner{
     display: flex;
     flex-direction: column;
