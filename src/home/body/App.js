@@ -31,10 +31,12 @@ export default function Body() {
         {accountList.slice(1).map((account) => (
           <div className="post" key={account.id}>
             <div className="postheader">
-              <img src={account.url} alt={account.id} />
-              <p>{account.id}</p>
-              <p>1 Day Ago</p>
-              <FiMoreHorizontal />
+              <div className="postheaderpartone">
+                <img src={account.url} alt={account.id} />
+                <p>{account.id}</p>
+                <p>1 Day Ago</p>
+              </div>
+              <FiMoreHorizontal color="white" size={20}/>
             </div>
             <div>
               {account.posts.length > 0 ? (
@@ -45,12 +47,12 @@ export default function Body() {
                     </div>
                     <div className="interactablepost">
                       <div className="interactablepostleft">
-                        <AiOutlineHeart/>
-                        <FiMessageSquare/>
-                        <RiShareForwardLine/>
+                        <AiOutlineHeart size={25} color="white" style={{paddingRight :'7px', paddingTop:'7px', paddingBottom:'7px'}}/>
+                        <FiMessageSquare size={25} color="white" style={{paddingLeft :'7px', paddingRight :'7px', paddingTop:'7px', paddingBottom:'7px'}}/>
+                        <RiShareForwardLine size={25} color="white" style={{paddingLeft :'7px', paddingTop:'7px', paddingBottom:'7px'}}/>
                       </div>
                       <div className="interactablepostright">
-                        <FiBookmark/>
+                        <FiBookmark size={25} color="white" style={{paddingTop:'7px', paddingBottom:'7px'}}/>
                       </div>
                     </div>
                     <div className="postfooter">

@@ -3,6 +3,36 @@
 }
 .postheader{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stories{
+    margin-top: 20px;
+    padding: 25px 0px 25px 0px;
+    display: flex;
+}
+
+.interactablepost{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.postfootercaption{
+    display: flex;
+}
+
+.post{
+    padding: 15px 0px 15px 0px;
+}
+
+.posts{
+    padding: 0px 67px 0px 56px;
+}
+
+.storyinner{
+    padding: 0px 7px 0px 7px;
 }
 
 .stories img{
@@ -38,6 +68,6 @@
     border-radius: 1%;
 }
 
-.stories{
+.postheaderpartone{
     display: flex;
 }

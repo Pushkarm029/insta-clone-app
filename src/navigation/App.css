@@ -34,6 +34,7 @@
   width: 88%;
   border-radius: 8px;
   background-color: rgb(26, 26, 26);
+  transition-delay:0.07s;
 }
 
 .NavigationMore{
