@@ -18,7 +18,7 @@ export default function Navigation() {
       </a>
       <div className='navigation-middle'>
         <div className='NavigationHome' id='navigationelements'>
-          <Link to="/../home/app.js">
+          <Link to="/">
             <button className='blockbutton' style={{color: 'white'}}>
               <BiHomeSmile className='NavigationIcons' size={25} color="white" style={{padding :'10px'}}/>
               Home
@@ -26,7 +26,7 @@ export default function Navigation() {
           </Link>
         </div>
         <div className='NavigationSearch' id='navigationelements'>
-          <Link to="/">
+          <Link to="/Search">
             <button className='blockbutton' style={{color: 'white'}}>
               <FiSearch size={25} className='NavigationIcons' color="white" style={{padding :'10px'}}/>
               Search
@@ -34,7 +34,7 @@ export default function Navigation() {
           </Link>
         </div>
         <div className='NavigationExplore' id='navigationelements'>
-          <Link to="/../explore/app.js">
+          <Link to="/Explore">
             <button className='blockbutton' style={{color: 'white'}}>
               <MdOutlineExplore className='NavigationIcons'  size={25} color="white" style={{padding :'10px'}}/>
               Explore
@@ -42,7 +42,7 @@ export default function Navigation() {
           </Link>
         </div>
         <div className='NavigationReels' id='navigationelements'>
-          <Link to="/">
+          <Link to="/Reels">
             <button className='blockbutton' style={{color: 'white'}}>
               <BsCameraVideo className='NavigationIcons'  size={25} color="white" style={{padding :'10px'}}/>
               Reels
@@ -50,7 +50,7 @@ export default function Navigation() {
           </Link>
         </div>
         <div className='NavigationMessages' id='navigationelements'>
-          <Link to="/">
+          <Link to="/Messages">
             <button className='blockbutton' style={{color: 'white'}}>
               <BiMessageSquareDots className='NavigationIcons' size={25} color="white" style={{padding :'10px'}}/>
               Messages
@@ -58,7 +58,7 @@ export default function Navigation() {
           </Link>
         </div>
         <div className='NavigationNotifications' id='navigationelements'>
-          <Link to="/">
+          <Link to="/Notifications">
             <button className='blockbutton' style={{color: 'white'}}>
               <AiOutlineHeart className='NavigationIcons'  size={25} color="white" style={{padding :'10px'}}/>
               Notifications
@@ -66,7 +66,7 @@ export default function Navigation() {
           </Link>
         </div>
         <div className='NavigationCreate' id='navigationelements'>
-          <Link to="/">
+          <Link to="/Create">
             <button className='blockbutton' style={{color: 'white'}}>
               <FaPlus size={25} className='NavigationIcons'  color="white" style={{padding :'10px'}}/>
               Create
@@ -74,7 +74,7 @@ export default function Navigation() {
           </Link>
         </div>
         <div className='NavigationProfile' id='navigationelements'>
-          <Link to="/">
+          <Link to="/Profile">
             <button className='blockbutton' style={{color: 'white'}}>
               <CgProfile size={25} className='NavigationIcons'  color="white" style={{padding :'10px'}}/>
               Profile
@@ -84,7 +84,7 @@ export default function Navigation() {
       </div>
       {/* Separate More Button from here */}
       <div className='NavigationMore' id='navigationelements'>
-          <Link to="/">
+          <Link to="/More">
             <button className='blockbutton' style={{color: 'white'}}>
               <FiMoreHorizontal size={25} className='NavigationIcons' color="white" style={{padding :'10px'}}/>
               More

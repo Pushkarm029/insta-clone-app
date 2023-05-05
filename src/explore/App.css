@@ -1,0 +1,17 @@
+.randomexploreposts{
+    background-color: black;
+    margin-top: 2%;
+    margin-left: 28%;
+    margin-right: 12%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.exploreImages img{
+    height: 300px;
+    width: 300px;
+}
+
+.exploreImages {
+    padding: 0.5px 1px ;
+}
