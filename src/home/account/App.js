@@ -7,10 +7,12 @@ export default function Account() {
     return (
       <div className='account'>
         <div className='myaccount'>
-          <img src = {accountList[0].url}/>
-          <div className='myaccountinner'>
-            <p>{accountList[0].id}</p>
-            <p>{accountList[0].name}</p>
+          <div className='accounttoptext'>
+            <img src = {accountList[0].url}/>
+            <div className='myaccountinner'>
+              <p>{accountList[0].id}</p>
+              <p>{accountList[0].name}</p>
+            </div>
           </div>
           <span className='accountswitchbutton'>switch</span>
         </div>
@@ -22,10 +24,12 @@ export default function Account() {
           <div className='account-middle'>
             {accountList.slice(1,5).map((account) => (
               <div key={account.id} className='accountmiddleflex'>
-                <img src={account.url} alt={account.name} />
-                <div className='accountmiddletextholder'>
-                  <p>{account.id}</p>
-                  <p>{account.name}</p>
+                <div className='accountmiddletext'>
+                  <img src={account.url} alt={account.name} />
+                  <div className='accountmiddletextholder'>
+                    <p>{account.id}</p>
+                    <p>{account.name}</p>
+                  </div>
                 </div>
                 <Button variant='text'>Follow</Button>
               </div>
@@ -40,7 +44,7 @@ export default function Account() {
           <a href='#'>Jobs</a>
           <a href='#'>Privacy</a>
           <a href='#'>Terms</a>
-          <a href='#'>Loactions</a>
+          <a href='#'>Locations</a>
           <a href='#'>Language</a>
           <a href='#'>Meta Verified</a>
         </div>

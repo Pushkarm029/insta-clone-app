@@ -8,8 +8,20 @@ p{
     color: white;
 }
 
+.accountfooter{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .accountmiddleflex{
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accountmiddletext{
+    display: flex;
+    align-items: center;
 }
 
 .accountmiddleflex img{
@@ -22,12 +34,31 @@ span{
     color: white;
 }
 
+.accounttoptext{
+    display: flex;
+    align-items: center;
+}
+
 .myaccount{
     display: flex;
+    padding: 47px 0px 10px 0px;
+    align-items: center;
+    justify-content: space-between;
+    width: 325px;
 }
 
 .myaccount img{
     height: 59px;
     width: 59px;
     border-radius: 50%;
+}
+
+.account-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.myaccountinner{
+    padding: 0px 10px 0px 10px;
 }

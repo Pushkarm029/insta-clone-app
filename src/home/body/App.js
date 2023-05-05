@@ -20,7 +20,7 @@ export default function Body() {
   return (
     <div className="body">
       <div className="stories">
-        {accountList.slice(0, 8).map((account) => (
+        {accountList.slice(1, 9).map((account) => (
           <div key={account.id} className="storyinner">
             <img src={account.url} alt={account.name} />
             <p>{CheckUsername(account.id)}</p>

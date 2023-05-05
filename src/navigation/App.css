@@ -10,6 +10,14 @@
   margin-right: 4vh;
 }
 
+.NavigationIcons{
+  transition: transform 0.2s ease-in-out;
+}
+
+button:hover > .NavigationIcons{
+  transform: scale(1.15);
+}
+
 .navigation{
   overflow: hidden;
   position: fixed;
@@ -34,7 +42,6 @@
   width: 88%;
   border-radius: 8px;
   background-color: rgb(26, 26, 26);
-  transition-delay:0.07s;
 }
 
 .NavigationMore{
@@ -54,6 +61,10 @@
   background-color: rgb(26, 26, 26);
 }
 
+.navigation button{
+  width: 100%;
+}
+
 p{
   color: white;
 }
@@ -61,15 +72,13 @@ p{
 .blockbutton{
   cursor: pointer;
   background: none;
-	color: inherit;
 	border: none;
-	padding: 0;
 	font: inherit;
   display: inline-flex;   
-  /*note*/
   align-items: center;
   text-align: center;
   outline:none;
+  overflow: hidden;
 }
 
 .navigation-middle{
