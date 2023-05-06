@@ -1,4 +1,102 @@
+:root{
+    --profile-image-size: 309px;
+}
+
 .profile{
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 26%;
+    margin-right: 10%;
+}
+
+.profilepostscount{
+    color: white;
+}
+
+.profileFollowers{
+    color: white;
+}
+
+.profileFollowing{
+    color: white;
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileHeadImg{
+    margin: 25px 70px 25px 70px;
+}
+.profileHeadImg img{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.profileHead{
+    display: flex;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.profileHeadInner{
+    padding-left: 2%;
+}
+
+.profileHeadInnerOne p{
+    font-size: 1.2rem;
+}
+
+.profileHeadInnerOne{
+    display: flex;
+    align-items: center;
+}
+
+.profileHeadInnerTwo{
+    display: flex;
+}
+
+.profileHeadIITOne{
+    display: flex;
+}
+
+.profileHeadIITTwo{
+    display: flex;
+}
+
+
+.profileHeadIITThree{
+    display: flex;
+}
+
+
+.profileHeadInnerFour{
+    display: flex;
+}
+
+
+
+.ProfilePost{
+    background-color: black;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profileImages img{
+    height: var(--profile-image-size);
+    width: var(--profile-image-size);
+}
+
+.profileImages {
+    padding: 0.5px 1px ;
 }

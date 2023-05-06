@@ -18,6 +18,10 @@ button:hover > .NavigationIcons{
   transform: scale(1.15);
 }
 
+.profileHeadInnerOne .MuiButton-text{
+  margin: 10px;
+}
+
 .navigation{
   overflow: hidden;
   position: fixed;
