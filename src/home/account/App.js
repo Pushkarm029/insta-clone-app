@@ -38,14 +38,23 @@ export default function Account() {
         </div>
         <div className='accountfooter'>
           <a href='#'>About</a>
+          <p>&#183;</p>
           <a href='#'>Help</a>
+          <p>&#183;</p>
           <a href='#'>Press</a>
+          <p>&#183;</p>
           <a href='#'>API</a>
+          <p>&#183;</p>
           <a href='#'>Jobs</a>
+          <p>&#183;</p>
           <a href='#'>Privacy</a>
+          <p>&#183;</p>
           <a href='#'>Terms</a>
+          <p>&#183;</p>
           <a href='#'>Locations</a>
+          <p>&#183;</p>
           <a href='#'>Language</a>
+          <p>&#183;</p>
           <a href='#'>Meta Verified</a>
         </div>
         <div className = 'copyrightaccount'>

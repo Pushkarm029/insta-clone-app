@@ -62,3 +62,29 @@ span{
 .myaccountinner{
     padding: 0px 10px 0px 10px;
 }
+
+.accountfooter{
+    padding: 15px 0px;
+}
+
+.accountfooter a{
+    text-decoration: none;
+    color: #4C4C4C;
+    font-size: 0.84rem;
+}
+
+.accountfooter p{
+    text-decoration: none;
+    color: #4C4C4C;
+    font-size: 0.84rem;
+}
+
+.accountfooter a:hover{
+    text-decoration: underline;
+}
+
+.copyrightaccount p{
+    text-decoration: none;
+    color: #4C4C4C;
+    font-size: 0.86rem;
+}

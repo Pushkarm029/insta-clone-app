@@ -33,35 +33,35 @@ button:hover > .NavigationIcons{
 /*add margins on hidden elements*/
 .navigation-middle > div {
   display: block;
-  width: 100%;
+  width: 88%;
   cursor: pointer;
   margin-top : 0.52vh;
   margin-bottom: 0.52vh;
   margin-left: 2vh;
   margin-right: 2vh;
-  overflow: auto;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .navigation-middle > div:hover{
   width: 88%;
-  border-radius: 8px;
   background-color: rgb(26, 26, 26);
 }
 
 .NavigationMore{
   display: block;
-  width: 100%;
+  width: 88%;
   cursor: pointer;
   margin-top : 12vh;
   margin-bottom: 1vh;
   margin-left: 2vh;
   margin-right: 2vh;
-  overflow: auto;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 .NavigationMore:hover{
   width: 88%;
-  border-radius: 8px;
   background-color: rgb(26, 26, 26);
 }
 

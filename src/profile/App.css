@@ -61,21 +61,61 @@
 
 .profileHeadInnerTwo{
     display: flex;
+    margin: 10px 0px 20px 0px;
 }
 
 .profileHeadIITOne{
     display: flex;
 }
 
-.profileHeadIITTwo{
-    display: flex;
+.profilepostscount{
+    font-weight: 600;
 }
 
+.profileFollowers{
+    font-weight: 600;
+}
+
+.profileFollowing{
+    font-weight: 600;
+}
+
+.profileHeadIITTwo{
+    display: flex;
+    padding: 0px 30px 0px 30px;
+}
+
+.profileHeadInnerFour{
+    padding: 10px 0px;
+}
+
+.profileHeadIITOne p{
+    padding-left: 5px;
+}
+
+.profileHeadIITTwo p{
+    padding-left: 5px;
+}
+
+.profileHeadIITThree p{
+    padding-left: 5px;
+}
+
+.profileHeadInnerFour{
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+}
 
 .profileHeadIITThree{
     display: flex;
 }
 
+.profileHeadInnerThree p{
+    font-size: 0.97rem;
+    font-weight:600;
+}
 
 .profileHeadInnerFour{
     display: flex;
