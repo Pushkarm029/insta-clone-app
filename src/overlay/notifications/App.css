@@ -1,0 +1,40 @@
+.notifications{
+    margin-left: 30%;
+    background-color: black;
+    margin-right: 45%;
+}
+
+h1{
+    color: white;
+    font-size: 1.55rem;
+    padding: 0px 15px;
+    margin: 30px 0px 15px 0px;
+}
+
+h2{
+    color: white;
+    font-size: 1.05rem;
+    padding: 0px 15px;
+    margin: 30px 0px 15px 0px;
+}
+
+.notificationSubElement{
+    display: flex;
+    margin: 15px 0px;
+    padding: 0px 15px;
+}
+
+.notificationSubElement img{
+    width: 43px;
+    height: 43px;
+    border-radius: 50%; 
+}
+
+.notificationSubElement p{
+    padding: 0px 15px;
+}
+
+.notificationSubElement button{
+    padding: 0px 20px;
+    border-radius: 14px;
+}

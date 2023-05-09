@@ -5,7 +5,6 @@ import Search from './overlay/search/App'
 import Explore from './explore/App';
 import Reels from './reels/App';
 import Messages from './messages/App';
-import Notifications from './overlay/notifications/App';
 import Create from './overlay/create/App';
 import Profile from './profile/App';
 import More from './overlay/more/App';
@@ -23,7 +22,6 @@ function App() {
           <Route path='/Explore' element={<Explore />} />
           <Route path='/Reels' element={<Reels />} />
           <Route path='/Messages' element={<Messages />} />
-          <Route path='/Notifications' element={<Notifications />} />
           <Route path='/Create' element={<Create />} />
           <Route path='/Profile' element={<Profile />} />
           <Route path='/More' element={<More />} />

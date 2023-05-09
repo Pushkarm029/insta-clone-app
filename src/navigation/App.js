@@ -10,7 +10,10 @@ import { FaPlus } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
 import './App.css';
 
-export default function Navigation() {
+function Navigation(props) {
+  const handleClick = () => {
+    props.setOverlayVisible();
+  };
   return (
     <div className="navigation">
       <a href='#'>
@@ -58,12 +61,10 @@ export default function Navigation() {
           </Link>
         </div>
         <div className='NavigationNotifications' id='navigationelements'>
-          <Link to="/Notifications">
-            <button className='blockbutton' style={{color: 'white'}}>
+            <button onClick={handleClick} className='blockbutton' style={{color: 'white'}}>
               <AiOutlineHeart className='NavigationIcons'  size={25} color="white" style={{padding :'10px'}}/>
               Notifications
             </button>
-          </Link>
         </div>
         <div className='NavigationCreate' id='navigationelements'>
           <Link to="/Create">
@@ -94,3 +95,5 @@ export default function Navigation() {
     </div>
   );
 }
+
+export default Navigation;
