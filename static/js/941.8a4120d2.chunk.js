@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkinsta_clone_app=self.webpackChunkinsta_clone_app||[]).push([[941],{941:function(s,e,a){a.r(e),a.d(e,{default:function(){return c}});a(791);var n=a(184);function c(s){var e=s.account;return(0,n.jsxs)("div",{className:"accountInMessages",children:[(0,n.jsx)("img",{src:e.url}),(0,n.jsxs)("div",{className:"messageAccountDescription",children:[(0,n.jsx)("p",{className:"accountNameInMessages",children:e.name}),(0,n.jsx)("p",{className:"lastActivityInMessages",children:"Sent you a message"})]})]})}}}]);
+//# sourceMappingURL=941.8a4120d2.chunk.js.map
