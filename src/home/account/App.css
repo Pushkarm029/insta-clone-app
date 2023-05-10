@@ -30,6 +30,14 @@ p{
     border-radius: 50%;
 }
 
+.accountmiddletextholder p{
+    padding: 0px 10px;
+}
+
+.accountmiddletextholder{
+    padding: 7px 0px;
+}
+
 span{
     color: white;
 }

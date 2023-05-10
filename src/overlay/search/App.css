@@ -1,0 +1,82 @@
+.search{
+    margin-left: 30%;
+    background-color: black;
+    width: 30%;
+    height:auto;
+}
+
+.search h1{
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 550;
+    margin: 20px;
+}
+
+.recentAccountsText p{
+    font-size: 0.88rem;
+    color: #A8A898;
+}
+
+.recentAccountsText h6{
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.recentSearch{
+    display: flex;
+    justify-content: space-between;
+}
+
+.recentSearch h2{
+    font-size: 1.1rem;
+    color: white;
+}
+
+.recentAccounts{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.recentAccounts h4{
+    color: white;
+    font-weight: 300;
+    font-size: 1rem;
+    margin: 5px 10px;
+}
+
+.recentAccounts img{
+    width: 46px;
+    height: 46px; 
+    border: double 3px transparent;
+    border-radius: 50%;
+    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #FF9400,#DC00B4);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    display: inline-block;
+    margin: 5px;
+}
+
+.search input{
+    width: 87%;
+    margin: 10px 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.recentSearch{
+    margin: 20px;
+}
+
+.recentAccounts{
+    margin: 20px;
+}
+
+.recentAccountPartOne{
+    display: flex;
+}
+
+.recentAccountsText{
+    padding: 5px;
+}
