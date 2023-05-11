@@ -17,7 +17,7 @@ function App() {
       <Router>
         <Navigation/>
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/insta-clone-app/" element={<Home />} />
           <Route path='/Search' element={<Search />} />
           <Route path='/Explore' element={<Explore />} />
           <Route path='/Reels' element={<Reels />} />

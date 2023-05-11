@@ -21,7 +21,7 @@ export default function Navigation(props) {
       </a>
       <div className='navigation-middle'>
         <div className='NavigationHome' id='navigationelements'>
-          <Link to="/">
+          <Link to="/insta-clone-app/">
             <button className='blockbutton' style={{color: 'white'}}>
               <BiHomeSmile className='NavigationIcons' size={25} color="white" style={{padding :'10px'}}/>
               Home
