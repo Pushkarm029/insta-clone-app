@@ -2,8 +2,12 @@
   display: flex;
   background-color: black;
 }
+
+.loader{
+
+}
+
 img{
   pointer-events: none;
   object-fit: cover;
 }
-
