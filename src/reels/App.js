@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import  {BsMusicNoteList} from 'react-icons/bs';
+import {BsMusicNoteList} from 'react-icons/bs';
 import {AiOutlineHeart} from 'react-icons/ai';
 import {FiMessageCircle} from 'react-icons/fi';
 import {FaTelegramPlane} from 'react-icons/fa';
@@ -8,6 +8,16 @@ import {FiMoreHorizontal} from 'react-icons/fi';
 import {BsBookmark} from 'react-icons/bs';
 import './App.css';
 import { reelsList } from '../data/reels';
+
+function CheckUsernameReelsDescription(text){
+  let length = text.length;
+  if(length>=25){
+    return text.slice(0,20) + " ..more";
+  }
+  else{
+    return text;
+  }
+}
 
 export default function Reels() {
     return (
@@ -20,6 +30,8 @@ export default function Reels() {
                 width='369px'
                 height='525px'
                 url= {reels.url}
+                playing={true}
+                volume={0}
               />
               <div className='reelsSectionOneHeader'>
                 <div className='reelsSectionOProfile'>
@@ -28,11 +40,11 @@ export default function Reels() {
                   <h2>Follow</h2>
                 </div>
                 <div className='reelsCaption'>
-                  <p>{reels.description}</p>
+                  <p>{CheckUsernameReelsDescription(reels.description)}</p>
                 </div>
                 <div className='reelsAudioTitle'>
                   <BsMusicNoteList size={12} color="white" style={{padding :'2px'}}/>
-                  <p>{reels.audio}</p>
+                  <p>{reels.audio} &#183; Original Audio</p>
                 </div>
               </div>
             </div>

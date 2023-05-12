@@ -82,6 +82,11 @@
     margin: 15px 0px;
 }
 
+.reelsCaption p{
+    color: white;
+    font-size: 0.9rem;
+}
+
 .reelsSectionOProfile p{
     margin: 0px 10px;
     font-size: 0.9rem;
@@ -96,3 +101,4 @@
     color: white;
     font-size: 0.8rem;
 }
+

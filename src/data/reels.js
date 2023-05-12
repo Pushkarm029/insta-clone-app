@@ -18,7 +18,7 @@ export const reelsList = [{
     imageurl : 'https://images.unsplash.com/photo-1683641709248-6be047dfe319?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60',
     id : 'Emiway Bantai',
     description : 'Kya Bolti Public (Official Music Video) | Emiway Bantai Prod by %#^$#$',
-    url : 'https://youtu.be/uMcU5qVz9YE?list=RDzN38VR5Fr8I',
+    url : 'https://youtu.be/uMcU5qVz9YE',
     audio : 'Kya Bolti Public',
     likes : '-100M',
     comments : '10M'
