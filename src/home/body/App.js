@@ -1,22 +1,37 @@
 import "./App.css";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { accountList } from "./../../data/account";
-import {AiOutlineHeart} from "react-icons/ai";
-import {FiMessageSquare} from "react-icons/fi";
-import {RiShareForwardLine} from "react-icons/ri";
-import {FiBookmark} from "react-icons/fi";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { FiMessageSquare, FiBookmark } from "react-icons/fi";
+import { RiShareForwardLine } from "react-icons/ri";
+import { useState } from "react";
 
-function CheckUsername(text){
+function CheckUsername(text) {
   let length = text.length;
-  if(length>=11){
-    return text.slice(0,8) + "...";
-  }
-  else{
+  if (length >= 11) {
+    return text.slice(0, 8) + "...";
+  } else {
     return text;
   }
 }
 
+function HomeLike({ liked, onClick}) {
+  if (liked) {
+    return <AiFillHeart onClick={onClick} size={25} color="#FF3040" style={{ paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }} />;
+  }
+  return <AiOutlineHeart onClick={onClick} size={25} color="white" style={{ paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }} />;
+}
+
 export default function Body() {
+  const [likedImages, setLikedImages] = useState([]);
+  const handleDoubleClick = (accountId, postNumber) => {
+    const likedImage = `${accountId}+${postNumber}`;
+    setLikedImages(prevLikedImages => [...prevLikedImages, likedImage]);
+  };
+  const handleClick = (accountId, postNumber) => {
+    const unlikedImage = `${accountId}+${postNumber}`;
+    setLikedImages(prevLikedImages => prevLikedImages.filter(image => image !== unlikedImage));  
+  };
   return (
     <div className="body">
       <div className="stories">
@@ -36,23 +51,26 @@ export default function Body() {
                 <p>{account.id}</p>
                 <p>1 Day Ago</p>
               </div>
-              <FiMoreHorizontal color="white" size={20}/>
+              <FiMoreHorizontal color="white" size={20} />
             </div>
             <div>
               {account.posts.length > 0 ? (
                 account.posts.map((post) => (
                   <div key={post.number}>
-                    <div className="postimage">
+                    <div
+                      onDoubleClick={() => handleDoubleClick(account.id, post.number)}
+                      className="postimage"
+                    >
                       <img src={post.imageurl} alt="" />
                     </div>
                     <div className="interactablepost">
                       <div className="interactablepostleft">
-                        <AiOutlineHeart size={25} color="white" style={{paddingRight :'7px', paddingTop:'7px', paddingBottom:'7px'}}/>
-                        <FiMessageSquare size={25} color="white" style={{paddingLeft :'7px', paddingRight :'7px', paddingTop:'7px', paddingBottom:'7px'}}/>
-                        <RiShareForwardLine size={25} color="white" style={{paddingLeft :'7px', paddingTop:'7px', paddingBottom:'7px'}}/>
+                        <HomeLike onClick={() => handleClick(account.id, post.number)} liked={likedImages.includes(`${account.id}+${post.number}`)} />
+                        <FiMessageSquare size={25} color="white" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
+                        <RiShareForwardLine size={25} color="white" style={{ paddingLeft: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
                       </div>
                       <div className="interactablepostright">
-                        <FiBookmark size={25} color="white" style={{paddingTop:'7px', paddingBottom:'7px'}}/>
+                        <FiBookmark size={25} color="white" style={{ paddingTop: '7px', paddingBottom: '7px' }} />
                       </div>
                     </div>
                     <div className="postfooter">
