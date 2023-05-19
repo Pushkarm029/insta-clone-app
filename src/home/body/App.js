@@ -27,6 +27,13 @@ export default function Body() {
   const handleDoubleClick = (accountId, postNumber) => {
     const likedImage = `${accountId}+${postNumber}`;
     setLikedImages(prevLikedImages => [...prevLikedImages, likedImage]);
+    // const imageElement = document.getElementById(likedImage);
+    // if (imageElement) {
+    //   imageElement.classList.add("like-animation");
+    //   setTimeout(() => {
+    //     imageElement.classList.remove("like-animation");
+    //   }, 500);
+    // }
   };
   const handleClick = (accountId, postNumber) => {
     const imageId = `${accountId}+${postNumber}`;
@@ -65,7 +72,9 @@ export default function Body() {
                       onDoubleClick={() => handleDoubleClick(account.id, post.number)}
                       className="postimage"
                     >
-                      <img src={post.imageurl} alt="" />
+                      <img src={post.imageurl} 
+                        alt="" 
+                      />
                     </div>
                     <div className="interactablepost">
                       <div className="interactablepostleft">
