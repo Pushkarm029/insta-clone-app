@@ -29,8 +29,12 @@ export default function Body() {
     setLikedImages(prevLikedImages => [...prevLikedImages, likedImage]);
   };
   const handleClick = (accountId, postNumber) => {
-    const unlikedImage = `${accountId}+${postNumber}`;
-    setLikedImages(prevLikedImages => prevLikedImages.filter(image => image !== unlikedImage));  
+    const imageId = `${accountId}+${postNumber}`;
+    if (likedImages.includes(imageId)) {
+      setLikedImages(prevLikedImages => prevLikedImages.filter(image => image !== imageId)); 
+    } else {
+      setLikedImages(prevLikedImages => [...prevLikedImages, imageId]);
+    }
   };
   return (
     <div className="body">
