@@ -3,29 +3,53 @@ import { accountList } from '../data/account';
 import './App.css';
 import Button from '@material-ui/core/Button';
 import {TbSettings2} from "react-icons/tb";
+import {AiFillHeart} from "react-icons/ai";
+import {TbMessageCircle2Filled} from "react-icons/tb";
 
-function CountPosts() {
-  return <CountPostsFX data={accountList} />;
-}
+// function CountPosts() {
+//   return <CountPostsFX data={accountList[0]} />;
+// }
 
-function CountPostsFX(props) {
-  const [count, setCount] = useState(0);
-  const data = props.data;
+// function CountPostsFX(props) {
+//   const [countPostNumber, setCountPostNumber] = useState(0);
+//   const data = props.posts;
 
-  useEffect(() => {
-    if (data) {
-      data.forEach((item) => {
-        if (item.url) {
-          setCount(count + 1);
-        }
-      });
-    }
-  }, [data]);
+//   useEffect(() => {
+//     if (data) {
+//       data.forEach((item) => {
+//         if (item) {
+//           setCountPostNumber(countPostNumber + 1);
+//         }
+//       });
+//     }
+//   }, [data]);
 
-  return <div className="profilepostscount">{count}</div>;
-}
+//   return <div className="profilepostscount">{countPostNumber}</div>;
+// }
+
+// function CountComments() {
+//   return <CountCommentsFX data={accountList} />;
+// }
+
+// function CountCommentsFX(props) {
+//   const [countCommentNumber, setCountCommentNumber] = useState(0);
+//   const data = props.data;
+
+//   useEffect(() => {
+//     if (data) {
+//       data.forEach((item) => {
+//         if (item.url) {
+//           setCountCommentNumber(countCommentNumber + 1);
+//         }
+//       });
+//     }
+//   }, [data]);
+
+//   return <div className="profilepostscount">{countCommentNumber}</div>;
+// }
 
 export default function Profile() {
+  const [hoverProfileIMG, setHoverProfileIMG] = useState(false);
     return (
       <div className='profile'>
         <div className='profileHead'>
@@ -40,7 +64,7 @@ export default function Profile() {
             </div>
             <div className='profileHeadInnerTwo'>
               <div className='profileHeadIITOne'>
-                <CountPosts/>
+                {/* <CountPosts/> */}
                 <p>posts</p>
               </div>
               <div className='profileHeadIITTwo'>
@@ -67,15 +91,36 @@ export default function Profile() {
         <div className="savedStories"></div>
         {/*later can be added */}
         {/*a posts reels tagged can be added through route*/}
-          <div className="ProfilePost">
-            {accountList && accountList[0].posts.length > 0 ? (
-              accountList[0].posts.map((profileAccountPosts) => (
-                <div className='profileImages'>
-                    <img src={profileAccountPosts.imageurl} alt={profileAccountPosts.caption} />
+        <div className="ProfilePost">
+        {accountList && accountList[0].posts.length > 0 ? (
+          accountList[0].posts.map((profileAccountPosts) => (
+            <div
+              onMouseEnter={() => {setHoverProfileIMG(true)}}
+              onMouseLeave={() => {setHoverProfileIMG(false)}}
+              className='profileImages'
+            >
+              {hoverProfileIMG && (
+                <div className="hoverOverlay">
+                  <div className="hoverOverlayContent">
+                    <div className="hoverOverlayLike">
+                      <AiFillHeart size={25} color="white" />
+                      <p>{profileAccountPosts.likes}</p>
+                    </div>
+                    <div className="hoverOverlayComment">
+                      <TbMessageCircle2Filled size={25} color="white" />
+                      <p>{profileAccountPosts.likes}</p>
+                    </div>
+                  </div>
                 </div>
-              ))
-            ) : (<p> No post available </p>)}
-          </div>
+              )}
+              <img
+                src={profileAccountPosts.imageurl}
+                alt={profileAccountPosts.caption}
+              />
+            </div>
+          ))
+        ) : (<p>No post available</p>)}
+        </div>
       </div>
     );
 }
