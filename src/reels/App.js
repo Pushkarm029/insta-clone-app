@@ -30,7 +30,7 @@ export default function Reels() {
                 width='369px'
                 height='525px'
                 url= {reels.url}
-                playing={true}
+                playing={false}
                 volume={0}
               />
               <div className='reelsSectionOneHeader'>

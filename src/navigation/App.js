@@ -10,10 +10,7 @@ import { FaPlus } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
 import './App.css';
 
-export default function Navigation(props) {
-  const handleFunction = () => {
-    props.handleOverlayVisible(true);
-  };
+export default function Navigation({handleFunction}){
   return (
     <div className="navigation">
       <a href='#'>

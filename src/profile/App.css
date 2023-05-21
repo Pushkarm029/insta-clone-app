@@ -187,12 +187,12 @@
     display: flex;
     margin-right: 10px;
     align-items: center;
-    padding-right: 10px; /* Add padding to the right */
+    padding-right: 10px;
 }
   
 .hoverOverlay .hoverOverlayComment {
     display: flex;
     margin-right: 10px;
     align-items: center;
-    padding-right: 10px; /* Add padding to the right */
+    padding-right: 10px;
 }
