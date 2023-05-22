@@ -5,7 +5,7 @@ import { TbMessageCircle2Filled } from "react-icons/tb";
 import './App.css';
 
 function randomize(arr) {
-  const shuffledArray = [...arr]; // Create a copy of the input array
+  const shuffledArray = [...arr];
   for (let i = shuffledArray.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
