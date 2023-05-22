@@ -6,6 +6,7 @@ import { FiMessageSquare, FiBookmark } from "react-icons/fi";
 import { RiShareForwardLine } from "react-icons/ri";
 import { useState } from "react";
 
+let nextId = 0;
 function CheckUsername(text) {
   let length = text.length;
   if (length >= 11) {
@@ -23,6 +24,9 @@ function HomeLike({ liked, onClick}) {
 }
 
 export default function Body() {
+  const [commentText, setCommentText] = useState();
+  const [comments, setComments] = useState([]);
+  const [allComments, setAllComments] = useState([[]]);
   const [likedImages, setLikedImages] = useState([]);
   const handleDoubleClick = (accountId, postNumber) => {
     const likedImage = `${accountId}+${postNumber}`;
@@ -54,7 +58,7 @@ export default function Body() {
         ))}
       </div>
       <div className="posts">
-        {accountList.slice(1).map((account) => (
+        {accountList.slice(1).map((account, accountIndex) => (
           <div className="post" key={account.id}>
             <div className="postheader">
               <div className="postheaderpartone">
@@ -66,7 +70,7 @@ export default function Body() {
             </div>
             <div>
               {account.posts.length > 0 ? (
-                account.posts.map((post) => (
+                account.posts.map((post, postIndex) => (
                   <div key={post.number}>
                     <div
                       onDoubleClick={() => handleDoubleClick(account.id, post.number)}
@@ -93,6 +97,24 @@ export default function Body() {
                         <p>{post.caption}</p>
                       </div>
                       <p>1 comment</p>
+                      {/* <input
+                        key={postIndex}
+                        value={comments[postIndex] || ''} // Add a fallback value to prevent undefined error
+                        placeholder="Add a comment..."
+                        onChange={e => {setCommentText(e.target.value)}}
+                      />
+                      <button onClick={() => {
+                        const newComment = { id: nextId++, name: commentText[postIndex] };
+                        const updatedComments = [...comments];
+                        const accountComments = updatedComments[accountIndex] || []; // Add a fallback array if undefined
+                        accountComments[postIndex] = newComment;
+                        updatedComments[accountIndex] = accountComments;
+                        setComments(updatedComments);
+                        setCommentText([]);
+                      }}>Add</button>
+                      {comments[accountIndex]?.map((comment, commentIndex) => (
+                        <p key={commentIndex}>{comment.name}</p>
+                      ))} */}
                     </div>
                   </div>
                 ))
