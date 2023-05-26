@@ -6,7 +6,7 @@ import { FiMessageSquare, FiBookmark } from "react-icons/fi";
 import { RiShareForwardLine } from "react-icons/ri";
 import { useState } from "react";
 
-let nextId = 0;
+
 function CheckUsername(text) {
   let length = text.length;
   if (length >= 11) {
@@ -22,22 +22,21 @@ function HomeLike({ liked, onClick}) {
   }
   return <AiOutlineHeart onClick={onClick} size={25} color="white" style={{ paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }} />;
 }
+function LikeMeter ({accountId, postNumber, likeCount, likedImages}){
+  let likeCountinLikeMeter = likeCount;
+  const imageId = `${accountId}+${postNumber}`;
+  if (likedImages.includes(imageId)) {
+    return <p>{++likeCountinLikeMeter} Likes</p>; 
+  } else {
+    return <p>{likeCountinLikeMeter} Likes</p>;
+  }
+};
 
 export default function Body() {
-  const [commentText, setCommentText] = useState();
-  const [comments, setComments] = useState([]);
-  const [allComments, setAllComments] = useState([[]]);
   const [likedImages, setLikedImages] = useState([]);
   const handleDoubleClick = (accountId, postNumber) => {
     const likedImage = `${accountId}+${postNumber}`;
     setLikedImages(prevLikedImages => [...prevLikedImages, likedImage]);
-    // const imageElement = document.getElementById(likedImage);
-    // if (imageElement) {
-    //   imageElement.classList.add("like-animation");
-    //   setTimeout(() => {
-    //     imageElement.classList.remove("like-animation");
-    //   }, 500);
-    // }
   };
   const handleClick = (accountId, postNumber) => {
     const imageId = `${accountId}+${postNumber}`;
@@ -91,30 +90,13 @@ export default function Body() {
                       </div>
                     </div>
                     <div className="postfooter">
-                      <p>{post.likes} likes</p>
+                      {/* <likeMeter likedImages = {likedImages} accountId = {account.id} postNumber = {post.number} likeCount = {post.likes} /> */}
+                      <LikeMeter accountId={account.id} postNumber={post.number} likeCount={post.likes} likedImages={likedImages} />
                       <div className="postfootercaption">
                         <p>{account.name}</p>
                         <p>{post.caption}</p>
                       </div>
                       <p>1 comment</p>
-                      {/* <input
-                        key={postIndex}
-                        value={comments[postIndex] || ''} // Add a fallback value to prevent undefined error
-                        placeholder="Add a comment..."
-                        onChange={e => {setCommentText(e.target.value)}}
-                      />
-                      <button onClick={() => {
-                        const newComment = { id: nextId++, name: commentText[postIndex] };
-                        const updatedComments = [...comments];
-                        const accountComments = updatedComments[accountIndex] || []; // Add a fallback array if undefined
-                        accountComments[postIndex] = newComment;
-                        updatedComments[accountIndex] = accountComments;
-                        setComments(updatedComments);
-                        setCommentText([]);
-                      }}>Add</button>
-                      {comments[accountIndex]?.map((comment, commentIndex) => (
-                        <p key={commentIndex}>{comment.name}</p>
-                      ))} */}
                     </div>
                   </div>
                 ))
