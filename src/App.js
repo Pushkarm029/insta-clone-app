@@ -11,6 +11,7 @@ import More from './overlay/more/App';
 import { BrowserRouter as Router, Routes , Route } from 'react-router-dom';
 import './App.css';
 import HashLoader from "react-spinners/HashLoader";
+import OverlayTest from './overlay/overlay';
 
 const override: CSSProperties = {
   display: "block",
@@ -47,6 +48,7 @@ function App() {
             <Route path='/Search' element={<Search />} />
             <Route path='/Explore' element={<Explore />} />
             <Route path='/Reels' element={<Reels />} />
+            <Route path='/OverlayTest' element={<OverlayTest />} />
             <Route path='/Messages' element={<Messages />} />
             <Route path='/Create' element={<Create />} />
             <Route path='/Profile' element={<Profile />} />
