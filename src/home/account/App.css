@@ -68,11 +68,22 @@ span{
 }
 
 .myaccountinner{
-    padding: 0px 10px 0px 10px;
+    padding: 0px 17px;
 }
 
 .accountfooter{
     padding: 15px 0px;
+}
+
+.accountswitchbutton{
+    font-size: 0.8rem;
+    color: #0095F6;
+    font-weight: 500;
+    cursor:default;
+}
+
+.accountswitchbutton:active{
+    color: #0266a9;
 }
 
 .accountfooter a{
@@ -95,4 +106,57 @@ span{
     text-decoration: none;
     color: #4C4C4C;
     font-size: 0.86rem;
+}
+
+.myAccountInnerID{
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.myAccountInnerName{
+    font-size: 0.9rem;
+    font-weight: 440;
+    color: #A8A8A8;
+}
+
+.suggestionsTopText{
+    font-size: 0.9rem;
+    font-weight: 550;
+    color: #A8A8A8;
+}
+
+.suggestionsTopSeeAll{
+    font-size: 0.83rem;
+    font-weight: 500;
+    cursor: default;
+}
+
+.suggestionsTopSeeAll:active{
+    color: #8d8d8d;
+}
+
+.accountMiddleTextHolderID{
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.accountMiddleTextHolderName{
+    font-size: 0.86rem;
+    font-weight: 440;
+    color: #A8A8A8;
+}
+
+.accountMiddleFlexFollow{
+    font-size: 0.8rem;
+    color: #0095F6;
+    font-weight: 500;
+    cursor:default;
+}
+
+.accountMiddleFlexFollow:hover{
+    color: #d3eeff;
+}
+
+.accountMiddleFlexFollow:active{
+    color: #0266a9;
 }
