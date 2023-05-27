@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/insta-clone-app/static/css/main.c6e9fabe.css",
-    "main.js": "/insta-clone-app/static/js/main.d164ffed.js",
+    "main.css": "/insta-clone-app/static/css/main.2a0e1909.css",
+    "main.js": "/insta-clone-app/static/js/main.7006c964.js",
     "static/js/941.8a4120d2.chunk.js": "/insta-clone-app/static/js/941.8a4120d2.chunk.js",
     "static/js/787.207a9a8b.chunk.js": "/insta-clone-app/static/js/787.207a9a8b.chunk.js",
     "index.html": "/insta-clone-app/index.html",
-    "main.c6e9fabe.css.map": "/insta-clone-app/static/css/main.c6e9fabe.css.map",
-    "main.d164ffed.js.map": "/insta-clone-app/static/js/main.d164ffed.js.map",
+    "main.2a0e1909.css.map": "/insta-clone-app/static/css/main.2a0e1909.css.map",
+    "main.7006c964.js.map": "/insta-clone-app/static/js/main.7006c964.js.map",
     "941.8a4120d2.chunk.js.map": "/insta-clone-app/static/js/941.8a4120d2.chunk.js.map",
     "787.207a9a8b.chunk.js.map": "/insta-clone-app/static/js/787.207a9a8b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c6e9fabe.css",
-    "static/js/main.d164ffed.js"
+    "static/css/main.2a0e1909.css",
+    "static/js/main.7006c964.js"
   ]
 }
