@@ -1,6 +1,6 @@
 # **INSTA-CLONE-APP**
 
-**This Project is deployed at**
+#### **This Project is deployed at**
 
 [github.com/pushkarm029/insta-clone-app](github.com/pushkarm029/insta-clone-app)
 
@@ -14,14 +14,14 @@
 
 ### **Learnings** :
 
-This is my first react-js project. while working on this project i learnt about use of hooks, especially useState and useEffect. I learned about React lifecycle methods and how to optimize performance.
+It's my first react-js project. During this project, I learned how to use hooks, especially useState and useEffect. I learned about react app optimization.
 
 ### **Maintenance** :
 
-Feel free to add a feature request and a raise any error. It will be appreciated from the depth of my heart❤️.
+Feel free to add a feature request and to raise any error. It will be appreciated from the depth of my heart❤️.
 
 
-### **Development**
+### **Development** :
 
 1. Open your terminal and then type
     ```shell
