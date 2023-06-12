@@ -35,11 +35,11 @@ Feel free to add a feature request and to raise any error. It will be appreciate
     ```shell
     $ npm install
     ```
-4. To start the application
+4. To start the application on localhost
     ```shell
     $ npm start
     ```
-5. To Deploy the application
+5. To Deploy the application on Github Pages
     ```shell
     $ npm run deploy
     ```
