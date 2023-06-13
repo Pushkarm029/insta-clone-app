@@ -137,7 +137,7 @@ export default function Body() {
                           color="white"
                           style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }}
                         />       
-                 <RiShareForwardLine size={25} color="white" style={{ paddingLeft: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
+                        <RiShareForwardLine size={25} color="white" style={{ paddingLeft: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
                       </div>
                       <div className="interactablepostright">
                         <HomeBookmark onClick={() => handleBookmark(account.id, account.posts[randomizedNumber].number)} bookmark={bookmark.includes(`${account.id}+${account.posts[randomizedNumber].number}`)}/>
