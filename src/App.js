@@ -48,7 +48,6 @@ function App() {
             <Route path='/Search' element={<Search />} />
             <Route path='/Explore' element={<Explore />} />
             <Route path='/Reels' element={<Reels />} />
-            <Route path='/OverlayTest' element={<OverlayTest />} />
             <Route path='/Messages' element={<Messages />} />
             <Route path='/Create' element={<Create />} />
             <Route path='/Profile' element={<Profile />} />

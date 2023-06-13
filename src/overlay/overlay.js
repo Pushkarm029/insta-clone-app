@@ -4,22 +4,28 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { FiMessageSquare } from "react-icons/fi";
 import { RiShareForwardLine } from "react-icons/ri";
 import { FiBookmark } from "react-icons/fi";
-
 import "./overlay.css";
 import { BsEmojiLaughing } from "react-icons/bs";
 
-export default function OverlayTest() {
+
+
+// current idea to implement overlay is that it will be a component that is called when a post is clicked on and will be passed the post data as props
+// so overlayTest need some props to be passed to it
+
+
+export function OverlayTest({OverAcID, OverAcCaption, OverAcLikes, OverAcImages, onStateChange}) {
   return (
     <div className="overlay">
-        <div className="overlaybg"></div>
+        <div className="overlaybg" onClick={onStateChange}></div>
         <div className="overlayInner">
             <div className="overlayLeft">
                 <img
-                src="https://images.unsplash.com/photo-1686406835831-511dbf18b685?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=386&q=80"
+                src={OverAcImages}
                 alt="test"
                 />
                 {/* image can be added when this is used as a component with a prop */}
             </div>
+            <hr color="#262626" align="center"></hr>
             <div className="overlayRight">
                 <div className="overlayRightTT">
                     <div className="overlayRightTop">
@@ -29,7 +35,7 @@ export default function OverlayTest() {
                                 alt="profileimg"
                             />
                             <div className="overlayRightTM">
-                                <p className="overlayUsername">Username</p>
+                                <p className="overlayUsername">{OverAcID}</p>
                                 <p className="overlayRightTopText">Location</p>
                             </div>
                         </div>
@@ -42,9 +48,9 @@ export default function OverlayTest() {
                             alt="profileimg"
                         />
                         <div className="overlayRightMiddleRight">
-                            <p className="overlayUsername">Username</p>
+                            <p className="overlayUsername">{OverAcID}</p>
                             <p className="overlayRightTopText">
-                            Caption example djs df sdf df sgdfe rerewre sfd a sd sd a d s d f
+                                {OverAcCaption}
                             </p>
                             <p className="overlayDuration">1 w</p>
                         </div>
@@ -63,13 +69,14 @@ export default function OverlayTest() {
                         </div>
                     </div>
                     <div className="overlayRightBottomMiddle">
+                        <p className="overlayRightBottomMiddleText">{OverAcLikes} likes</p>
                         {/*currently i will only show no of likes */}
                     </div>
                     <hr color="#262626" align="center"></hr>
                     <div className="overlayRightBottomBottom">
                         <BsEmojiLaughing size={25} color="white" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
                         <p className="overlayRightBottomBottomText">Add a comment...</p>
-                        <button >POST</button>
+                        <p className="commentPostButton">Post</p>
                         {/* comment button will be added later */}
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import { RiShareForwardLine } from "react-icons/ri";
 import { useState } from "react";
 import React from "react";
 import {BsFillBookmarkFill} from "react-icons/bs";
+import {OverlayTest as ShowOverlay} from "./../../overlay/overlay.js";
 
 function randomizeHomePosts(arr) {
   const shuffledArray = [...arr];
@@ -54,10 +55,21 @@ function LikeMeter ({accountId, postNumber, likeCount, likedImages}){
   }
 };
 
+// storing all props as array in a state then passing it to the overlay component is a good idea for now
+
 export default function Body() {
   const [randomizedAccountList, setRandomizedAccountList] = useState(randomizeHomePosts(accountList.slice(1)));
   const [randomizedStoryList, setRandomizedStoryList] = useState(randomizeHomePosts(accountList.slice(1)));
   const [randomizedNumber, setRandomizedNumber] = useState(randomNumberToShowPosts(3));
+  const [ShowOverlayState, setShowOverlayState] = useState([false, "", "", "", ""]);
+  const [showOverlay, overlayId, overlayCaption, overlayLikes, overlayImageID] = ShowOverlayState;
+  
+
+  const handleOverlayStateChange = () => {
+    setShowOverlayState(prevState => [!prevState[0], ...prevState.slice(1)]);
+  };
+
+
   // later i want a add a algo so it finds a random value between posts.length(of a particular account(inside a map)) and 0
   const [likedImages, setLikedImages] = useState([]);
   const[bookmark, setBookmark] = useState([]);
@@ -81,8 +93,11 @@ export default function Body() {
       setBookmark(prevBookmarkImages => [...prevBookmarkImages, bookmarkId]);
     }
   };
+
+  // const handleOverlay = (ShowOverlayState,) => {};
   return (
     <div className="body">
+      {showOverlay && <ShowOverlay onStateChange={handleOverlayStateChange}  OverAcID={overlayId} OverAcCaption={overlayCaption} OverAcLikes={overlayLikes} OverAcImages={overlayImageID} />}
       <div className="stories">
         {randomizedStoryList.slice(0, 8).map((account) => (
           <div key={account.id} className="storyinner">
@@ -116,8 +131,13 @@ export default function Body() {
                     <div className="interactablepost">
                       <div className="interactablepostleft">
                         <HomeLike onClick={() => handleClick(account.id, account.posts[randomizedNumber].number)} liked={likedImages.includes(`${account.id}+${account.posts[randomizedNumber].number}`)} />
-                        <FiMessageSquare size={25} color="white" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
-                        <RiShareForwardLine size={25} color="white" style={{ paddingLeft: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
+                        <FiMessageSquare
+                          onClick={() => setShowOverlayState([true, account.id, account.posts[randomizedNumber].caption, account.posts[randomizedNumber].likes, account.posts[randomizedNumber].imageurl])}
+                          size={25}
+                          color="white"
+                          style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }}
+                        />       
+                 <RiShareForwardLine size={25} color="white" style={{ paddingLeft: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
                       </div>
                       <div className="interactablepostright">
                         <HomeBookmark onClick={() => handleBookmark(account.id, account.posts[randomizedNumber].number)} bookmark={bookmark.includes(`${account.id}+${account.posts[randomizedNumber].number}`)}/>

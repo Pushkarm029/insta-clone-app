@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState} from 'react';
 import ReactPlayer from 'react-player';
 import {BsMusicNoteList} from 'react-icons/bs';
 import {AiOutlineHeart} from 'react-icons/ai';
@@ -19,10 +19,21 @@ function CheckUsernameReelsDescription(text){
   }
 }
 
+
+function randomizeReelsPosts(arr) {
+  const shuffledArray = [...arr];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+}
+
 export default function Reels() {
+  const [randomizedReelsList, setRandomizedReelsList] = useState(randomizeReelsPosts(reelsList));
     return (
       <div className='reels'>
-        {reelsList.map((reels) => (
+        {randomizedReelsList.map((reels) => (
           <div className='reel'>
             <div className='reelsSectionOne'>
               <ReactPlayer 

@@ -59,12 +59,10 @@ export default function Navigation(){
         </div>
         <div className='NavigationNotifications' id='navigationelements'>
             {/* <button onClick={handleFunction} className='blockbutton' style={{color: 'white'}}> */}
-            <Link to = "/OverlayTest">
             <button className='blockbutton' style={{color: 'white'}}>
               <AiOutlineHeart className='NavigationIcons'  size={25} color="white" style={{padding :'10px'}}/>
               Notifications
             </button>
-          </Link>
         </div>
         <div className='NavigationCreate' id='navigationelements'>
           <Link to="/Create">

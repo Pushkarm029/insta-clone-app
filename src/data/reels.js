@@ -22,4 +22,28 @@ export const reelsList = [{
     audio : 'Kya Bolti Public',
     likes : '-100M',
     comments : '10M'
+},{
+    imageurl : 'https://images.unsplash.com/photo-1686343916755-9b411972c06e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzNXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    id : 'Pushkar Mishra',
+    description : '@SeedheMaut at BITS Pilani with @sevennofficial @thetablaguy | Oasis 2022 | HIP-HOP/EDM-NITE',
+    url : 'https://www.youtube.com/watch?v=CU-YGR7qEuU',
+    audio : 'Original By Pushkar Mishra',
+    likes : '10M',
+    comments : '139K'
+},{
+    imageurl : 'https://images.unsplash.com/photo-1686343916755-9b411972c06e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzNXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    id : 'Pushkar Mishra',
+    description : 'Freshers Room in BITS Pilani | Rana Pratap Bhawan | Watch Till End | #jee #bits #bitspilani',
+    url : 'https://youtu.be/fcJLN49km0k',
+    audio : 'Original By Pushkar Mishra',
+    likes : '10K',
+    comments : '1.2K'
+},{
+    imageurl : 'https://images.unsplash.com/photo-1686343916755-9b411972c06e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzNXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    id : 'Pushkar Mishra',
+    description : 'Birla Science Museum Pilani | VLOG | BITS Pilani | #bits #bitspilani #jee #birlamandir',
+    url : 'https://youtu.be/dE2duKoayqc',
+    audio : 'Original By Pushkar Mishra',
+    likes : '1K',
+    comments : '169'
 }]
