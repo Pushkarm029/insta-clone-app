@@ -3,7 +3,21 @@
 }
 
 
-.body{
+.body {
     padding-left: 35%;
     padding-right: 8%;
+}
+
+@media (max-width: 1440px) {
+    .body {
+        padding-left: 35%;
+        padding-right: 8%;
+    }
+}
+
+@media (max-width: 768px) {
+    .body {
+        padding-left: 20%;
+        padding-right: 9%;
+    }
 }

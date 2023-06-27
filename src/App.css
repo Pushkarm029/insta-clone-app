@@ -7,6 +7,12 @@
   user-select: none;
 }
 
+/* @media (max-width: 425px) {
+  .App{
+    flex-direction: row;
+  }
+} */
+
 img{
   pointer-events: none;
   object-fit: cover;

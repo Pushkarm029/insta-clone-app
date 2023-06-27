@@ -8,6 +8,7 @@ import { useState } from "react";
 import React from "react";
 import {BsFillBookmarkFill} from "react-icons/bs";
 import {OverlayTest as ShowOverlay} from "./../../overlay/overlay.js";
+import { useMediaQuery } from 'react-responsive'
 
 function randomizeHomePosts(arr) {
   const shuffledArray = [...arr];
@@ -58,6 +59,11 @@ function LikeMeter ({accountId, postNumber, likeCount, likedImages}){
 // storing all props as array in a state then passing it to the overlay component is a good idea for now
 
 export default function Body() {
+  const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'})
+  const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
+  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' })
   const [randomizedAccountList, setRandomizedAccountList] = useState(randomizeHomePosts(accountList.slice(1)));
   const [randomizedStoryList, setRandomizedStoryList] = useState(randomizeHomePosts(accountList.slice(1)));
   const [randomizedNumber, setRandomizedNumber] = useState(randomNumberToShowPosts(3));

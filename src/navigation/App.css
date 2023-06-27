@@ -1,13 +1,14 @@
 :root {
-    --icon-size: 24px;
-    --text-color: #262626;
-  }
+  --icon-size: 24px;
+  --text-color: #262626;
+}
 
 #instagram{
   margin-top : 4.5vh;
   margin-bottom: 4.5vh;
   margin-left: 4vh;
   margin-right: 4vh;
+  fill: white;
 }
 
 .NavigationIcons{
@@ -25,12 +26,11 @@ button:hover > .NavigationIcons{
 .navigation{
   overflow: hidden;
   position: fixed;
-  width: 16%;  /*for later while using media query we can make this absolute like 200px 
-  and when window size is decreasing we can remove text*/
+  width: 16%;
   height: 100%;
   background-color: black;
 }
-/*add margins on hidden elements*/
+
 .navigation-middle > div {
   display: block;
   width: 88%;
@@ -89,4 +89,20 @@ p{
   display: flex;
   flex-direction: column;
   align-items: baseline;
+}
+
+@media (max-width: 767px) {
+  .navigation{
+    overflow: hidden;
+    position: fixed;
+    width: 112%;
+    height: 80px;
+    bottom: 0;
+    background-color: black;
+  }
+  .navigation-middle{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
 }

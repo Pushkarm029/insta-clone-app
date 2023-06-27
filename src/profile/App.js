@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { accountList } from '../data/account';
 import './App.css';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import {TbSettings2} from "react-icons/tb";
 import {AiFillHeart} from "react-icons/ai";
 import {TbMessageCircle2Filled} from "react-icons/tb";
@@ -64,7 +64,7 @@ export default function Profile() {
           <div className='profileHeadInner'>
             <div className='profileHeadInnerOne'>
               <p>{accountList[0].id}</p>
-              <Button variant='text'>Edit Profile</Button>
+              <button variant='text'>Edit Profile</button>
               <TbSettings2 color="white" size={20}/>
             </div>
             <div className='profileHeadInnerTwo'>
