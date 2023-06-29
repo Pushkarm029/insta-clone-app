@@ -29,7 +29,7 @@ export default function Navigation(){
           <div className='NavigationHome' id='navigationelements'>
             <Link to="/insta-clone-app/">
               <button className='blockbutton' style={{color: 'white'}}>
-                <BiHomeSmile className='NavigationIcons' size= '2rem' color="white" style={{padding :'10px'}}/>
+                <BiHomeSmile className='NavigationIcons' size= {25} color="white" style={{padding :'10px'}}/>
                 {(isLaptop) && <p>Home</p>}
               </button>
             </Link>
