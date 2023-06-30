@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/insta-clone-app/static/css/main.8d9478b0.css",
-    "main.js": "/insta-clone-app/static/js/main.0474d02d.js",
+    "main.css": "/insta-clone-app/static/css/main.3a1d7c9e.css",
+    "main.js": "/insta-clone-app/static/js/main.72dd6a05.js",
     "static/js/941.8a4120d2.chunk.js": "/insta-clone-app/static/js/941.8a4120d2.chunk.js",
     "static/js/787.207a9a8b.chunk.js": "/insta-clone-app/static/js/787.207a9a8b.chunk.js",
     "index.html": "/insta-clone-app/index.html",
-    "main.8d9478b0.css.map": "/insta-clone-app/static/css/main.8d9478b0.css.map",
-    "main.0474d02d.js.map": "/insta-clone-app/static/js/main.0474d02d.js.map",
+    "main.3a1d7c9e.css.map": "/insta-clone-app/static/css/main.3a1d7c9e.css.map",
+    "main.72dd6a05.js.map": "/insta-clone-app/static/js/main.72dd6a05.js.map",
     "941.8a4120d2.chunk.js.map": "/insta-clone-app/static/js/941.8a4120d2.chunk.js.map",
     "787.207a9a8b.chunk.js.map": "/insta-clone-app/static/js/787.207a9a8b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d9478b0.css",
-    "static/js/main.0474d02d.js"
+    "static/css/main.3a1d7c9e.css",
+    "static/js/main.72dd6a05.js"
   ]
 }
