@@ -9,12 +9,6 @@ export default function App() {
   const handleLogin = () => {
     setIsLogged(true);
   };
-
-  // useEffect(() => {
-  //   setIsLogged(localStorage.getItem("isLoggedIn") === "true");
-  //   setLoading(false);
-  // }, []);
-
   return (
     <div className="App">
       {isLogged ? <Navigator /> : <SignIn onLogin={handleLogin}/>}
