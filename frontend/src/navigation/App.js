@@ -10,6 +10,7 @@ import { FaPlus } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
 import './App.css';
 import { useMediaQuery } from 'react-responsive';
+import {RiGamepadFill} from 'react-icons/ri';
 
 
 export default function Navigation(){
@@ -101,8 +102,8 @@ export default function Navigation(){
           <div className='NavigationMore' id='navigationelements'>
               <Link to="/More">
                 <button className='blockbutton' style={{color: 'white'}}>
-                  <FiMoreHorizontal size={25} className='NavigationIcons' color="white" style={{padding :'10px'}}/>
-                  {(isLaptop) && <p>More</p>}
+                  <RiGamepadFill size={23} className='NavigationIcons' color="white" style={{padding :'10px'}}/>
+                  {(isLaptop) && <p>Chill-Zone</p>}
                 </button>
               </Link>
           </div>
