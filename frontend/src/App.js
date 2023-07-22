@@ -3,6 +3,8 @@ import "./App.css";
 import SignIn from "./components/auth/SignIn";
 import firebase from "./firebase";
 import Navigator from "./navigator";
+import { Provider } from 'react-redux';
+import store from './components/redux/store';
 
 export default function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -10,8 +12,10 @@ export default function App() {
     setIsLogged(true);
   };
   return (
-    <div className="App">
-      {isLogged ? <Navigator /> : <SignIn onLogin={handleLogin}/>}
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        {isLogged ? <Navigator /> : <SignIn onLogin={handleLogin}/>}
+      </div>
+    </Provider>
   );
 }

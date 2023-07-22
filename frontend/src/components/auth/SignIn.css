@@ -6,11 +6,18 @@
   border-radius: 5px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .login-box{
-  width: 17vw;
+  display: flex;
+  width: 20vw;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #222;
+  border-radius: 10px;
 }
 
 .login-header {

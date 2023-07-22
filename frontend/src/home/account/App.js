@@ -1,15 +1,17 @@
 import { accountList } from './../../data/account';
 import './App.css';
+import { useSelector } from 'react-redux';
 
 
 export default function Account() {
+  const userEmail = useSelector((state) => state.user.userEmail);
     return (
       <div className='account'>
         <div className='myaccount'>
           <div className='accounttoptext'>
-            <img src = {accountList[0].url}/>
+            <img src ={accountList[0].url}/>
             <div className='myaccountinner'>
-              <p className='myAccountInnerID'>{accountList[0].id}</p>
+              <p className='myAccountInnerID'>{userEmail}</p>
               <p className='myAccountInnerName'>{accountList[0].name}</p>
             </div>
           </div>

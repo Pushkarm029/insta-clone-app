@@ -4,6 +4,7 @@
   "homepage": "https://pushkarm029.github.io/insta-clone-app",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -12,6 +13,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-player": "^2.12.0",
+    "react-redux": "^8.1.1",
     "react-responsive": "^9.0.2",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
