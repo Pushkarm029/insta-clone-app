@@ -7,7 +7,7 @@ import Reels from './reels/App';
 import Messages from './messages/App';
 import Create from './overlay/create/App';
 import Profile from './profile/App';
-import More from './overlay/more/App';
+import Chillzone from './chillzone/App';
 import { BrowserRouter as Router, Routes , Route } from 'react-router-dom';
 import './App.css';
 import HashLoader from "react-spinners/HashLoader";
@@ -50,7 +50,7 @@ export default function Navigator() {
             <Route path='/Messages' element={<Messages />} />
             <Route path='/Create' element={<Create />} />
             <Route path='/Profile' element={<Profile />} />
-            <Route path='/More' element={<More />} />
+            <Route path='/Chillzone' element={<Chillzone />} />
           </Routes>
       </Router>
       }

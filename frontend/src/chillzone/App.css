@@ -1,0 +1,56 @@
+.ChillZoneApp{
+    width: 100vw;
+}
+
+.ChillZoneApp h1{
+    color: #fff;
+}
+
+.ChillZoneApp .AppBody{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ChillZoneApp .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  margin-top: 30px;
+}
+
+.ChillZoneApp .box {
+  padding: 135px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.ChillZoneApp .box p{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+.ChillZoneApp .gaming {
+  background-color: #549a8a;
+  margin: 20px;
+}
+
+.ChillZoneApp .chilling {
+  background-color: #48ff30;
+  margin: 20px;
+}
+
+.ChillZoneApp .box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}

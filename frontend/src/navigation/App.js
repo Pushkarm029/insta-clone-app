@@ -100,7 +100,7 @@ export default function Navigation(){
         {/* Separate More Button from here */}
         {(isLaptop || isTablet) &&
           <div className='NavigationMore' id='navigationelements'>
-              <Link to="/More">
+              <Link to="/Chillzone">
                 <button className='blockbutton' style={{color: 'white'}}>
                   <RiGamepadFill size={23} className='NavigationIcons' color="white" style={{padding :'10px'}}/>
                   {(isLaptop) && <p>Chill-Zone</p>}
