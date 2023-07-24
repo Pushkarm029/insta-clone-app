@@ -14,6 +14,8 @@
   width: 300px;
 }
 
+
+
 .create-account-form-container h2 {
   color: #fff;
   margin-bottom: 20px;
@@ -40,9 +42,18 @@
   cursor: pointer;
 }
 
-.create-account-form-container p {
+.termsandconditionauth{
   color: #aaa;
   font-size: 12px;
   margin-top: 10px;
+  text-align: center;
+}
+
+
+.auth-error-message{
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
   text-align: center;
 }

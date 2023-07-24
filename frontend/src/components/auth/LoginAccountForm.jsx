@@ -7,9 +7,12 @@ import { useState } from "react";
 export default function Login(props) {
     const { onCreateForm, onLogin } = props;
     const Auth = getAuth();
-    const [loginBox, setLoginBox] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const setError = (message) => {
+        setErrorMessage(message);
+    };
 
     const handleCreateNewAccount = () => {
         onCreateForm();
@@ -24,18 +27,14 @@ export default function Login(props) {
             })
             .catch((error) => {
                 console.log(error);
-                // if (error.code === "auth/user-not-found") {
-                //   createUserWithEmailAndPassword(Auth, email, password)
-                //     .then((userCredential) => {
-                //       console.log(userCredential);
-                //       onLogin();
-                //     })
-                //     .catch((error) => {
-                //       console.log(error);
-                //     });
-                // } else {
-                //   console.log(error);
-                // }
+                if (error.code === "auth/user-not-found") {
+                    setError("User not found. Please create a new account.");
+                } else if(error.code === "auth/wrong-password"){
+                    setError("Wrong password. Please try again.");
+                }
+                else {
+                    setError("An error occurred " + error.code);
+                }
             });
     };
     return (
@@ -44,6 +43,9 @@ export default function Login(props) {
                 <div className="login-header">
                     <img src="https://i.imgur.com/MOv9vX3.png" alt="Insta-Clone" />
                 </div>
+                {errorMessage && <div className="auth-error-message">
+                    <p className="auth-error-text">{errorMessage}</p>
+                </div>}
                 <form onSubmit={handleSubmit}>
                     <input
                         type="email"

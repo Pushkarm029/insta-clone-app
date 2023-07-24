@@ -1,0 +1,43 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Go related
+*.test
+*.out
+*.prof
+
+# Output directories
+/bin/
+/pkg/
+/vendor/
+
+# IDE/Editor specific files
+.idea/
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Compiled Object files, Static and Dynamic libs
+*.o
+*.a
+*.so
+*.slo
+*.lo
+*.la
+*.Plo
+*.pc
+*.plo
+*.po
+
+# Test binary, built with `go test -c`
+*.test
+
+# Ignore everything in the vendor directory, except .gitignore
+/vendor/**
+!/vendor/.gitignore
+firebaseconfig.json

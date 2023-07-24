@@ -10,6 +10,14 @@
   flex-direction: column;
 }
 
+.auth-error-text {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+
 .login-box{
   display: flex;
   width: 20vw;

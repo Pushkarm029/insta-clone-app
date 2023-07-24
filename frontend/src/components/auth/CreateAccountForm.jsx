@@ -9,6 +9,10 @@ const CreateAccountForm = ({ onCreateForm }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [dob, setDob] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
+  const setError = (message) => {
+    setErrorMessage(message);
+  };
 
   const handleClick = () => {
     onCreateForm();
@@ -30,13 +34,19 @@ const CreateAccountForm = ({ onCreateForm }) => {
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (error) {
-      console.error('Error creating user:', error);
+      console.log(error);
+      if (error.code === "auth/email-already-in-use") {
+        setError("User already exists. Please Login Instead.");
+      } else {
+        setError("An error occurred " + error.code);
+      }
     }
   };
   return (
     <div className="create-account-container">
       <div className="create-account-form-container">
         <h2>Create Account</h2>
+        {errorMessage && <div className="auth-error-message">{errorMessage}</div>}
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -73,7 +83,7 @@ const CreateAccountForm = ({ onCreateForm }) => {
         <button onClick={handleClick} type="button">
           Log In
         </button>
-        <p>By signing up, you agree to our Terms and Privacy Policy.</p>
+        <p className='termsandconditionauth'>By signing up, you agree to our Terms and Privacy Policy.</p>
       </div>
     </div>
   );
