@@ -3,20 +3,25 @@ package handlers
 import (
 	"context"
 	"log"
+	"strconv"
 
 	"cloud.google.com/go/firestore"
 	"google.golang.org/api/iterator"
 )
 
-type Post struct {
-	Link string `firestore:"links"`
+type User struct {
+	Username string `firestore:"Username"`
 }
 
-func ImagesLinkHandler(ctx context.Context, client *firestore.Client) ([]string, error) {
-	var links []string
-	usersCollection := client.Collection("users")
+type Post struct {
+	Link     string   `firestore:"Link"`
+	Like     int      `firestore:"Like"`
+	Comments []string `firestore:"Comments"`
+}
 
-	// Query all documents within the "users" collection
+func ImagesLinkHandler(ctx context.Context, client *firestore.Client) ([][]string, error) {
+	var profilePackets [][]string
+	usersCollection := client.Collection("users")
 	iter := usersCollection.Documents(ctx)
 	for {
 		doc, err := iter.Next()
@@ -27,6 +32,12 @@ func ImagesLinkHandler(ctx context.Context, client *firestore.Client) ([]string,
 			log.Printf("Error iterating over users collection: %v\n", err)
 			break
 		}
+		var UserDataPackets User
+		if err := doc.DataTo(&UserDataPackets); err != nil {
+			log.Printf("Error reading post data: %v\n", err)
+			continue
+		}
+		// user.username to be added
 		postsCollection := doc.Ref.Collection("posts")
 		postsIter := postsCollection.Documents(ctx)
 		for {
@@ -38,15 +49,15 @@ func ImagesLinkHandler(ctx context.Context, client *firestore.Client) ([]string,
 				log.Printf("Error iterating over posts collection: %v\n", err)
 				break
 			}
-
 			var post Post
 			if err := postDoc.DataTo(&post); err != nil {
 				log.Printf("Error reading post data: %v\n", err)
 				continue
 			}
-
-			links = append(links, post.Link)
+			strLikes := strconv.Itoa(post.Like)
+			eachProfilePacket := append([]string{post.Link, strLikes}, post.Comments...)
+			profilePackets = append(profilePackets, eachProfilePacket)
 		}
 	}
-	return links, nil
+	return profilePackets, nil
 }

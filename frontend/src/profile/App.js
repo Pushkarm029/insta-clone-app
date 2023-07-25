@@ -52,35 +52,47 @@ function CountPosts({ index }) {
 
 //   return <div className="profilepostscount">{countCommentNumber}</div>;
 // }
+ //will use redux to get userID
 
 export default function Profile() {
   const [hoverProfileIMG, setHoverProfileIMG] = useState(null);
-  const [links, setLinks] = useState([]);
+  // const [links, setLinks] = useState([]);
+  const [userData, setUserData] = useState({});
+  const [userPosts, setUserPosts] = useState([]);
   useEffect(() => {
-    fetch('/api/images/links', {
+    const userID = "pushkarmishra029";
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+    fetch(`/api/profile/user/${userID}`, {
       headers: {
         Accept: 'application/json',
       },
+      signal, // Pass the signal to the fetch request
     })
       .then(response => response.json())
       .then(data => {
         console.log('API Response Data:', data);
-        setLinks(data);
+        setUserData(data.userData);
+        setUserPosts(data.userPosts);
       })
       .catch(error => {
         console.error('Error fetching images links:', error);
-        setLinks([]);
+        setUserData([]);
+        setUserPosts([]);
       });
+    return () => {
+      abortController.abort(); // Cancel the fetch request when the component unmounts
+    };
   }, []);
   return (
     <div className="profile">
       <div className="profileHead">
         <div className="profileHeadImg">
-          <img src={accountList[0].url} alt={accountList[0].id} />
+          <img src={userData.profile_image_link} alt={userData.username} />
         </div>
         <div className="profileHeadInner">
           <div className="profileHeadInnerOne">
-            <p>{accountList[0].id}</p>
+            <p>{userData.username}</p>
             <button variant="text">Edit Profile</button>
             <TbSettings2 color="white" size={20} />
           </div>
@@ -90,25 +102,22 @@ export default function Profile() {
               <p>posts</p>
             </div>
             <div className="profileHeadIITTwo">
-              <div className="profileFollowers">{accountList[0].followers}</div>
+              <div className="profileFollowers">{userData.followers}</div>
               <p>followers</p>
             </div>
             <div className="profileHeadIITThree">
-              <div className="profileFollowing">{accountList[0].following}</div>
+              <div className="profileFollowing">{userData.following}</div>
               <p>following</p>
             </div>
           </div>
           <div className="profileHeadInnerThree">
-            <p>{accountList[0].name}</p>
+            <p>{userData.name}</p>
           </div>
           <div className="profileHeadInnerFour">
-            <p>{accountList[0].description}</p>
-            {links.map((link, index) => (
-              <p key={index}>{link}</p>
-            ))}
+            <p>{userData.bio}</p>
           </div>
           <div className="profileHeadLink">
-            <a href={accountList[0].url}>{accountList.url}</a>
+            <a href={userData.link}>{userData.link}</a>
           </div>
         </div>
       </div>

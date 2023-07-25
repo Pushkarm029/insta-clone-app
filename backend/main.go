@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	handlers "insta-clone-app/handlers"
+	"insta-clone-app/handlers"
 	"log"
 	"net/http"
 
@@ -13,13 +13,18 @@ import (
 	"google.golang.org/api/option"
 )
 
+var (
+	ctx    context.Context
+	client *firestore.Client
+)
+
 func main() {
 	// Initialize Firebase Admin SDK and Firestore client
 	// Set the path to your Firebase Admin SDK credentials JSON file.
 	credPath := "./firebaseconfig.json"
 
 	// Create a new context.
-	ctx := context.Background()
+	ctx = context.Background()
 
 	// Initialize the Firebase Admin SDK with the credentials.
 	opt := option.WithCredentialsFile(credPath)
@@ -29,7 +34,7 @@ func main() {
 	}
 
 	// Initialize Firestore client.
-	client, err := app.Firestore(ctx)
+	client, err = app.Firestore(ctx)
 	if err != nil {
 		log.Fatalf("Error initializing Firestore client: %v\n", err)
 	}
@@ -40,25 +45,33 @@ func main() {
 	// Create a new Gin router
 	r := gin.Default()
 
+	// Enable CORS for all routes
 	r.Use(cors.Default())
 
 	// Initialize routes from the handlers package
-	initRoutes(r, ctx, client)
+	initRoutes(r)
 
 	// Run the server on port 8080
 	r.Run(":8080")
 }
 
-func initRoutes(r *gin.Engine, ctx context.Context, client *firestore.Client) {
-	// Initialize the routes for comments
-	// r.GET("/api/posts/:postId/comments", handlers.FetchCommentsHandler)
-	// r.POST("/api/posts/:postId/comments", handlers.AddCommentHandler)
+func getUserProfile(c *gin.Context) {
+	userID := c.Param("userID") // Declare and initialize the userID variable
+	// Fetch the user profile using the CurrentUserHandler from the handlers package
+	currentUserPackets, err := handlers.CurrentUserHandlers(ctx, client, userID)
+	if err != nil {
+		log.Printf("Error fetching user profile: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch user profile"})
+		return
+	}
+	// Respond with the user profile in the JSON format
+	c.JSON(http.StatusOK, currentUserPackets)
+}
 
-	// // Initialize the routes for likes
-	// r.GET("/api/posts/:postId/likes", handlers.FetchLikesHandler)
-	// r.POST("/api/posts/:postId/likes", handlers.AddLikeHandler)
+func initRoutes(r *gin.Engine) {
+	// Initialize the routes for images
 	r.GET("/api/images/links", func(c *gin.Context) {
-		// Fetch the images links using imagesLinkHandler from handlers package
+		// Fetch the images links using ImagesLinkHandler from handlers package
 		links, err := handlers.ImagesLinkHandler(ctx, client)
 		if err != nil {
 			log.Printf("Error fetching images links: %v\n", err)
@@ -68,4 +81,7 @@ func initRoutes(r *gin.Engine, ctx context.Context, client *firestore.Client) {
 		// Respond with the links in the JSON format
 		c.JSON(http.StatusOK, links)
 	})
+
+	// Initialize the route for user profiles
+	r.GET("/api/profile/user/:userID", getUserProfile)
 }

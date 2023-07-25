@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 const CreateAccountForm = ({ onCreateForm }) => {
-  const [fullName, setFullName] = useState('');
+  const [Name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,13 +26,14 @@ const CreateAccountForm = ({ onCreateForm }) => {
       const user = userCredential.user;
       console.log('New user created:', user);
       const docRef = await addDoc(collection(db, "users"), {
-        fullName,
+        Name,
         username,
         email,
         dob,
         uid: user.uid
       });
       console.log("Document written with ID: ", docRef.id);
+      setError("Created account successfully. Please Login.")
     } catch (error) {
       console.log(error);
       if (error.code === "auth/email-already-in-use") {
@@ -51,8 +52,8 @@ const CreateAccountForm = ({ onCreateForm }) => {
           <input
             type="text"
             placeholder="Full Name"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            value={Name}
+            onChange={(e) => setName(e.target.value)}
           />
           <input
             type="text"
