@@ -3,13 +3,19 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import "./SignIn.css";
 import { getAuth } from "firebase/auth";
 import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function Login(props) {
     const { onCreateForm, onLogin } = props;
     const Auth = getAuth();
     const [email, setEmail] = useState("");
+    const userEmail = useSelector((state) => state.user.userEmail);
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
+    const dispatch = useDispatch();
+    const handleSignIn = () => {
+        dispatch({ type: 'SET_EMAIL', payload: email });
+    };
     const setError = (message) => {
         setErrorMessage(message);
     };
@@ -24,12 +30,13 @@ export default function Login(props) {
             .then((userCredential) => {
                 console.log(userCredential);
                 onLogin();
+                handleSignIn();
             })
             .catch((error) => {
                 console.log(error);
                 if (error.code === "auth/user-not-found") {
                     setError("User not found. Please create a new account.");
-                } else if(error.code === "auth/wrong-password"){
+                } else if (error.code === "auth/wrong-password") {
                     setError("Wrong password. Please try again.");
                 }
                 else {
