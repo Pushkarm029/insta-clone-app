@@ -1,82 +1,98 @@
-.search{
-    margin-left: 30%;
-    background-color: black;
-    width: 30%;
-    height:auto;
+.searchOverlay {
+  background-color: #000000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  margin-left: 17%;
+  width: 350px;
 }
 
-.search h1{
-    font-size: 1.5rem;
-    color: white;
-    font-weight: 550;
-    margin: 20px;
+.searchOverlay .container {
+  text-align: center;
 }
 
-.recentAccountsText p{
-    font-size: 0.88rem;
-    color: #A8A898;
+.searchOverlay h1 {
+  color: #fafafa;
+  margin: 30px 5px 20px 0px;
+  font-size: 1.7rem;
 }
 
-.recentAccountsText h6{
-    font-size: 0.94rem;
-    font-weight: 600;
-    color: #ffffff;
+.searchOverlay input[type="text"] {
+  background-color: #333;
+  border: none;
+  padding: 10px;
+  color: #fff;
+  border-radius: 5px;
+  width: 300px;
+  margin-bottom: 20px;
 }
 
-.recentSearch{
-    display: flex;
-    justify-content: space-between;
+.searchOverlay input[type="text"]::placeholder {
+  color: #aaa;
 }
 
-.recentSearch h2{
-    font-size: 1.1rem;
-    color: white;
+.searchOverlay ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.recentAccounts{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.searchOverlay li {
+  padding: 10px;
+  border-bottom: 1px solid #333;
 }
 
-.recentAccounts h4{
-    color: white;
-    font-weight: 300;
-    font-size: 1rem;
-    margin: 5px 10px;
+.searchOverlay li:last-child {
+  border-bottom: none;
 }
 
-.recentAccounts img{
-    width: 46px;
-    height: 46px; 
-    border: double 3px transparent;
-    border-radius: 50%;
-    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #FF9400,#DC00B4);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    display: inline-block;
-    margin: 5px;
+/* Hover effect on search results */
+.searchOverlay li:hover {
+  background-color: #444;
 }
 
-.search input{
-    width: 87%;
-    margin: 10px 20px;
-    padding: 10px;
-    border-radius: 10px;
+.eachSearchResult{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 14px 0px 14px 0px;
 }
 
-.recentSearch{
-    margin: 20px;
+.eachSearchResult img{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
-.recentAccounts{
-    margin: 20px;
+.eachSearchResultLeft{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.recentAccountPartOne{
-    display: flex;
+.eachSearchResultBottom{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.recentAccountsText{
-    padding: 5px;
+.eachSearchResultTop p{
+  font-size: 0.88rem;
+}
+
+.eachSearchedUserName{
+  font-size: 0.83rem;
+  font-weight: 400;
+  color: #9C9C9C;
+  margin-right: 10px;
+}
+
+.eachSearchedFollowers{
+  font-size: 0.83rem;
+  font-weight: 400;
+  color: #9C9C9C;
 }

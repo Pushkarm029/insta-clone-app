@@ -5,6 +5,7 @@ import "./App.css";
 import { TbSettings2 } from "react-icons/tb";
 import { AiFillHeart } from "react-icons/ai";
 import { TbMessageCircle2Filled } from "react-icons/tb";
+import { useSelector } from "react-redux";
 
 function CountPosts({ index }) {
   const countPostNumber = accountList[index].posts.reduce(
@@ -59,8 +60,9 @@ export default function Profile() {
   // const [links, setLinks] = useState([]);
   const [userData, setUserData] = useState({});
   const [userPosts, setUserPosts] = useState([]);
+  const userEmail = useSelector((state) => state.user.userEmail);
   useEffect(() => {
-    const userID = "pushkarmishra029";
+    const userID = userEmail; //will use redux to get userID later
     const abortController = new AbortController();
     const signal = abortController.signal;
     fetch(`/api/profile/user/${userID}`, {

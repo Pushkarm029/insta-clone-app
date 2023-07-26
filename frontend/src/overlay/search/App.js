@@ -1,33 +1,84 @@
-// import { accountList } from '../../data/account';
-// import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
 
-// const Search = ({ isOpen, onClose }) => {
-//   return (
-//     <div className={`popup ${isOpen ? 'open' : ''}`}>
-//       <div className='search'>
-//         <h1>Search</h1>
-//         <label>
-//           <input type="text" placeholder="Search" name="name" />
-//         </label>
-//         <div className='recentSearch'>
-//           <h2>Recent</h2>
-//           <p>Clear All</p>
-//         </div>
-//         <div className='recentAccounts'>
-//           <div className='recentAccountPartOne'>
-//             <img src={accountList[1].url} alt={accountList[1].name} />
-//             <div className='recentAccountsText'>
-//               <h6>{accountList[1].id}</h6>
-//               <p>{accountList[1].name}</p>
-//             </div>
-//           </div>
-//           <button onClick={onClose}>X</button>y
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+const SearchPage = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [userData, setUserData] = useState([]); // Initialize as an empty array
 
-// export default Search; 
+  useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+    fetch(`/api/search/users`, {
+      headers: {
+        Accept: 'application/json',
+      },
+      signal, // Pass the signal to the fetch request
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('API Response Data:', data);
+        setUserData(data);
+      })
+      .catch(error => {
+        console.error('Error fetching images links:', error);
+        setUserData([]);
+      });
 
-//not workin overlay currently
+    return () => {
+      abortController.abort(); // Cancel the fetch request when the component unmounts
+    };
+  }, []);
+
+  useEffect(() => {
+    // Filter the data based on the search query
+    const filteredData = userData.filter((item) =>
+      item[0].toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredResults(filteredData);
+  }, [searchQuery, userData]);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  return (
+    <div className="searchOverlay">
+      <div className="container">
+        <h1>Search</h1>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Type to search..."
+        />
+        {searchQuery.length > 0 ? (
+          filteredResults.length > 0 ? (
+            <div className="searchResults">
+              {filteredResults.map((result, index) => (
+                <div className="eachSearchResult" key={index}>
+                  <img src="https://images.unsplash.com/photo-1687042277586-971369d3d241?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" />
+                  <div className="eachSearchResultLeft">
+                    <div className="eachSearchResultTop">
+                      <p><strong>{result[0]}</strong></p>
+                    </div>
+                    <div className="eachSearchResultBottom">
+                      <p className="eachSearchedUserName">{result[2]}</p>
+                      <p className="eachSearchedFollowers">{result[1]} Followers</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p><strong>{searchQuery}</strong> is currently not on this platform</p>
+          )
+        ) : (
+          <p>No search results yet.</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default SearchPage;

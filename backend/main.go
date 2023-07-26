@@ -20,20 +20,14 @@ var (
 
 func main() {
 	// Initialize Firebase Admin SDK and Firestore client
-	// Set the path to your Firebase Admin SDK credentials JSON file.
 	credPath := "./firebaseconfig.json"
-
-	// Create a new context.
 	ctx = context.Background()
-
-	// Initialize the Firebase Admin SDK with the credentials.
 	opt := option.WithCredentialsFile(credPath)
 	app, err := firebase.NewApp(ctx, nil, opt)
 	if err != nil {
 		log.Fatalf("Error initializing Firebase app: %v\n", err)
 	}
 
-	// Initialize Firestore client.
 	client, err = app.Firestore(ctx)
 	if err != nil {
 		log.Fatalf("Error initializing Firestore client: %v\n", err)
@@ -56,9 +50,26 @@ func main() {
 }
 
 func getUserProfile(c *gin.Context) {
-	userID := c.Param("userID") // Declare and initialize the userID variable
+	userMail := c.Param("userID") // Declare and initialize the userID variable
 	// Fetch the user profile using the CurrentUserHandler from the handlers package
+	userID, err := handlers.EmailToUsernameHandlers(ctx, client, userMail)
+	if err != nil {
+		log.Printf("Error fetching user profile: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch username"})
+		return
+	}
 	currentUserPackets, err := handlers.CurrentUserHandlers(ctx, client, userID)
+	if err != nil {
+		log.Printf("Error fetching user profile: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch user profile"})
+		return
+	}
+	// Respond with the user profile in the JSON format
+	c.JSON(http.StatusOK, currentUserPackets)
+}
+
+func getUserSearched(c *gin.Context) {
+	currentUserPackets, err := handlers.SearchUsersHandlers(ctx, client)
 	if err != nil {
 		log.Printf("Error fetching user profile: %v\n", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch user profile"})
@@ -81,7 +92,17 @@ func initRoutes(r *gin.Engine) {
 		// Respond with the links in the JSON format
 		c.JSON(http.StatusOK, links)
 	})
-
-	// Initialize the route for user profiles
+	r.GET("/api/explore/posts", func(c *gin.Context) {
+		// Fetch the images links using ImagesLinkHandler from handlers package
+		ExplorePosts, err := handlers.ExplorePostsHandler(ctx, client)
+		if err != nil {
+			log.Printf("Error fetching images links: %v\n", err)
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch images links"})
+			return
+		}
+		// Respond with the links in the JSON format
+		c.JSON(http.StatusOK, ExplorePosts)
+	})
+	r.GET("/api/search/users", getUserSearched)
 	r.GET("/api/profile/user/:userID", getUserProfile)
 }
