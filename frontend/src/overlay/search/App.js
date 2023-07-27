@@ -48,6 +48,7 @@ const SearchPage = () => {
         <h1>Search</h1>
         <input
           type="text"
+          maxLength={20}
           value={searchQuery}
           onChange={handleSearchChange}
           placeholder="Type to search..."

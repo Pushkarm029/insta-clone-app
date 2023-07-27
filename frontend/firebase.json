@@ -1,0 +1,19 @@
+{
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "database": {
+    "rules": {
+      "storage": {
+        "rules": {
+          "images": {
+            "$image": {
+              ".read": "true",
+              ".write": "true"
+            }
+          }
+        }
+      }
+    }
+  }
+}

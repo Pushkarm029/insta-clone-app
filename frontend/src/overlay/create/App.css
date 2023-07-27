@@ -1,0 +1,102 @@
+/* App.css */
+.insta-overlay {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 8px;
+  width: 640px;
+  height: 360px;
+  background-color: #333; /* Dark background color */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 33%;
+}
+
+.headerUploadOverlayText {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px;
+}
+
+.headerUploadOverlay {
+  display: flex;
+  color: #fff;
+  width: 100%;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.headerUploadOverlay svg {
+  cursor: pointer;
+  padding: 8px;
+}
+
+.headerUploadOverlayButton {
+  color: #0c95f6;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 0.87rem;
+  font-weight: 600;
+}
+
+.bodyUploadOverlay {
+  margin: 10px;
+  display: flex;
+}
+
+.insta-overlay .uploasnapshot.ref.fullPathded-image {
+  height: 300px;
+  width: 300px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.insta-overlay .upload-image-section {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.left-section img {
+  height: 300px;
+  width: 300px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.insta-overlay .upload-label {
+  margin-right: 10px;
+  cursor: pointer;
+  padding: 8px 12px;
+  background-color: #4caf50;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.insta-overlay #image-upload {
+  display: none;
+}
+
+.insta-overlay .right-section {
+  display: flex;
+  margin-left: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.insta-overlay .caption-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: none;
+  background-color: #444; /* Dark text area background color */
+  color: #fff; /* Text color for dark text area */
+}
+
+.insta-overlay .caption-input::placeholder {
+  color: #bbb; /* Placeholder text color for dark text area */
+}

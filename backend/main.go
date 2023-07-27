@@ -78,7 +78,17 @@ func getUserSearched(c *gin.Context) {
 	// Respond with the user profile in the JSON format
 	c.JSON(http.StatusOK, currentUserPackets)
 }
-
+func postUpload(c *gin.Context) {
+	userMail := c.Param("userID")
+	err := handlers.UploadPostToFirestore(ctx, client, c, userMail)
+	if err != nil {
+		log.Printf("Error creating post: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create post"})
+		return
+	}
+	// Respond with a success message
+	c.JSON(http.StatusOK, gin.H{"message": "Post created"})
+}
 func initRoutes(r *gin.Engine) {
 	// Initialize the routes for images
 	r.GET("/api/images/links", func(c *gin.Context) {
@@ -104,5 +114,6 @@ func initRoutes(r *gin.Engine) {
 		c.JSON(http.StatusOK, ExplorePosts)
 	})
 	r.GET("/api/search/users", getUserSearched)
+	r.POST("/api/upload/:userID", postUpload)
 	r.GET("/api/profile/user/:userID", getUserProfile)
 }

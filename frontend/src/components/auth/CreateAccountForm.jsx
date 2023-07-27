@@ -8,8 +8,10 @@ const CreateAccountForm = ({ onCreateForm }) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [dob, setDob] = useState('');
+  const [profile_image_link, setProfileURL] = useState('');
   const [errorMessage, setErrorMessage] = useState("");
+  const [bio, setBio] = useState("");
+  const [link, setBioUrl] = useState("");
   const setError = (message) => {
     setErrorMessage(message);
   };
@@ -29,7 +31,9 @@ const CreateAccountForm = ({ onCreateForm }) => {
         Name,
         username,
         email,
-        dob,
+        profile_image_link,
+        bio,
+        link,
         uid: user.uid
       });
       console.log("Document written with ID: ", docRef.id);
@@ -50,34 +54,46 @@ const CreateAccountForm = ({ onCreateForm }) => {
         {errorMessage && <div className="auth-error-message">{errorMessage}</div>}
         <form onSubmit={handleSubmit}>
           <input
-            type="text"
-            placeholder="Full Name"
+            type="text" required
+            placeholder="Full Name (Required)"
             value={Name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
-            type="text"
-            placeholder="Username"
+            type="text" required
+            placeholder="Username (Required)"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
-            type="email"
-            placeholder="Email"
+            type="email" required
+            placeholder="Email (Required)"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            type="password"
-            placeholder="Password"
+            type="password" required
+            placeholder="Password (Required)"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
-            type="date"
-            placeholder="Date of Birth"
-            value={dob}
-            onChange={(e) => setDob(e.target.value)}
+            type="text"
+            placeholder="Profile Picture URL"
+            value={profile_image_link}
+            onChange={(e) => setProfileURL(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Enter your Bio"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Enter URL to be added in your BIO"
+            value={link}
+            onChange={(e) => setBioUrl(e.target.value)}
           />
           <button type="submit">Sign Up</button>
         </form>

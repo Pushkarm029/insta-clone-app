@@ -4,7 +4,7 @@
     height: 100%;
 }
 
-p{
+.account p{
     color: white;
 }
 
@@ -38,7 +38,7 @@ p{
     padding: 7px 0px;
 }
 
-span{
+.account span{
     color: white;
 }
 

@@ -16,7 +16,8 @@ type CurrentUser struct {
 	Following        int    `firestore:"following"`
 	BIO              string `firestore:"BIO"`
 	Link             string `firestore:"link"`
-	ProfileImageLink string `firestore:"profileImageLink"`
+	ProfileImageLink string `firestore:"profile_image_link"`
+	Email            string `firestore:"email"`
 }
 
 type CurrentUserPosts struct {
@@ -33,6 +34,7 @@ type UserProfileData struct {
 	BIO              string `json:"bio"`
 	Link             string `json:"link"`
 	ProfileImageLink string `json:"profile_image_link"`
+	Email            string `json:"email"`
 }
 
 type NamedUserPosts struct {

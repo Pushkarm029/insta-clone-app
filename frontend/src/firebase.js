@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 
@@ -16,12 +17,16 @@ const firebaseConfig = {
   storageBucket: "insta-clone-app-77662.appspot.com",
   messagingSenderId: "723541316272",
   appId: "1:723541316272:web:e19b0be7a3e071ae40e175",
-  measurementId: "G-CRY969FNXD"
+  measurementId: "G-CRY969FNXD",
+  storageBucket: "insta-clone-app-77662.appspot.com",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+// Initialize Cloud Storage and get a reference to the service
+const storage = getStorage(app);
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);

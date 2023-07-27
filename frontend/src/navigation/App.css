@@ -48,7 +48,7 @@ button:hover > .NavigationIcons{
   background-color: rgb(26, 26, 26);
 }
 
-.NavigationMore{
+.navigation .NavigationMore{
   display: block;
   width: 88%;
   cursor: pointer;
