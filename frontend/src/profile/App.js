@@ -1,75 +1,42 @@
 import React, { useState, useEffect } from "react";
-import { accountList } from "../data/account";
 import "./App.css";
-// import Button from '@material-ui/core/Button';
 import { TbSettings2 } from "react-icons/tb";
 import { AiFillHeart } from "react-icons/ai";
 import { TbMessageCircle2Filled } from "react-icons/tb";
 import { useSelector } from "react-redux";
+import { useLocation } from 'react-router-dom';
 
-function CountPosts({ index }) {
-  const countPostNumber = accountList[index].posts.reduce(
-    (count, profileAccountPostsCount) => {
-      if (profileAccountPostsCount) {
-        return count + 1;
+
+function CountPosts({ post }) {
+  let index = 0;
+  if (post) {
+    post.forEach((postIter) => {
+      if (postIter.image_link) {
+        index++;
       }
-      return count;
-    },
-    0
-  );
-  return <div className="profilepostscount">{countPostNumber}</div>;
+    });
+  }
+  return <div className="profilepostscount">{index}</div>;
 }
 
-// function CountComments({ profileIndex, commentIndex }) {
-//   const countCommentNumber = accountList[profileIndex].posts[commentIndex].comment.reduce(
-//     (count, profileAccountCommentsCount) => {
-//       if (profileAccountCommentsCount) {
-//         return count + 1;
-//       }
-//       return count;
-//     },
-//     0
-//   );
-//   return <p className="profilecommentscount">{countCommentNumber}</p>;
-// }
-
-// function CountComments() {
-//   return <CountCommentsFX data={accountList} />;
-// }
-
-// function CountCommentsFX(props) {
-//   const [countCommentNumber, setCountCommentNumber] = useState(0);
-//   const data = props.data;
-
-//   useEffect(() => {
-//     if (data) {
-//       data.forEach((item) => {
-//         if (item.url) {
-//           setCountCommentNumber(countCommentNumber + 1);
-//         }
-//       });
-//     }
-//   }, [data]);
-
-//   return <div className="profilepostscount">{countCommentNumber}</div>;
-// }
- //will use redux to get userID
-
 export default function Profile() {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const propEmail = params.get('prop');
   const [hoverProfileIMG, setHoverProfileIMG] = useState(null);
-  // const [links, setLinks] = useState([]);
   const [userData, setUserData] = useState({});
   const [userPosts, setUserPosts] = useState([]);
   const userEmail = useSelector((state) => state.user.userEmail);
+  const userID = propEmail ? propEmail : userEmail;
+  console.log(userID)
   useEffect(() => {
-    const userID = userEmail; //will use redux to get userID later
     const abortController = new AbortController();
     const signal = abortController.signal;
     fetch(`/api/profile/user/${userID}`, {
       headers: {
         Accept: 'application/json',
       },
-      signal, // Pass the signal to the fetch request
+      signal,
     })
       .then(response => response.json())
       .then(data => {
@@ -79,13 +46,14 @@ export default function Profile() {
       })
       .catch(error => {
         console.error('Error fetching images links:', error);
-        setUserData([]);
+        setUserData({});
         setUserPosts([]);
       });
+
     return () => {
-      abortController.abort(); // Cancel the fetch request when the component unmounts
+      abortController.abort();
     };
-  }, []);
+  }, [userEmail]);
   return (
     <div className="profile">
       <div className="profileHead">
@@ -100,7 +68,7 @@ export default function Profile() {
           </div>
           <div className="profileHeadInnerTwo">
             <div className="profileHeadIITOne">
-              <CountPosts index={0} />
+              <CountPosts post={userPosts} />
               <p>posts</p>
             </div>
             <div className="profileHeadIITTwo">
@@ -127,8 +95,8 @@ export default function Profile() {
       {/*later can be added */}
       {/*a posts reels tagged can be added through route*/}
       <div className="ProfilePost">
-        {accountList && accountList[0].posts.length > 0 ? (
-          accountList[0].posts.map((profileAccountPosts, index) => (
+        {userPosts ? (
+          userPosts.map((profileAccountPosts, index) => (
             <div
               key={index}
               onMouseEnter={() => setHoverProfileIMG(index)}
@@ -140,18 +108,17 @@ export default function Profile() {
                   <div className="hoverOverlayContent">
                     <div className="hoverOverlayLike">
                       <AiFillHeart size={25} color="white" />
-                      <p>{profileAccountPosts.likes}</p>
-                      {/* <CountComments profileIndex={0} commentIndex={index}/> */}
+                      <p>{profileAccountPosts.like}</p>
                     </div>
                     <div className="hoverOverlayComment">
                       <TbMessageCircle2Filled size={25} color="white" />
-                      <p>{profileAccountPosts.number}</p>
+                      {profileAccountPosts.comments && profileAccountPosts.comments.length > 0 ? (<p>{profileAccountPosts.comments.length}</p>) : (<p>0</p>)}
                     </div>
                   </div>
                 </div>
               )}
               <img
-                src={profileAccountPosts.imageurl}
+                src={profileAccountPosts.image_link}
                 alt={profileAccountPosts.caption}
               />
             </div>

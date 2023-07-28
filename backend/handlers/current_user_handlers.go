@@ -21,9 +21,10 @@ type CurrentUser struct {
 }
 
 type CurrentUserPosts struct {
-	ImageLink string   `firestore:"imageLink"`
+	ImageLink string   `firestore:"downloadURL"`
 	Like      int      `firestore:"like"`
 	Comments  []string `firestore:"comments"`
+	Caption   string   `firestore:"caption"`
 }
 
 type UserProfileData struct {
@@ -41,6 +42,7 @@ type NamedUserPosts struct {
 	ImageLink string   `json:"image_link"`
 	Like      string   `json:"like"`
 	Comments  []string `json:"comments"`
+	Caption   string   `json:"caption"`
 }
 
 type UserProfileResponse struct {
@@ -77,6 +79,7 @@ func CurrentUserHandlers(ctx context.Context, client *firestore.Client, userID s
 			currentUserPackets = append(currentUserPackets, currentUserDataPackets.BIO)
 			currentUserPackets = append(currentUserPackets, currentUserDataPackets.Link)
 			currentUserPackets = append(currentUserPackets, currentUserDataPackets.ProfileImageLink)
+			currentUserPackets = append(currentUserPackets, currentUserDataPackets.Email)
 			postsCollection := doc.Ref.Collection("posts")
 			postsIter := postsCollection.Documents(ctx)
 			for {
@@ -98,6 +101,7 @@ func CurrentUserHandlers(ctx context.Context, client *firestore.Client, userID s
 					ImageLink: post.ImageLink,
 					Like:      strLikes,
 					Comments:  post.Comments,
+					Caption:   post.Caption,
 				}
 				currentUserPostPackets = append(currentUserPostPackets, eachProfilePacket)
 			}
@@ -113,6 +117,7 @@ func CurrentUserHandlers(ctx context.Context, client *firestore.Client, userID s
 			BIO:              currentUserPackets[4],
 			Link:             currentUserPackets[5],
 			ProfileImageLink: currentUserPackets[6],
+			Email:            currentUserPackets[7],
 		},
 		UserPosts: currentUserPostPackets,
 	}

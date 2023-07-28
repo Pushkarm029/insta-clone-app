@@ -50,12 +50,14 @@ func ExplorePostsHandler(ctx context.Context, client *firestore.Client) ([]*User
 				ImageLink: post.ImageLink,
 				Like:      strLikes,
 				Comments:  post.Comments,
+				Caption:   post.Caption,
 			}
 			currentUserPostPackets = append(currentUserPostPackets, eachProfilePacket)
 		}
 		response = &UserProfileResponse{
 			UserData: UserProfileData{
 				Username: currentUserDataPackets.Username,
+				Email:    currentUserDataPackets.Email,
 			},
 			UserPosts: currentUserPostPackets,
 		}
