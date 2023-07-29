@@ -6,7 +6,6 @@ import { TbMessageCircle2Filled } from "react-icons/tb";
 import { useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom';
 
-
 function CountPosts({ post }) {
   let index = 0;
   if (post) {
@@ -54,6 +53,38 @@ export default function Profile() {
       abortController.abort();
     };
   }, [userEmail]);
+  const [followed, setFollowed] = useState(false);
+  const postFollowerUpdateData = {
+    targetfollowers: userData.followers,
+    operation: "follow",
+  };
+  const postUnfollowUpdateData = {
+    targetfollowers: userData.followers,
+    operation: "unfollow",
+  };
+  
+  const handleFollow = async () => {
+    try {
+      setFollowed((prevLiked) => !prevLiked);
+      const postUpdateData = !followed ? postFollowerUpdateData : postUnfollowUpdateData;
+      const response = await fetch(`/api/follow/${propEmail}/${userEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postUpdateData),
+      });
+      if (response.ok) {
+        console.log('Data posted successfully to the backend!');
+      } else {
+        // Handle error response from the backend
+        console.error('Error posting data:', response.statusText);
+      }
+      // No need to setLiked(true) here, as it was already updated with the callback form
+    } catch (error) {
+      console.error('Error posting data:', error);
+    }
+  };
   return (
     <div className="profile">
       <div className="profileHead">
@@ -63,7 +94,13 @@ export default function Profile() {
         <div className="profileHeadInner">
           <div className="profileHeadInnerOne">
             <p>{userData.username}</p>
-            <button variant="text">Edit Profile</button>
+            {propEmail ? (followed ?
+              <p onClick={handleFollow}>UnFollow</p>
+              :
+              <p onClick={handleFollow}>Follow</p>
+            ) : (
+              <p variant="text">Edit Profile</p>
+            )}
             <TbSettings2 color="white" size={20} />
           </div>
           <div className="profileHeadInnerTwo">

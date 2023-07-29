@@ -19,6 +19,8 @@ type Post struct {
 	Comments []string `firestore:"Comments"`
 }
 
+//commments need to be fixed -> []map[string]string
+
 func ImagesLinkHandler(ctx context.Context, client *firestore.Client) ([][]string, error) {
 	var profilePackets [][]string
 	usersCollection := client.Collection("users")

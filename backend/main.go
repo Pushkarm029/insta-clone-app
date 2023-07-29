@@ -99,6 +99,17 @@ func updateLike(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"message": "Like Updated"})
 }
+func updateFollowersNFollowing(c *gin.Context) {
+	TargetMail := c.Param("OverAcEmail")
+	ShooterMail := c.Param("UserID")
+	err := handlers.UpdatedFollowersNFollowingFunc(ctx, client, c, TargetMail, ShooterMail)
+	if err != nil {
+		log.Printf("Error creating post: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create post"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Follower Updated"})
+}
 func postComment(c *gin.Context) {
 	userMail := c.Param("OverAcEmail")
 	imageURL := c.Param("OverAcImages")
@@ -149,6 +160,7 @@ func initRoutes(r *gin.Engine) {
 	r.POST("/api/upload/:userID", postUpload)
 	r.POST("/api/like/:OverAcEmail/:OverAcImages", updateLike)
 	r.POST("/api/comment/post/:OverAcEmail/:OverAcImages", postComment)
+	r.POST("/api/follow/:OverAcEmail/:UserID", updateFollowersNFollowing)
 	r.GET("/api/profile/user/:userID", getUserProfile)
 	r.GET("/api/comment/get/:OverAcEmail/:urlModEncoder", getComment)
 }

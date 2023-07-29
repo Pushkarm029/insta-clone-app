@@ -21,10 +21,10 @@ type CurrentUser struct {
 }
 
 type CurrentUserPosts struct {
-	ImageLink string   `firestore:"downloadURL"`
-	Like      int      `firestore:"like"`
-	Comments  []string `firestore:"comments"`
-	Caption   string   `firestore:"caption"`
+	ImageLink string              `firestore:"downloadURL"`
+	Like      int                 `firestore:"like"`
+	Comments  []map[string]string `firestore:"comments"`
+	Caption   string              `firestore:"caption"`
 }
 
 type UserProfileData struct {
@@ -39,10 +39,10 @@ type UserProfileData struct {
 }
 
 type NamedUserPosts struct {
-	ImageLink string   `json:"image_link"`
-	Like      string   `json:"like"`
-	Comments  []string `json:"comments"`
-	Caption   string   `json:"caption"`
+	ImageLink string              `json:"image_link"`
+	Like      string              `json:"like"`
+	Comments  []map[string]string `json:"comments"`
+	Caption   string              `json:"caption"`
 }
 
 type UserProfileResponse struct {

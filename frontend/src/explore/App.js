@@ -52,7 +52,7 @@ export default function Explore() {
   };
 
   const filteredData = data.filter(item => item.userPosts !== null && Array.isArray(item.userPosts) && item.userPosts.length > 0);
-
+  console.log(filteredData);
   return (
     <div className="randomexploreposts">
       {showOverlay && (
