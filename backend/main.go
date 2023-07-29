@@ -67,7 +67,6 @@ func getUserProfile(c *gin.Context) {
 	// Respond with the user profile in the JSON format
 	c.JSON(http.StatusOK, currentUserPackets)
 }
-
 func getUserSearched(c *gin.Context) {
 	currentUserPackets, err := handlers.SearchUsersHandlers(ctx, client)
 	if err != nil {
@@ -88,6 +87,39 @@ func postUpload(c *gin.Context) {
 	}
 	// Respond with a success message
 	c.JSON(http.StatusOK, gin.H{"message": "Post created"})
+}
+func updateLike(c *gin.Context) {
+	userMail := c.Param("OverAcEmail")
+	imageURL := c.Param("OverAcImages")
+	err := handlers.LikeHandler(ctx, client, c, userMail, imageURL)
+	if err != nil {
+		log.Printf("Error creating post: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create post"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Like Updated"})
+}
+func postComment(c *gin.Context) {
+	userMail := c.Param("OverAcEmail")
+	imageURL := c.Param("OverAcImages")
+	err := handlers.AddCommentHandler(ctx, client, c, userMail, imageURL)
+	if err != nil {
+		log.Printf("Error creating post: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create post"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Like Updated"})
+}
+func getComment(c *gin.Context) {
+	userMail := c.Param("OverAcEmail")
+	imageURL := c.Param("urlModEncoder")
+	currentCommentPackets, err := handlers.GettingComments(ctx, client, userMail, imageURL)
+	if err != nil {
+		log.Printf("Error fetching comment: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch Comment"})
+		return
+	}
+	c.JSON(http.StatusOK, currentCommentPackets)
 }
 func initRoutes(r *gin.Engine) {
 	// Initialize the routes for images
@@ -115,5 +147,8 @@ func initRoutes(r *gin.Engine) {
 	})
 	r.GET("/api/search/users", getUserSearched)
 	r.POST("/api/upload/:userID", postUpload)
+	r.POST("/api/like/:OverAcEmail/:OverAcImages", updateLike)
+	r.POST("/api/comment/post/:OverAcEmail/:OverAcImages", postComment)
 	r.GET("/api/profile/user/:userID", getUserProfile)
+	r.GET("/api/comment/get/:OverAcEmail/:urlModEncoder", getComment)
 }

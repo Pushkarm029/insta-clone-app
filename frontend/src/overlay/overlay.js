@@ -7,19 +7,112 @@ import { FiBookmark } from "react-icons/fi";
 import "./overlay.css";
 import { useNavigate } from "react-router-dom";
 import { BsEmojiLaughing } from "react-icons/bs";
-
-
+import { useState } from "react";
+import { AiFillHeart } from "react-icons/ai"
+import { useSelector } from 'react-redux';
+import { useRef } from "react";
+import { useEffect } from "react";
 
 // current idea to implement overlay is that it will be a component that is called when a post is clicked on and will be passed the post data as props
 // so overlayTest need some props to be passed to it
 
 
-export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages, onStateChange ,OverAcEmail}) {
+export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages, onStateChange, OverAcEmail }) {
+    const [liked, setLiked] = useState(false);
+    const userEmail = useSelector((state) => state.user.userEmail);
     const navigate = useNavigate();
+    // if any problem in text handling or rendering
+    const inputRef = useRef(null);
     const handleNavigateToProfile = () => {
         navigate(`/profile?prop=${OverAcEmail}`);
+    };
+    const postLikeUpdateData = {
+        likes: OverAcLikes,
+        operation: "like",
     }
+    const postDisLikeUpdateData = {
+        likes: OverAcLikes,
+        operation: "dislike",
+    }
+    const modifiedUrl = OverAcImages.replace('https://firebasestorage.googleapis.com/v0/b/insta-clone-app-77662.appspot.com/o/', '');
+    const likeHandler = async () => {
+        try {
+            // Toggle the liked state using the callback form of setLiked
+            setLiked((prevLiked) => !prevLiked);
 
+            // Use the updated liked state to determine postUpdateData
+            const postUpdateData = liked ? postDisLikeUpdateData : postLikeUpdateData;
+
+            const response = await fetch(`/api/like/${OverAcEmail}/${encodeURIComponent(modifiedUrl)}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postUpdateData),
+            });
+
+            if (response.ok) {
+                console.log('Data posted successfully to the backend!');
+            } else {
+                // Handle error response from the backend
+                console.error('Error posting data:', response.statusText);
+            }
+            // No need to setLiked(true) here, as it was already updated with the callback form
+        } catch (error) {
+            console.error('Error posting data:', error);
+        }
+    };
+    const handleCommentPost = async (e) => {
+        e.preventDefault();
+        const inputValue = inputRef.current.value;
+        const postCommentData = {
+            Comment: inputValue,
+            Currentuser: userEmail,
+        }
+        console.log(postCommentData)
+        try {
+            const response = await fetch(`/api/comment/post/${OverAcEmail}/${encodeURIComponent(modifiedUrl)}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postCommentData),
+            });
+
+            if (response.ok) {
+                console.log('Data posted successfully to the backend!');
+            } else {
+                console.error('Error posting data:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error posting data:', error);
+        }
+    }
+    const [commentData, setCommentData] = useState([[]]);
+    useEffect(() => {
+        const abortController = new AbortController();
+        const signal = abortController.signal;
+        const urlModEncoder = encodeURIComponent(modifiedUrl);
+        fetch(`/api/comment/get/${OverAcEmail}/${urlModEncoder}`, {
+            headers: {
+                Accept: 'application/json',
+            },
+            signal,
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('API Response Data:', data);
+                setCommentData(data);
+            })
+            .catch(error => {
+                console.error('Error fetching images links:', error);
+                setCommentData([[]]);
+            });
+
+        return () => {
+            abortController.abort();
+        };
+    }, []);
     return (
         <div className="overlay">
             <div className="overlaybg" onClick={onStateChange}></div>
@@ -36,6 +129,7 @@ export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages
                     <div className="overlayRightTT">
                         <div className="overlayRightTop">
                             <div className="overlayRightTopLeft">
+                                {/* API call for profile image */}
                                 <img
                                     src="https://images.unsplash.com/photo-1686452975139-bbb8846dd7e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80"
                                     alt="profileimg"
@@ -62,11 +156,16 @@ export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages
                             </div>
                         </div>
                     </div>
+                    {/* create comment section where data is commentData */}
                     <div className="overlayRightBottom">
                         <hr color="#262626" align="center"></hr>
                         <div className="overlayRightBottomTop">
                             <div className="ORBTL">
-                                <AiOutlineHeart size={25} color="white" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
+                                {liked ? (
+                                    <AiFillHeart onClick={likeHandler} size={25} color="white" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
+                                ) : (
+                                    <AiOutlineHeart onClick={likeHandler} size={25} color="white" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
+                                )}
                                 <FiMessageSquare size={25} color="white" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
                                 <RiShareForwardLine size={25} color="white" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
                             </div>
@@ -75,16 +174,15 @@ export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages
                             </div>
                         </div>
                         <div className="overlayRightBottomMiddle">
-                            <p className="overlayRightBottomMiddleText">{OverAcLikes} likes</p>
+                            <p className="overlayRightBottomMiddleText">{liked ? (parseInt(OverAcLikes) + 1) : (OverAcLikes)} likes</p>
                             {/*currently i will only show no of likes */}
                         </div>
                         <hr color="#262626" align="center"></hr>
-                        <div className="overlayRightBottomBottom">
+                        <form onSubmit={handleCommentPost} className="overlayRightBottomBottom">
                             <BsEmojiLaughing size={25} color="white" style={{ paddingLeft: '7px', paddingRight: '7px', paddingTop: '7px', paddingBottom: '7px' }} />
-                            <p className="overlayRightBottomBottomText">Add a comment...</p>
-                            <p className="commentPostButton">Post</p>
-                            {/* comment button will be added later */}
-                        </div>
+                            <input ref={inputRef} type="text" placeholder="Add a Comment..." />
+                            <button className="commentPostButton">Post</button>
+                        </form>
                     </div>
                 </div>
             </div>
