@@ -5,24 +5,25 @@ import (
 	"log"
 	"net/http"
 
+	"strconv"
+
 	"cloud.google.com/go/firestore"
 	"github.com/gin-gonic/gin"
 )
 
-type postComment struct {
-	Comment     string `json:"Comment"`
-	CurrentUser string `json:"Currentuser"`
+type UpdatedLike struct {
+	Like      string `json:"likes"`
+	Operation string `json:"operation"`
 }
 
-func AddCommentHandler(ctx context.Context, client *firestore.Client, c *gin.Context, userMail string, imageURL string) error {
-	var post postComment
+func LikeHandler(ctx context.Context, client *firestore.Client, c *gin.Context, userMail string, imageURL string) error {
+	var post UpdatedLike
 	comURL := "https://firebasestorage.googleapis.com/v0/b/insta-clone-app-77662.appspot.com/o/" + imageURL
 	if err := c.ShouldBindJSON(&post); err != nil {
 		log.Printf("Error parsing request body: %v\n", err)
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request payload"})
 		return err
 	}
-
 	usersCollection := client.Collection("users")
 	query := usersCollection.Where("email", "==", userMail).Limit(1)
 	docSnapshots, err := query.Documents(ctx).GetAll()
@@ -33,7 +34,6 @@ func AddCommentHandler(ctx context.Context, client *firestore.Client, c *gin.Con
 	}
 
 	if len(docSnapshots) == 0 {
-		// User document not found
 		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
 		return err
 	}
@@ -52,28 +52,26 @@ func AddCommentHandler(ctx context.Context, client *firestore.Client, c *gin.Con
 	}
 
 	if len(postSnapshots) == 0 {
-		// Post document not found
 		c.JSON(http.StatusNotFound, gin.H{"error": "Post not found"})
 		return err
 	}
 	postDoc := postSnapshots[0].Ref
 
-	// Update the comments array in the post document
-	commentData := map[string]interface{}{
-		"comment":     post.Comment,
-		"currentUser": post.CurrentUser,
-		"timestamp":   firestore.ServerTimestamp, // You can add a timestamp if needed
+	likeCount, err := strconv.Atoi(post.Like)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to convert into int"})
+		return err
 	}
-
-	_, err = postDoc.Update(ctx, []firestore.Update{
-		{Path: "comments", Value: firestore.ArrayUnion(commentData)},
-	})
+	if post.Operation == "like" {
+		likeCount++
+	}
+	_, err = postDoc.Update(ctx, []firestore.Update{{Path: "like", Value: likeCount}})
 	if err != nil {
 		log.Printf("Error updating post document: %v\n", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update post"})
 		return err
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Comment added", "postId": postSnapshots[0].Ref.ID})
+	c.JSON(http.StatusOK, gin.H{"message": "Post updated", "postId": postSnapshots[0].Ref.ID})
 	return nil
 }

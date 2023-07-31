@@ -15,12 +15,6 @@ type SearchingUser struct {
 	Name      string `firestore:"Name"`
 }
 
-// type SearchingUserResponse struct {
-// 	Username string `json:"username"`
-// 	Followers int   `json:"Followers"`
-// 	Name     string `json:"Name"`
-// }
-
 func SearchUsersHandlers(ctx context.Context, client *firestore.Client) ([][]string, error) {
 	var SearchedPackets [][]string
 	usersCollection := client.Collection("users")

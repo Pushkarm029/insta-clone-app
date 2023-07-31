@@ -48,30 +48,38 @@ func main() {
 	// Run the server on port 8080
 	r.Run(":8080")
 }
-
-func getUserProfile(c *gin.Context) {
-	userMail := c.Param("userID") // Declare and initialize the userID variable
-	// Fetch the user profile using the CurrentUserHandler from the handlers package
-	userID, err := handlers.EmailToUsernameHandlers(ctx, client, userMail)
+func getHomePosts(c *gin.Context) {
+	userMail := c.Param("userID")
+	currentFollowingPackets, err := handlers.CurrentUserHandlers(ctx, client, userMail)
 	if err != nil {
-		log.Printf("Error fetching user profile: %v\n", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch username"})
+		log.Printf("Error fetching following of current user: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch following of current user"})
 		return
 	}
-	currentUserPackets, err := handlers.CurrentUserHandlers(ctx, client, userID)
+	FollowingOfCurrentUsers := currentFollowingPackets.UserData.FollowingList
+	currentHomePostPackets, err := handlers.HomePostsHandler(ctx, client, FollowingOfCurrentUsers)
+	if err != nil {
+		log.Printf("Error fetching home posts: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch home posts"})
+		return
+	}
+	c.JSON(http.StatusOK, currentHomePostPackets)
+}
+func getUserProfile(c *gin.Context) {
+	userMail := c.Param("userID")
+	currentUserPackets, err := handlers.CurrentUserHandlers(ctx, client, userMail)
 	if err != nil {
 		log.Printf("Error fetching user profile: %v\n", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch user profile"})
 		return
 	}
-	// Respond with the user profile in the JSON format
 	c.JSON(http.StatusOK, currentUserPackets)
 }
 func getUserSearched(c *gin.Context) {
 	currentUserPackets, err := handlers.SearchUsersHandlers(ctx, client)
 	if err != nil {
-		log.Printf("Error fetching user profile: %v\n", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch user profile"})
+		log.Printf("Error searching user : %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to search user"})
 		return
 	}
 	// Respond with the user profile in the JSON format
@@ -93,8 +101,8 @@ func updateLike(c *gin.Context) {
 	imageURL := c.Param("OverAcImages")
 	err := handlers.LikeHandler(ctx, client, c, userMail, imageURL)
 	if err != nil {
-		log.Printf("Error creating post: %v\n", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create post"})
+		log.Printf("Error in updating like: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update like"})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"message": "Like Updated"})
@@ -104,8 +112,8 @@ func updateFollowersNFollowing(c *gin.Context) {
 	ShooterMail := c.Param("UserID")
 	err := handlers.UpdatedFollowersNFollowingFunc(ctx, client, c, TargetMail, ShooterMail)
 	if err != nil {
-		log.Printf("Error creating post: %v\n", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create post"})
+		log.Printf("Error in updating followers and following: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update followers and following"})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"message": "Follower Updated"})
@@ -115,11 +123,11 @@ func postComment(c *gin.Context) {
 	imageURL := c.Param("OverAcImages")
 	err := handlers.AddCommentHandler(ctx, client, c, userMail, imageURL)
 	if err != nil {
-		log.Printf("Error creating post: %v\n", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create post"})
+		log.Printf("Error in posting comment: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to post comment"})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"message": "Like Updated"})
+	c.JSON(http.StatusOK, gin.H{"message": "Comment Posted"})
 }
 func getComment(c *gin.Context) {
 	userMail := c.Param("OverAcEmail")
@@ -132,30 +140,19 @@ func getComment(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, currentCommentPackets)
 }
+func explorePosts(c *gin.Context) {
+	explorePostPackets, err := handlers.ExplorePostsHandler(ctx, client)
+	if err != nil {
+		log.Printf("Error fetching posts for explore page: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch posts for explore page"})
+		return
+	}
+	c.JSON(http.StatusOK, explorePostPackets)
+}
+
+// initializing API endpoints
 func initRoutes(r *gin.Engine) {
-	// Initialize the routes for images
-	r.GET("/api/images/links", func(c *gin.Context) {
-		// Fetch the images links using ImagesLinkHandler from handlers package
-		links, err := handlers.ImagesLinkHandler(ctx, client)
-		if err != nil {
-			log.Printf("Error fetching images links: %v\n", err)
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch images links"})
-			return
-		}
-		// Respond with the links in the JSON format
-		c.JSON(http.StatusOK, links)
-	})
-	r.GET("/api/explore/posts", func(c *gin.Context) {
-		// Fetch the images links using ImagesLinkHandler from handlers package
-		ExplorePosts, err := handlers.ExplorePostsHandler(ctx, client)
-		if err != nil {
-			log.Printf("Error fetching images links: %v\n", err)
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch images links"})
-			return
-		}
-		// Respond with the links in the JSON format
-		c.JSON(http.StatusOK, ExplorePosts)
-	})
+	r.GET("/api/explore/posts", explorePosts)
 	r.GET("/api/search/users", getUserSearched)
 	r.POST("/api/upload/:userID", postUpload)
 	r.POST("/api/like/:OverAcEmail/:OverAcImages", updateLike)
@@ -163,4 +160,5 @@ func initRoutes(r *gin.Engine) {
 	r.POST("/api/follow/:OverAcEmail/:UserID", updateFollowersNFollowing)
 	r.GET("/api/profile/user/:userID", getUserProfile)
 	r.GET("/api/comment/get/:OverAcEmail/:urlModEncoder", getComment)
+	r.GET("/api/home/:userID", getHomePosts)
 }

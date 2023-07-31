@@ -94,7 +94,7 @@ export default function Profile() {
         <div className="profileHeadInner">
           <div className="profileHeadInnerOne">
             <p>{userData.username}</p>
-            {propEmail ? (followed ?
+            {propEmail && propEmail != userEmail ? (followed ?
               <p onClick={handleFollow}>UnFollow</p>
               :
               <p onClick={handleFollow}>Follow</p>
@@ -109,11 +109,11 @@ export default function Profile() {
               <p>posts</p>
             </div>
             <div className="profileHeadIITTwo">
-              <div className="profileFollowers">{userData.followers}</div>
+              <div className="profileFollowers">{userData.followersList ? userData.followersList.length: (0)}</div>
               <p>followers</p>
             </div>
             <div className="profileHeadIITThree">
-              <div className="profileFollowing">{userData.following}</div>
+              <div className="profileFollowing">{userData.followingList ? userData.followingList.length: (0)}</div>
               <p>following</p>
             </div>
           </div>

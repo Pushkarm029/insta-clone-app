@@ -9,8 +9,8 @@
 }
 
 .stories{
-    margin-top: 20px;
-    padding: 25px 0px 25px 0px;
+    margin-top: 40px;
+    padding: 5px 0px;
     display: flex;
 }
 
@@ -24,6 +24,9 @@
     display: flex;
 }
 
+.post{
+    margin: 30px 0px;
+}
 
 .posts{
     padding: 0px 67px 0px 56px;
