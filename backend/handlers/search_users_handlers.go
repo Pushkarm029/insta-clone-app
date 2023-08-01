@@ -13,6 +13,8 @@ type SearchingUser struct {
 	Username  string `firestore:"username"`
 	Followers int    `firestore:"Followers"`
 	Name      string `firestore:"Name"`
+	Profile   string `firestore:"profile_image_link"`
+	EmailID   string `firestore:"email"`
 }
 
 func SearchUsersHandlers(ctx context.Context, client *firestore.Client) ([][]string, error) {
@@ -34,7 +36,7 @@ func SearchUsersHandlers(ctx context.Context, client *firestore.Client) ([][]str
 			continue
 		}
 		strFollowers := strconv.Itoa(UserDataPackets.Followers)
-		eachSearchedPacket := []string{UserDataPackets.Username, strFollowers, UserDataPackets.Name}
+		eachSearchedPacket := []string{UserDataPackets.Username, strFollowers, UserDataPackets.Name, UserDataPackets.Profile, UserDataPackets.EmailID}
 		SearchedPackets = append(SearchedPackets, eachSearchedPacket)
 	}
 	return SearchedPackets, nil

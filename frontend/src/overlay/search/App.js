@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import { useNavigate } from "react-router-dom";
 
-const SearchPage = () => {
+export default function SearchPage(){
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
   const [userData, setUserData] = useState([]); // Initialize as an empty array
@@ -41,6 +43,9 @@ const SearchPage = () => {
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
+  const handleNavigation = (targetEmail) => {
+    navigate(`/profile?prop=${targetEmail}`)
+  }
 
   return (
     <div className="searchOverlay">
@@ -57,8 +62,8 @@ const SearchPage = () => {
           filteredResults.length > 0 ? (
             <div className="searchResults">
               {filteredResults.map((result, index) => (
-                <div className="eachSearchResult" key={index}>
-                  <img src="https://images.unsplash.com/photo-1687042277586-971369d3d241?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" />
+                <div onClick={() => handleNavigation(result[4])} className="eachSearchResult" key={index}>
+                  <img src={result[3]}/>
                   <div className="eachSearchResultLeft">
                     <div className="eachSearchResultTop">
                       <p><strong>{result[0]}</strong></p>
@@ -81,5 +86,3 @@ const SearchPage = () => {
     </div>
   );
 };
-
-export default SearchPage;

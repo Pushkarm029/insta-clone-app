@@ -5,6 +5,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { TbMessageCircle2Filled } from "react-icons/tb";
 import { useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom';
+import { OverlayTest as ShowOverlay } from "./../overlay/overlay.js";
 
 function CountPosts({ post }) {
   let index = 0;
@@ -62,7 +63,7 @@ export default function Profile() {
     targetfollowers: userData.followers,
     operation: "unfollow",
   };
-  
+
   const handleFollow = async () => {
     try {
       setFollowed((prevLiked) => !prevLiked);
@@ -84,6 +85,20 @@ export default function Profile() {
     } catch (error) {
       console.error('Error posting data:', error);
     }
+  };
+  const [ShowOverlayState, setShowOverlayState] = useState([
+    false,
+    "",
+    "",
+    "",
+    "",
+    "",
+  ]);
+  const [showOverlay, overlayId, overlayCaption, overlayLikes, overlayImageID, overlayEmail] =
+    ShowOverlayState;
+
+  const handleOverlayStateChange = () => {
+    setShowOverlayState((prevState) => [!prevState[0], ...prevState.slice(1)]);
   };
   return (
     <div className="profile">
@@ -109,11 +124,11 @@ export default function Profile() {
               <p>posts</p>
             </div>
             <div className="profileHeadIITTwo">
-              <div className="profileFollowers">{userData.followersList ? userData.followersList.length: (0)}</div>
+              <div className="profileFollowers">{userData.followersList ? userData.followersList.length : (0)}</div>
               <p>followers</p>
             </div>
             <div className="profileHeadIITThree">
-              <div className="profileFollowing">{userData.followingList ? userData.followingList.length: (0)}</div>
+              <div className="profileFollowing">{userData.followingList ? userData.followingList.length : (0)}</div>
               <p>following</p>
             </div>
           </div>
@@ -132,10 +147,30 @@ export default function Profile() {
       {/*later can be added */}
       {/*a posts reels tagged can be added through route*/}
       <div className="ProfilePost">
+        {showOverlay && (
+          <ShowOverlay
+            onStateChange={handleOverlayStateChange}
+            OverAcID={overlayId}
+            OverAcCaption={overlayCaption}
+            OverAcLikes={overlayLikes}
+            OverAcImages={overlayImageID}
+            OverAcEmail={overlayEmail}
+          />
+        )}
         {userPosts ? (
           userPosts.map((profileAccountPosts, index) => (
             <div
               key={index}
+              onClick={() =>
+                setShowOverlayState([
+                  true,
+                  userData.username,
+                  profileAccountPosts.caption,
+                  profileAccountPosts.like,
+                  profileAccountPosts.image_link,
+                  userID,
+                ])
+              }
               onMouseEnter={() => setHoverProfileIMG(index)}
               onMouseLeave={() => setHoverProfileIMG(null)}
               className="profileImages"

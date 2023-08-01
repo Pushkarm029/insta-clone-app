@@ -70,17 +70,16 @@ export default function Body() {
       abortController.abort();
     };
   }, [userEmail]);
-  const postLikeUpdateData = {
-    likes: dataHome.image_link,
-    operation: "like",
-  }
-  const postDisLikeUpdateData = {
-    likes: dataHome.image_link,
-    operation: "dislike",
-  }
   //implement a system for unique like and for dataHome arrray index
-  const modifiedUrl = dataHome.image_link.replace('https://firebasestorage.googleapis.com/v0/b/insta-clone-app-77662.appspot.com/o/', '');
   const handleLike = async () => {
+    const postLikeUpdateData = {
+      likes: dataHome.image_link,
+      operation: "like",
+    }
+    const postDisLikeUpdateData = {
+      likes: dataHome.image_link,
+      operation: "dislike",
+    }
     try {
       // Toggle the liked state using the callback form of setLiked
       setLiked((prevLiked) => !prevLiked);
@@ -88,7 +87,7 @@ export default function Body() {
       // Use the updated liked state to determine postUpdateData
       const postUpdateData = liked ? postDisLikeUpdateData : postLikeUpdateData;
 
-      const response = await fetch(`/api/like/${userEmail}/${encodeURIComponent(modifiedUrl)}`, {
+      const response = await fetch(`/api/like/${userEmail}/${encodeURIComponent(dataHome.image_link.replace('https://firebasestorage.googleapis.com/v0/b/insta-clone-app-77662.appspot.com/o/', ''))}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -137,7 +136,6 @@ export default function Body() {
   return (
     // implement story is not completed yet
     <div className="body">
-
       {showOverlay && <ShowOverlay
         onStateChange={handleOverlayStateChange}
         OverAcID={overlayId}
@@ -157,7 +155,7 @@ export default function Body() {
         ))}
       </div>
       <div className="posts">
-        {dataHome.length > 0 ? (
+        {dataHome && dataHome.length > 0 ? (
           dataHome.map((account, index) => (
             <div className="post" key={index}>
               <div className="individualpost" key={account.key}>

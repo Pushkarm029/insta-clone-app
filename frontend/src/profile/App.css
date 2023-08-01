@@ -121,7 +121,11 @@
     display: flex;
 }
 
-
+.profileHeadLink a{
+    text-decoration: none;
+    color: white;
+    font-size: 0.83rem;
+}
 
 .ProfilePost{
     background-color: black;
