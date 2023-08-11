@@ -11,6 +11,7 @@ import { OverlayTest as ShowOverlay } from "./../../overlay/overlay.js";
 import { useMediaQuery } from 'react-responsive'
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 // function randomizeHomePosts(arr) {
 //   const shuffledArray = [...arr];
@@ -47,6 +48,7 @@ export default function Body() {
   const [liked, setLiked] = useState(false);
   const [dataHome, setDataHome] = useState([]);
   const userEmail = useSelector((state) => state.user.userEmail);
+  const navigate = useNavigate();
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;
@@ -133,6 +135,9 @@ export default function Body() {
       setBookmark(prevBookmarkImages => [...prevBookmarkImages, bookmarkId]);
     }
   };
+  const handleNavigation = (targetEmail) => {
+    navigate(`/profile?prop=${targetEmail}`)
+  }
   return (
     // implement story is not completed yet
     <div className="body">
@@ -163,7 +168,7 @@ export default function Body() {
                   <div className="postheaderpartone">
                     {/* profile link to be fetched */}
                     <img src={account.profilelink} alt={account.username} />
-                    <p className="postheadertopid">{account.username}</p>
+                    <p onClick={() => handleNavigation(account.email)} className="postheadertopid">{account.username}</p>
                     <p className="postheadertopduration">· 1 d</p>
                   </div>
                   <FiMoreHorizontal color="white" size={20} />

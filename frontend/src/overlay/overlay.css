@@ -12,8 +12,12 @@
 .overlayRight {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   width: 500px;
+}
+
+.overlayRightCommentSection {
+  height: 370px;
 }
 
 .overlayLeft img {
@@ -140,7 +144,7 @@
   }
 }
 
-.commentPostButton{
+.commentPostButton {
   margin: 8px;
   padding: 5px;
   background-color: rgb(0, 0, 0);

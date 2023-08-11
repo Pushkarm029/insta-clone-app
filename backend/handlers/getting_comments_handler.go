@@ -13,8 +13,8 @@ type getCommentFromPost struct {
 	URL      string              `json:"ImageURL" firestore:"downloadURL"`
 }
 
-func GettingComments(ctx context.Context, client *firestore.Client, userMail string, imageURL string) (getCommentFromPost, error) {
-	var result getCommentFromPost
+func GettingComments(ctx context.Context, client *firestore.Client, userMail string, imageURL string) ([]map[string]string, error) {
+	var result []map[string]string
 	comURL := "https://firebasestorage.googleapis.com/v0/b/insta-clone-app-77662.appspot.com/o/" + imageURL
 	usersCollection := client.Collection("users")
 	iter := usersCollection.Documents(ctx)
@@ -52,7 +52,7 @@ func GettingComments(ctx context.Context, client *firestore.Client, userMail str
 				}
 				if currentPostDataPackets.URL == comURL {
 					log.Printf("data bhi leliya")
-					result = currentPostDataPackets
+					result = currentPostDataPackets.Comments
 				}
 			}
 		}

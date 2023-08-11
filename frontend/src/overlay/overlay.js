@@ -16,12 +16,10 @@ import { useEffect } from "react";
 // current idea to implement overlay is that it will be a component that is called when a post is clicked on and will be passed the post data as props
 // so overlayTest need some props to be passed to it
 
-
 export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages, onStateChange, OverAcEmail }) {
     const [liked, setLiked] = useState(false);
     const userEmail = useSelector((state) => state.user.userEmail);
     const navigate = useNavigate();
-    // if any problem in text handling or rendering
     const inputRef = useRef(null);
     const handleNavigateToProfile = () => {
         navigate(`/profile?prop=${OverAcEmail}`);
@@ -34,15 +32,14 @@ export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages
         likes: OverAcLikes,
         operation: "dislike",
     }
+    // to shorten the image link
     const modifiedUrl = OverAcImages.replace('https://firebasestorage.googleapis.com/v0/b/insta-clone-app-77662.appspot.com/o/', '');
     const likeHandler = async () => {
         try {
             // Toggle the liked state using the callback form of setLiked
             setLiked((prevLiked) => !prevLiked);
-
             // Use the updated liked state to determine postUpdateData
             const postUpdateData = liked ? postDisLikeUpdateData : postLikeUpdateData;
-
             const response = await fetch(`/api/like/${OverAcEmail}/${encodeURIComponent(modifiedUrl)}`, {
                 method: 'POST',
                 headers: {
@@ -69,7 +66,7 @@ export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages
             Comment: inputValue,
             Currentuser: userEmail,
         }
-        console.log(postCommentData)
+        // console.log(postCommentData)
         try {
             const response = await fetch(`/api/comment/post/${OverAcEmail}/${encodeURIComponent(modifiedUrl)}`, {
                 method: 'POST',
@@ -122,7 +119,6 @@ export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages
                         src={OverAcImages}
                         alt="test"
                     />
-                    {/* image can be added when this is used as a component with a prop */}
                 </div>
                 <hr color="#262626" align="center"></hr>
                 <div className="overlayRight">
@@ -155,6 +151,14 @@ export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages
                                 <p className="overlayDuration">1 w</p>
                             </div>
                         </div>
+                    </div>
+                    <div className="overlayRightCommentSection">
+                        {commentData && commentData.map((eachCommentPacket) => (
+                            <div className="eachCommentBox">
+                                <p className="usernameEachComment">{eachCommentPacket.currentUser}</p>
+                                <p className="commentEachComment">{eachCommentPacket.comment}</p>
+                            </div>
+                        ))}
                     </div>
                     {/* create comment section where data is commentData */}
                     <div className="overlayRightBottom">

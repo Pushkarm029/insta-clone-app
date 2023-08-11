@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
 
-export default function SearchPage(){
+export default function SearchPage() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
@@ -63,7 +63,7 @@ export default function SearchPage(){
             <div className="searchResults">
               {filteredResults.map((result, index) => (
                 <div onClick={() => handleNavigation(result[4])} className="eachSearchResult" key={index}>
-                  <img src={result[3]}/>
+                  <img src={result[3]} />
                   <div className="eachSearchResultLeft">
                     <div className="eachSearchResultTop">
                       <p><strong>{result[0]}</strong></p>

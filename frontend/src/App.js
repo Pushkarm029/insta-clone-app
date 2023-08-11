@@ -14,7 +14,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        {isLogged ? <Navigator /> : <SignIn onLogin={handleLogin}/>}
+        {isLogged ? <Navigator /> : <SignIn onLogin={handleLogin} />}
       </div>
     </Provider>
   );

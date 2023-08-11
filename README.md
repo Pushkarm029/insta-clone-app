@@ -1,7 +1,7 @@
-![Insta-Clone-App](https://drive.google.com/uc?export=view&id=1UAEuIFKet14qiJAcMebVxyuQlO5-Cs_B)
+![Insta-Clone-App](https://drive.google.com/uc?export=view&id=1z6BjGrL8-iiryYssnh1qSzKV4ODgVg7T)
 
 
-### **🔥 Introduction**
+## **🔥 Introduction**
 
 **Insta-Clone-App** is a web app which can be used to upload posts, explore posts, check your friend's posts etc. It is built using React.js for frontend, Go for backend and Firebase for database. 
 
@@ -11,7 +11,7 @@ Frontend is deployed using Github Pages ->
 
 Full Stack Application Will be ***Deployed soon***.
 
-### **💥 Features**
+## **💥 Features**
 - It enables users to log in and create an account.
 - User can upload their images in the application.
 - User can visit explore page where user can see the new post of other users.
@@ -20,7 +20,7 @@ Full Stack Application Will be ***Deployed soon***.
 - The User can enjoy Reels.
 - User can deep dive into chill-zone to play some mini-games created by me.
 
-### **🛠️ Local Development** :
+## **🛠️ Local Development** :
 
 1. Open your terminal and then type
     ```shell
@@ -62,25 +62,26 @@ Full Stack Application Will be ***Deployed soon***.
 **Note : You need to restart backend server after every change in any .go file.**
 
 
-### **❤️ Learnings** :
+## **❤️ Learnings** :
 
 - I have learned how to use components, props, and state to create interactive user interfaces. 
 - I have also gained a better understanding of how to structure a React project, including the use of ES6 syntax and styling with CSS.
 - I have learned how to implement React Redux to make a global state and then use it anywhere.
 - I have also become familiar with the React Router library for creating dynamic routes in my web applications. 
 - I have also gained experience in deploying React applications to production.
-- Finally, I am now more confident in my ability to build React applications from start to finish.
 - I have also gained a better understanding of Firebase Authentication, Storage and Firestore.
 - Got Better Understanding of GO while implementing this as backend in this app.
-- Learned how to iterate over data present in firestore using Go-Gin Framework.
-- Created REST API's using GO to perform CRUD operation.
-- Learned how to build unity games for web and then implementing in a full stack application.
-### **⛑️ Maintenance** :
+- I learned how to iterate over data present in Firestore, converging it into JSON, and making HTTP requests using the Go-Gin Framework.
+- Created REST API's using GO to perform CRU (CREATE, READ and UPDATE) operation.
+- I learned how to build Unity games for the web and then implement them in a full-stack application.
+## **⛑️ Maintenance** :
 
 Feel free to open issue to add a feature request or report any BUG. It will be appreciated from the depth of my heart❤️.
 
-### **📅 Future**
+## **📅 Future**
 
+- Add infinite scroll and Lazy Loading.
+- Implement the delete operation in the REST API.
 - Lots of Bugs and css needs to be fixed.
 - Jest Framework will be used for testing.
 - Firebase will be used for Real Time Messaging Options.

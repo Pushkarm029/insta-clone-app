@@ -5,8 +5,6 @@ import (
 	"log"
 	"net/http"
 
-	"strconv"
-
 	"cloud.google.com/go/firestore"
 	"github.com/gin-gonic/gin"
 )
@@ -37,7 +35,6 @@ func UpdatedFollowersNFollowingFunc(ctx context.Context, client *firestore.Clien
 		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
 		return err
 	}
-	userDoc := userSnapshots[0].Ref
 	//following adding in shooter's account
 	shooterUserSnapshots, err := query2.Documents(ctx).GetAll()
 	if err != nil {
@@ -84,20 +81,21 @@ func UpdatedFollowersNFollowingFunc(ctx context.Context, client *firestore.Clien
 
 	// done
 	// followers count is also stored
-	followersCount, err := strconv.Atoi(user.TargetFollowers)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to convert into int"})
-		return err
-	}
-	if user.Operation == "follow" {
-		followersCount++
-	}
-	_, err = userDoc.Update(ctx, []firestore.Update{{Path: "followers", Value: followersCount}})
-	if err != nil {
-		log.Printf("Error updating post document: %v\n", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update post"})
-		return err
-	}
+	// userDoc := userSnapshots[0].Ref
+	// followersCount, err := strconv.Atoi(user.TargetFollowers)
+	// if err != nil {
+	// 	c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to convert into int"})
+	// 	return err
+	// }
+	// if user.Operation == "follow" {
+	// 	followersCount++
+	// }
+	// _, err = userDoc.Update(ctx, []firestore.Update{{Path: "followers", Value: followersCount}})
+	// if err != nil {
+	// 	log.Printf("Error updating post document: %v\n", err)
+	// 	c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update post"})
+	// 	return err
+	// }
 	c.JSON(http.StatusOK, gin.H{"message": "Follower updated", "postId": userSnapshots[0].Ref.ID})
 	return nil
 	//done

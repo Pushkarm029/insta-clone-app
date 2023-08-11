@@ -33,58 +33,30 @@ export default function Create() {
       setFileUploaded(e.target.files[0]);
     }
   };
-  // const submitPost = async (e) => {
-  //   e.preventDefault();
-  //   const db = getFirestore();
-  //   const storageRef = ref(storage, `images/${file.name}` + Date.now());
-  //   //add username instead of file.name
-  //   try {
-  //     uploadBytes(storageRef, file)
-  //       .then((snapshot) => {
-  //         console.log('Uploaded a blob or file!');
-  //         return getDownloadURL(snapshot.ref);
-  //       })
-  //       .then((downloadURL) => {
-  //         console.log('Image download URL:', downloadURL);
-  //         setDownloadURL(downloadURL);
-  //       })
-  //       .catch((error) => {
-  //         console.error('Error getting download URL:', error);
-  //       });
-  //     const docRef = await addDoc(collection(db, "users"), {
-  //       caption,
-  //       downloadURL,
-  //     });
-  //     console.log("Document written with ID: ", docRef.id);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //   console.log('Post submitted');
-  // };
   const submitPost = async (e) => {
     e.preventDefault();
     const storageRef = ref(storage, `images/${userEmail}` + Date.now());
-  
+
     try {
       // Upload the image to Firebase Storage
       const snapshot = await uploadBytes(storageRef, fileUploaded);
-      console.log('Uploaded a blob or file!');
-  
+      console.log('Uploaded file!');
+
       // Get the download URL of the uploaded image
       const downloadURL = await getDownloadURL(snapshot.ref);
       console.log('Image download URL:', downloadURL);
       setDownloadURL(downloadURL);
-  
+
       // Call the backend with the downloadURL and caption data
       const userData = { downloadURL, caption };
       processToBackend(userData);
-  
+
     } catch (error) {
       console.error('Error uploading image or getting download URL:', error);
     }
     console.log('Post submitted');
   };
-  
+
   const processToBackend = async (userData) => {
     try {
       const response = await fetch(`/api/upload/${userEmail}`, {
@@ -94,7 +66,7 @@ export default function Create() {
         },
         body: JSON.stringify(userData),
       });
-  
+
       if (response.ok) {
         console.log('Data posted successfully to the backend!');
       } else {
@@ -105,7 +77,7 @@ export default function Create() {
       console.error('Error posting data:', error);
     }
   };
-  
+
 
   return (
     <div className="insta-overlay">

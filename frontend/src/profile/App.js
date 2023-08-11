@@ -53,7 +53,7 @@ export default function Profile() {
     return () => {
       abortController.abort();
     };
-  }, [userEmail]);
+  }, [userID]);
   const [followed, setFollowed] = useState(false);
   const postFollowerUpdateData = {
     targetfollowers: userData.followers,
@@ -108,13 +108,13 @@ export default function Profile() {
         </div>
         <div className="profileHeadInner">
           <div className="profileHeadInnerOne">
-            <p>{userData.username}</p>
-            {propEmail && propEmail != userEmail ? (followed ?
-              <p onClick={handleFollow}>UnFollow</p>
+            <p className="usernameProfile">{userData.username}</p>
+            {propEmail && propEmail !== userEmail ? (followed ?
+              <p className="unfollowButtonProfile" onClick={handleFollow}>UnFollow</p>
               :
-              <p onClick={handleFollow}>Follow</p>
+              <p className="followButtonProfile" onClick={handleFollow}>Follow</p>
             ) : (
-              <p variant="text">Edit Profile</p>
+              <p className="unfollowButtonProfile" variant="text">Edit Profile</p>
             )}
             <TbSettings2 color="white" size={20} />
           </div>
@@ -143,9 +143,7 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      <div className="savedStories"></div>
-      {/*later can be added */}
-      {/*a posts reels tagged can be added through route*/}
+      {/* <div className="savedStories"></div> */}
       <div className="ProfilePost">
         {showOverlay && (
           <ShowOverlay
