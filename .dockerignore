@@ -1,0 +1,14 @@
+# Ignore common files and directories
+node_modules
+npm-debug.log
+yarn-error.log
+.vscode
+*.log
+*.swp
+.DS_Store
+
+# Ignore Go build artifacts
+backend/app
+
+# Ignore React build artifacts
+frontend/build

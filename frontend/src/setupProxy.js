@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://localhost:8080',
+      target: 'http://insta-clone-app-backend-1:8080', // Use the backend container name
       changeOrigin: true,
     })
   );
