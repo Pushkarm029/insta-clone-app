@@ -97,7 +97,7 @@ export default function Explore() {
                 </div>
               </div>
             )}
-            <img src={Explore.userPosts[0].image_link} alt={Explore.userPosts[0].image_link} />
+            <img src={Explore.userPosts[0].image_link} alt={Explore.userPosts[0].image_link}  />
           </div>
         ))
       ) : (<p>Loading Bro......</p>)}

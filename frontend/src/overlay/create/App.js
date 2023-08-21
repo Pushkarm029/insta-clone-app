@@ -5,21 +5,17 @@ import { BiArrowBack } from 'react-icons/bi';
 import { getApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { useRef } from 'react';
 import { useSelector } from 'react-redux';
-
 
 export default function Create() {
   const firebaseApp = getApp();
   const storage = getStorage(firebaseApp, "gs://insta-clone-app-77662.appspot.com");
-  const [downloadURL, setDownloadURL] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
-  const [imageUploaded, setImageUploaded] = useState(false);
   const [caption, setCaption] = useState(null);
+  // const [downloadURL, setDownloadURL] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  // const [imageUploaded, setImageUploaded] = useState(false);
   const [fileUploaded, setFileUploaded] = useState(null);
-  const file = useRef(null);
   const userEmail = useSelector((state) => state.user.userEmail);
-
 
   const handleImageUpload = (e) => {
     if (e.target.files[0]) {
@@ -29,7 +25,7 @@ export default function Create() {
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(file);
-      setImageUploaded(true);
+      // setImageUploaded(true);
       setFileUploaded(e.target.files[0]);
     }
   };
@@ -45,7 +41,7 @@ export default function Create() {
       // Get the download URL of the uploaded image
       const downloadURL = await getDownloadURL(snapshot.ref);
       console.log('Image download URL:', downloadURL);
-      setDownloadURL(downloadURL);
+      // setDownloadURL(downloadURL);
 
       // Call the backend with the downloadURL and caption data
       const userData = { downloadURL, caption };
@@ -97,7 +93,7 @@ export default function Create() {
           )}
         </div>
         <div className="right-section">
-          {imageUploaded &&
+          {fileUploaded &&
             (<textarea
               className="caption-input"
               placeholder="Add Write a Caption..."
@@ -106,7 +102,7 @@ export default function Create() {
             ></textarea>)}
           <div className="upload-image-section">
             <label htmlFor="image-upload" className="upload-label">
-              {imageUploaded ? "Change Image" : "Upload Image"}
+              {fileUploaded ? "Change Image" : "Upload Image"}
             </label>
             <input
               type="file"

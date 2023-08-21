@@ -47,7 +47,6 @@ export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages
                 },
                 body: JSON.stringify(postUpdateData),
             });
-
             if (response.ok) {
                 console.log('Data posted successfully to the backend!');
             } else {
@@ -59,12 +58,13 @@ export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages
             console.error('Error posting data:', error);
         }
     };
+    const [commentData, setCommentData] = useState([[]]);
     const handleCommentPost = async (e) => {
         e.preventDefault();
         const inputValue = inputRef.current.value;
         const postCommentData = {
-            Comment: inputValue,
-            Currentuser: userEmail,
+            comment: inputValue,
+            currentUser: userEmail,
         }
         // console.log(postCommentData)
         try {
@@ -77,6 +77,13 @@ export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages
             });
 
             if (response.ok) {
+                console.log(postCommentData);
+                if (!commentData) {
+                    setCommentData([postCommentData]);
+                } else {
+                    setCommentData(prevComments => [...prevComments, postCommentData]);
+                }
+                inputRef.current.value = '';
                 console.log('Data posted successfully to the backend!');
             } else {
                 console.error('Error posting data:', response.statusText);
@@ -85,7 +92,6 @@ export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages
             console.error('Error posting data:', error);
         }
     }
-    const [commentData, setCommentData] = useState([[]]);
     useEffect(() => {
         const abortController = new AbortController();
         const signal = abortController.signal;
@@ -155,8 +161,12 @@ export function OverlayTest({ OverAcID, OverAcCaption, OverAcLikes, OverAcImages
                     <div className="overlayRightCommentSection">
                         {commentData && commentData.map((eachCommentPacket) => (
                             <div className="eachCommentBox">
-                                <p className="usernameEachComment">{eachCommentPacket.currentUser}</p>
-                                <p className="commentEachComment">{eachCommentPacket.comment}</p>
+                                {/* currently placeholder */}
+                                <img src="https://images.unsplash.com/photo-1690907932520-8ac437939237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=771&q=80" />
+                                <div className="eachCommentText">
+                                    <p className="usernameEachComment"><strong>{eachCommentPacket.currentUser}</strong></p>
+                                    <p className="commentEachComment">{eachCommentPacket.comment}</p>
+                                </div>
                             </div>
                         ))}
                     </div>

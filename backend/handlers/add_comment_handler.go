@@ -10,8 +10,8 @@ import (
 )
 
 type postComment struct {
-	Comment     string `json:"Comment"`
-	CurrentUser string `json:"Currentuser"`
+	Comment     string `json:"comment"`
+	CurrentUser string `json:"currentUser"`
 }
 
 func AddCommentHandler(ctx context.Context, client *firestore.Client, c *gin.Context, userMail string, imageURL string) error {

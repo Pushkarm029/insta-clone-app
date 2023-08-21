@@ -12,7 +12,7 @@ export default function Account() {
             <img src ={accountList[0].url}/>
             <div className='myaccountinner'>
               <p className='myAccountInnerID'>{userEmail}</p>
-              <p className='myAccountInnerName'>{accountList[0].name}</p>
+              {/* <p className='myAccountInnerName'>{accountList[0].name}</p> */}
             </div>
           </div>
           <span className='accountswitchbutton'>Switch</span>

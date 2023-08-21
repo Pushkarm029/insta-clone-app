@@ -5,24 +5,12 @@ import { IoMdCreate } from 'react-icons/io';
 import { MdOutlineMessage } from 'react-icons/md';
 import './App.css';
 
+// try to implement it with firestore cloud messaging
 const LazyAccountInMessages = lazy(() => import('./AccountInMessages'));
+//Lazy Loading not implemented correctly
 
 export default function Messages() {
   const [lazyLoad, setLazyLoad] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
-        setLazyLoad(false);
-        window.removeEventListener('scroll', handleScroll);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <div className="messages">
       <div className="messagesContainer">

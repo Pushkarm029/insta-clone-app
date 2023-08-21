@@ -28,7 +28,6 @@ export default function Profile() {
   const [userPosts, setUserPosts] = useState([]);
   const userEmail = useSelector((state) => state.user.userEmail);
   const userID = propEmail ? propEmail : userEmail;
-  console.log(userID)
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;

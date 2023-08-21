@@ -77,7 +77,7 @@ export default function SearchPage() {
               ))}
             </div>
           ) : (
-            <p><strong>{searchQuery}</strong> is currently not on this platform</p>
+            <p><strong>{searchQuery}</strong> is currently not available on this platform</p>
           )
         ) : (
           <p>No search results yet.</p>

@@ -58,7 +58,6 @@ func UpdatedFollowersNFollowingFunc(ctx context.Context, client *firestore.Clien
 	// done
 	//followers adding in target's account
 	targetUserSnapshots, err := query.Documents(ctx).GetAll()
-	log.Printf("sus1")
 	if err != nil {
 		log.Printf("Error querying users collection: %v\n", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to get user data"})
@@ -68,9 +67,7 @@ func UpdatedFollowersNFollowingFunc(ctx context.Context, client *firestore.Clien
 		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
 		return err
 	}
-	log.Printf("sus2")
 	targetUserDoc := targetUserSnapshots[0].Ref
-	log.Printf("sus3")
 	_, err = targetUserDoc.Update(ctx, []firestore.Update{{Path: "followersList", Value: firestore.ArrayUnion(ShooterMail)}})
 	log.Printf("done")
 	if err != nil {
@@ -78,24 +75,6 @@ func UpdatedFollowersNFollowingFunc(ctx context.Context, client *firestore.Clien
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to get user data"})
 		return err
 	}
-
-	// done
-	// followers count is also stored
-	// userDoc := userSnapshots[0].Ref
-	// followersCount, err := strconv.Atoi(user.TargetFollowers)
-	// if err != nil {
-	// 	c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to convert into int"})
-	// 	return err
-	// }
-	// if user.Operation == "follow" {
-	// 	followersCount++
-	// }
-	// _, err = userDoc.Update(ctx, []firestore.Update{{Path: "followers", Value: followersCount}})
-	// if err != nil {
-	// 	log.Printf("Error updating post document: %v\n", err)
-	// 	c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update post"})
-	// 	return err
-	// }
 	c.JSON(http.StatusOK, gin.H{"message": "Follower updated", "postId": userSnapshots[0].Ref.ID})
 	return nil
 	//done

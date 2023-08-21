@@ -86,7 +86,6 @@ Feel free to open issue to add a feature request or report any BUG. It will be a
 - Jest Framework will be used for testing.
 - Firebase will be used for Real Time Messaging Options.
 - More Creativity will be added from my side.
-- Mini Games Section will be added.
 - Make it more responsive.
 - Migrate to TypeScript.
 - Implement VideoCall Feature using WebRTC.
