@@ -5,8 +5,8 @@
 
 **Insta-Clone-App** is a web app which can be used to upload posts, explore posts, check your friend's posts etc. It is built using React.js for frontend, Go for backend and Firebase for database. 
 
-Frontend is deployed using Github Pages -> 
-[pushkarm029.github.io/insta-clone-app](pushkarm029.github.io/insta-clone-app). 
+Frontend is deployed using Github Pages ->  
+<a href="https://pushkarm029.github.io/insta-clone-app" target="_blank">pushkarm029.github.io/insta-clone-app</a>
 
 
 Full Stack Application Will be ***Deployed soon***.
