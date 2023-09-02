@@ -1,15 +1,50 @@
-version: '3'
-services:
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile.backend
-    ports:
-      - "8080:8080"
+# version: '3'
+# services:
+#   backend:
+#     build:
+#       context: ./backend
+#       dockerfile: Dockerfile.backend
+#     ports:
+#       - "8080:8080"
+#     environment:
+#       - firebaseDir=firebase
 
+#   frontend:
+#     build:
+#       context: ./frontend
+#       dockerfile: Dockerfile.frontend
+#     ports:
+#       - "3000:3000"
+
+version: '3'
+
+services:
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile.frontend
+    container_name: frontend
+    # working_dir: /app/frontend
     ports:
-      - "3000:3000"
+      - "${FRONTEND_PORT}:3000" # Map the host port to the container port
+    # volumes:
+    #   - ./frontend:/app/frontend # Mount your local frontend code into the container
+    environment:
+      - API_PROXY_TARGET=http://backend:${BACKEND_PORT}
+      - PORT=${FRONTEND_PORT} # Set the PORT environment variable
+    links:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend
+    container_name: backend
+    # working_dir: /app/backend
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}" # Map the host port to the container port
+    # volumes:
+    #   - ./backend:/app/backend # Mount your local backend code into the container
+    environment:
+      - FIREBASE_CONFIG=${FIREBASE_CONFIG}
+      - BACKEND_PORT=${BACKEND_PORT} # Set the BACKEND_PORT environment variable

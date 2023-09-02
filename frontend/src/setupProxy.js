@@ -1,11 +1,14 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function (app) {
+  const target = process.env.API_PROXY_TARGET || 'http://localhost:8080'; // Default to localhost:8080 if the env variable is not set
+
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://insta-clone-app-backend-1:8080', // Use the backend container name
+      target,
       changeOrigin: true,
+      // secure: false,
     })
   );
 };
