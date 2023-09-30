@@ -2,23 +2,30 @@ name: Run Test
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
   pull_request:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name : Frontend
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Navigate to frontend directory
         run: cd frontend
+
       - name: Use Node.js 20
         uses: actions/setup-node@v1
         with:
           node-version: 20
+
       - name: Install dependencies
-        run: npm ci
+        run: npm install
+
       - name: Run tests
         run: npm run test
