@@ -65,12 +65,14 @@ export default function Login(props) {
                         placeholder="Enter your email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        data-testid="email"
                     />
                     <input
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        data-testid="password"
                     />
                     {/* jail feature needs to be implemented to block users who tries bruteforce */}
                     <button disabled={count>5} onClick={() => setCount(count + 1)} type="submit">Log In</button>

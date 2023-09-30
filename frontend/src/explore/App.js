@@ -19,7 +19,6 @@ export default function Explore() {
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data)) {
-          console.log('API Response Data:', data);
           setData(data);
         } else {
           console.error('Invalid API response:', data);
@@ -52,7 +51,6 @@ export default function Explore() {
   };
 
   const filteredData = data.filter(item => item.userPosts !== null && Array.isArray(item.userPosts) && item.userPosts.length > 0);
-  console.log(filteredData);
   return (
     <div className="randomexploreposts">
       {showOverlay && (
@@ -97,7 +95,7 @@ export default function Explore() {
                 </div>
               </div>
             )}
-            <img src={Explore.userPosts[0].image_link} alt={Explore.userPosts[0].image_link}  />
+            <img src={Explore.userPosts[0].image_link} alt={Explore.userPosts[0].image_link} />
           </div>
         ))
       ) : (<p>Loading Bro......</p>)}

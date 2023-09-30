@@ -35,9 +35,14 @@ var (
 
 func main() {
 	// Initialize Firebase Admin SDK and Firestore client
-	// credPath := "./firebaseconfig.json"
+	// this needs to be checked
 	credPath := os.Getenv("FIREBASE_CONFIG")
+	if credPath == "" {
+		credPath = "./firebaseconfig.json"
+	}
+	log.Print("Printing Credpath")
 	log.Print(credPath)
+	log.Print("printed credpath")
 	ctx = context.Background()
 	// opt := option.WithCredentialsJSON([]byte(firebaseConfig))
 	opt := option.WithCredentialsFile(credPath)
