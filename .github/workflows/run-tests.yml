@@ -12,6 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name : Frontend
+        run: cd frontend
       - name: Use Node.js 20
         uses: actions/setup-node@v1
         with:
