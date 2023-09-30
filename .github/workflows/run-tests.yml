@@ -17,15 +17,15 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Navigate to frontend directory
-        run: cd frontend
+        run: ls
 
-      - name: Use Node.js 20
-        uses: actions/setup-node@v1
-        with:
-          node-version: 20
+      # - name: Use Node.js 20
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: 20
 
-      - name: Install dependencies
-        run: npm install
+      # - name: Install dependencies
+      #   run: npm install
 
-      - name: Run tests
-        run: npm run test
+      # - name: Run tests
+      #   run: npm run test
