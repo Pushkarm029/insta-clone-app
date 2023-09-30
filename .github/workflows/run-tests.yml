@@ -8,6 +8,10 @@ on:
     branches:
       - master
 
+defaults:
+  run:
+    working-directory: ./frontend
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,19 +20,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Navigate to frontend directory
-        run: cd frontend
+      - name: Use Node.js 20
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20
 
-      - name: checking files
-        run: ls -la
+      - name: Install dependencies
+        run: npm install
 
-      # - name: Use Node.js 20
-      #   uses: actions/setup-node@v1
-      #   with:
-      #     node-version: 20
-
-      # - name: Install dependencies
-      #   run: npm install
-
-      # - name: Run tests
-      #   run: npm run test
+      - name: Run tests
+        run: npm run test
