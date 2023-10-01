@@ -1,5 +1,5 @@
 import React from 'react';
-import { render,screen, fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
+import { render, screen, fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
 import SearchPage from '../overlay/search/App';
 import { BrowserRouter } from 'react-router-dom';
 import fetchMock from 'fetch-mock';
@@ -58,10 +58,11 @@ test('displays a "not available" message when there are no results', () => {
   expect(notAvailableMessage).toBeInTheDocument();
 });
 
-// test('navigates to the profile page when a search result is clicked', () => {
-//   const { getByTestId, getByPlaceholderText } = render(<SearchPage />);
-//   const searchInput = getByPlaceholderText('Type to search...');
-//   fireEvent.change(searchInput, { target: { value: 'John' } });
-//   const searchResult = getByTestId('search-result-0');
-//   fireEvent.click(searchResult);
-// });
+test('navigates to the profile page when a search result is clicked', async () => {
+  const { getByTestId, getByPlaceholderText } = render(<SearchPage />, { wrapper: BrowserRouter });
+  const searchInput = getByPlaceholderText('Type to search...');
+  fireEvent.change(searchInput, { target: { value: 'kd' } });
+  await waitForElementToBeRemoved(() => screen.getByText("kd is currently not available on this platform"), { timeout: 10000 });
+  const searchResult = getByTestId("search-box-result");
+  fireEvent.click(searchResult);
+});

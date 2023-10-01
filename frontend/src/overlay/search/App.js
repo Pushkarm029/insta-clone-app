@@ -66,6 +66,7 @@ export default function SearchPage() {
                   onClick={() => handleNavigation(result[4])}
                   className="eachSearchResult"
                   key={index}
+                  data-testid="search-box-result"
                 >
                   <img src={result[3]} alt={`Result ${index}`} />
                   <div className="eachSearchResultLeft">
