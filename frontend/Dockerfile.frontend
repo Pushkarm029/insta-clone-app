@@ -3,7 +3,7 @@ WORKDIR /app/frontend
 COPY ./package.json ./
 COPY ./package-lock.json ./
 EXPOSE $PORT
-RUN npm ci
+RUN npm i
 COPY ./ ./
 CMD [ "npm", "start"]
 

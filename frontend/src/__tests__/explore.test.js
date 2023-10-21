@@ -318,7 +318,7 @@ describe('Explore', () => {
 
         render(<Explore />);
         const imgElements = document.querySelectorAll('.exploreImages img');
-        await waitForElementToBeRemoved(() => screen.getByText('Loading Bro......'), { timeout: 10000 }); // Wait for up to 10 seconds
+        await waitForElementToBeRemoved(() => screen.getByText('Loading Bro......'), { timeout: 10000 });
         imgElements.forEach((img, index) => {
             expect(img).toHaveAttribute('src', fakeData[index].userPosts[0].image_link);
         });
