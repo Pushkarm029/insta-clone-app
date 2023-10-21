@@ -46,15 +46,19 @@ Full Stack Application Will be ***Deployed soon***.
     ```shell
     $ npm run deploy
     ```
-7. cd into backend folder
+7. To Run Tests on Frontend Locally
+    ```shell
+    $ npm run test
+    ```
+8. cd into backend folder
    ```shell
    cd ../backend
    ```
-8. install the required dependencies for backend
+9. install the required dependencies for backend
    ```shell
    go get -u ./...
    ```
-9. Start the server on :8080
+10. Start the server on :8080
     ```shell
     go run main.go
     ```

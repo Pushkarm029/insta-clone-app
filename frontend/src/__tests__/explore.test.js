@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import fetchMock from 'fetch-mock';
-import Explore from '../explore/App'; // Import your Explore component
+import Explore from '../explore/App';
 jest.setTimeout(20000)
 const fakeData = [
     {
@@ -317,13 +317,8 @@ describe('Explore', () => {
         });
 
         render(<Explore />);
-
-        // Use querySelector to get all img elements
         const imgElements = document.querySelectorAll('.exploreImages img');
-
-        // Wait for the "Loading Bro......" text to be removed
-        await waitForElementToBeRemoved(() => screen.getByText('Loading Bro......'), { timeout: 10000 }); // Wait for up to 10 seconds
-
+        await waitForElementToBeRemoved(() => screen.getByText('Loading Bro......'), { timeout: 10000 });
         imgElements.forEach((img, index) => {
             expect(img).toHaveAttribute('src', fakeData[index].userPosts[0].image_link);
         });
