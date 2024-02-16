@@ -22,5 +22,4 @@ services:
     ports:
       - "${BACKEND_PORT}:${BACKEND_PORT}"
     environment:
-      - FIREBASE_CONFIG=${FIREBASE_CONFIG}
       - BACKEND_PORT=${BACKEND_PORT}
